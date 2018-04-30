@@ -146,10 +146,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\src\Attribut.hpp" />
+    <ClInclude Include="..\..\src\AttributDouble.hpp" />
+    <ClInclude Include="..\..\src\AttributString.hpp" />
+    <ClInclude Include="..\..\src\CatalogueMaladies.hpp" />
     <ClInclude Include="..\..\src\Empreinte.hpp" />
+    <ClInclude Include="..\..\src\ListeAttributs.hpp" />
+    <ClInclude Include="..\..\src\Maladie.hpp" />
+    <ClInclude Include="..\..\src\TypeAttribut.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\src\Attribut.cpp" />
+    <ClCompile Include="..\..\src\AttributDouble.cpp" />
+    <ClCompile Include="..\..\src\AttributString.cpp" />
+    <ClCompile Include="..\..\src\CatalogueMaladies.cpp" />
     <ClCompile Include="..\..\src\Empreinte.cpp" />
+    <ClCompile Include="..\..\src\ListeAttributs.cpp" />
+    <ClCompile Include="..\..\src\Maladie.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
