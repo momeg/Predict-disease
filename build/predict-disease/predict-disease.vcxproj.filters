@@ -1,9 +1,39 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClInclude Include="..\..\src\Empreinte.hpp" />
+    <ClInclude Include="..\..\src\Attribut.hpp">
+      <Filter>Metier</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Empreinte.hpp">
+      <Filter>Metier</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\AttributDouble.hpp">
+      <Filter>Metier</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\AttributString.hpp">
+      <Filter>Metier</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\TypeAttribut.hpp">
+      <Filter>Metier</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\Empreinte.cpp" />
+    <ClCompile Include="..\..\src\Attribut.cpp">
+      <Filter>Metier</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Empreinte.cpp">
+      <Filter>Metier</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\AttributDouble.cpp">
+      <Filter>Metier</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\AttributString.cpp">
+      <Filter>Metier</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Metier">
+      <UniqueIdentifier>{fb6ba4b3-5628-4d16-9d13-a91203567235}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

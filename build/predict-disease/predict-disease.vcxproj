@@ -146,9 +146,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\src\Attribut.hpp" />
+    <ClInclude Include="..\..\src\AttributDouble.hpp" />
+    <ClInclude Include="..\..\src\AttributString.hpp" />
     <ClInclude Include="..\..\src\Empreinte.hpp" />
+    <ClInclude Include="..\..\src\TypeAttribut.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\src\Attribut.cpp" />
+    <ClCompile Include="..\..\src\AttributDouble.cpp" />
+    <ClCompile Include="..\..\src\AttributString.cpp" />
     <ClCompile Include="..\..\src\Empreinte.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

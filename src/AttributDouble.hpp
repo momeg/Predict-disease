@@ -9,6 +9,9 @@ public:
 	AttributDouble(const string& leNom, double laValeur);
 
 public:
+	virtual TypeAttribut getType() const;
+
+public:
 	double getValeur() const;
 
 private:
