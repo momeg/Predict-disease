@@ -1,3 +1,12 @@
+// 
+// Fichier : Empreinte.cpp
+// Description : Implémentation de la classe Empreinte.
+// Auteur : Loïc Saos (loic.saos@insa-lyon.fr).
+// Date de création : 30 avril 2018
+// Versions :
+// - 1.0 : Création de la classe.
+//
+
 #include "Empreinte.hpp"
 #include "AttributDouble.hpp"
 #include "AttributString.hpp"

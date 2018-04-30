@@ -1,3 +1,12 @@
+// 
+// Fichier : Empreinte.hpp
+// Description : Définition de la classe Empreinte.
+// Auteur : Loïc Saos (loic.saos@insa-lyon.fr).
+// Date de création : 30 avril 2018
+// Versions :
+// - 1.0 : Création de la classe.
+//
+
 #ifndef EMPREINTE_HPP
 #define EMPREINTE_HPP
 
