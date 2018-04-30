@@ -18,15 +18,15 @@ public:
     CatalogueEmpreintes();
 
 public:
-    void chargerFichier(const string& cheminFichier);
+    bool chargerFichier(const string& cheminFichier);
 
-    void enregistrerFichier(const string& cheminFichier);
-
-    void chargerDefinitionAttribut(const string& cheminFichier);
+    bool chargerDefinitionAttribut(const string& cheminFichier);
 
     ListeEmpreintes getEmpreintes();
 
 private:
+    void ajouterUneDefinitionAttribut(const string& attribut, const string& type);
+
     ListeEmpreintes empreintes;
     DefinitionAttributs definitionAttributs;
 };
