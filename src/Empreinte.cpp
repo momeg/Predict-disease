@@ -2,13 +2,20 @@
 #include "AttributDouble.hpp"
 #include "AttributString.hpp"
 
+#include <cassert>
 #include <iostream>
 
-Empreinte::Empreinte(int lId, const ListeMaladies& lesMaladies, const ListeAttributs& lesAttributs)
+Empreinte::Empreinte(int lId, const ListeAttributs& lesAttributs)
 	: id(lId),
-	maladies(lesMaladies),
 	attributs(lesAttributs)
 {
+}
+
+void Empreinte::ajouterMaladie(const string& nomMaladie)
+{
+	assert(!nomMaladie.empty());
+
+	maladies.insert(nomMaladie);
 }
 
 int Empreinte::getId() const

@@ -2,6 +2,7 @@
 #include "AttributDouble.hpp"
 #include "AttributString.hpp"
 
+#include <cassert>
 #include <iostream>
 
 ListeAttributs::ListeAttributs()
@@ -15,17 +16,14 @@ ListeAttributs::ListeAttributs(const ListeAttributs& liste)
 
 ListeAttributs::~ListeAttributs()
 {
-	for (Attribut* attribut : attributs)
-	{
-		delete attribut;
-	}
+	vider();
 }
 
 ListeAttributs& ListeAttributs::operator=(const ListeAttributs& liste)
 {
 	if (&liste != this)
 	{
-		attributs.clear();
+		vider();
 
 		for (Attribut* attribut : liste.attributs)
 		{
@@ -45,6 +43,42 @@ ListeAttributs& ListeAttributs::operator=(const ListeAttributs& liste)
 	}
 
 	return *this;
+}
+
+vector<Attribut*>::const_iterator ListeAttributs::begin() const
+{
+	return attributs.begin();
+}
+
+vector<Attribut*>::const_iterator ListeAttributs::end() const
+{
+	return attributs.end();
+}
+
+void ListeAttributs::vider()
+{
+	for (Attribut* attribut : attributs)
+	{
+		delete attribut;
+	}
+
+	attributs.clear();
+}
+
+void ListeAttributs::ajouterAttribut(Attribut* attribut)
+{
+	assert(attribut);
+
+	for (vector<Attribut*>::iterator it = attributs.begin(); it != attributs.end(); it++)
+	{
+		if ((*it)->getNom() == attribut->getNom())
+		{
+			attributs.erase(it);
+			break;
+		}
+	}
+
+	attributs.push_back(attribut);
 }
 
 const Attribut* ListeAttributs::getAttribut(const string& nom) const
