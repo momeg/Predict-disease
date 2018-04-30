@@ -1,5 +1,5 @@
-#ifndef CATALOGUEEMPREINTE_HPP
-#define CATALOGUEEMPREINTE_HPP
+#ifndef CATALOGUEEMPREINTES_HPP
+#define CATALOGUEEMPREINTES_HPP
 
 
 #include "Attribut.hpp"
@@ -7,7 +7,7 @@
 
 #include <unordered_map>
 
-class CatalogueEmpreinte
+class CatalogueEmpreintes
 {
 public:
     typedef unordered_map <int, Empreinte> ListeEmpreintes;
@@ -15,7 +15,7 @@ public:
     typedef unordered_map <string, TypeAttribut> ListeAttributs;
 
 public:
-    CatalogueEmpreinte();
+    CatalogueEmpreintes();
 
 public:
     void chargerFichier(const string& cheminFichier);
@@ -31,4 +31,4 @@ private:
     ListeAttributs definitionAttributs;
 };
 
-#endif // CATALOGUEEMPREINTE_HPP
+#endif // CATALOGUEEMPREINTES_HPP

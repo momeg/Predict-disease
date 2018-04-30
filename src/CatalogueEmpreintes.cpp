@@ -1,4 +1,4 @@
-#include "CatalogueEmpreinte.hpp"
+#include "CatalogueEmpreintes.hpp"
 
 #include <iostream>
 #include <fstream>
@@ -8,17 +8,17 @@ using namespace std;
 
 //----------------------------------------------------------------- PUBLIC
 
-void CatalogueEmpreinte::chargerFichier(const string &cheminFichier)
+void CatalogueEmpreintes::chargerFichier(const string &cheminFichier)
 {
     ifstream fichier;
     fichier.open(cheminFichier);
 }
 
-void CatalogueEmpreinte::enregistrerFichier(const string &cheminFichier)
+void CatalogueEmpreintes::enregistrerFichier(const string &cheminFichier)
 {
 }
 
-void CatalogueEmpreinte::chargerDefinitionAttribut(const string &cheminFichier)
+void CatalogueEmpreintes::chargerDefinitionAttribut(const string &cheminFichier)
 {
     ifstream fichier;
     fichier.open(cheminFichier);
@@ -66,13 +66,13 @@ void CatalogueEmpreinte::chargerDefinitionAttribut(const string &cheminFichier)
     }
 }
 
-CatalogueEmpreinte::ListeEmpreintes CatalogueEmpreinte::getEmpreintes()
+CatalogueEmpreinte::ListeEmpreintes CatalogueEmpreintes::getEmpreintes()
 {
     return empreintes;
 }
 
 //-------------------------------------------- Constructeurs - destructeur
-CatalogueEmpreinte::CatalogueEmpreinte()
+CatalogueEmpreintes::CatalogueEmpreinte()
 {
 }
 
