@@ -32,3 +32,11 @@
 *.app
 
 *.opendb
+*.db
+build/.vs/
+*.pdb
+*.idb
+*.log
+*.lastbuildstate
+*.tlog
+unsuccessfulbuild
