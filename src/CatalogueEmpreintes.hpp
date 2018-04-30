@@ -12,7 +12,7 @@ class CatalogueEmpreintes
 public:
     typedef unordered_map <int, Empreinte> ListeEmpreintes;
 
-    typedef unordered_map <string, TypeAttribut> ListeAttributs;
+    typedef unordered_map <string, TypeAttribut> DefinitionAttributs;
 
 public:
     CatalogueEmpreintes();
@@ -28,7 +28,7 @@ public:
 
 private:
     ListeEmpreintes empreintes;
-    ListeAttributs definitionAttributs;
+    DefinitionAttributs definitionAttributs;
 };
 
 #endif // CATALOGUEEMPREINTES_HPP

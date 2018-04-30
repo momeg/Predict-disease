@@ -66,13 +66,13 @@ void CatalogueEmpreintes::chargerDefinitionAttribut(const string &cheminFichier)
     }
 }
 
-CatalogueEmpreinte::ListeEmpreintes CatalogueEmpreintes::getEmpreintes()
+CatalogueEmpreintes::ListeEmpreintes CatalogueEmpreintes::getEmpreintes()
 {
     return empreintes;
 }
 
 //-------------------------------------------- Constructeurs - destructeur
-CatalogueEmpreintes::CatalogueEmpreinte()
+CatalogueEmpreintes::CatalogueEmpreintes()
 {
 }
 
