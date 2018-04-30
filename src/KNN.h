@@ -1,9 +1,11 @@
 #include "Resultat.h"
 #include <vector>
+#include <unordered_map>
 #include "Modele.h"
 #include "Attribut.hpp"
 #include "Empreinte.hpp"
 #include "algorithm"
+
 class KNN :public  Modele
 {
 	protected:

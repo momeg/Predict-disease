@@ -6,10 +6,12 @@ class Resultat
 {
 public:
 	Resultat();
+	Resultat(unsigned int idEmp, vector < pair < string, double > > m);
 	~Resultat();
 	void setId(unsigned int idEmp);
+
 protected:
 	unsigned int id;
-	vector < pair <Maladie;double> > maladies;
+	vector < pair <Maladie,double> > maladies;
 };
 

@@ -22,26 +22,49 @@ vector<Resultat> KNN::analyser(const CatalogueEmpreintes& reference, const Catal
 
 Resultat KNN::analyser(const CatalogueEmpreintes& reference, const Empreinte& aTraiter)
 {
-	vector<double> dMins(k);
+	vector< pair<double,set<string> > > dMins(k);//vector<pair<distance,set<maladie>>> distance et la liste des 
+	//maladies de l'empreinte correspondates
+
 	for (unsigned int i = 0; i <k; i++) {
-		dMins[i] = numeric_limits<double>::max();
+		dMins[i].first = numeric_limits<double>::max();
 	}
 	double maxd = numeric_limits<double>::max();
-	Resultat res ;
-	res.setId(aTraiter.getId);
 	double d;
 	
 	//iterer sur toutes les empreintes du fichier de reference 
 	//garder la distance et les maladies associees si la distance fait partie des 
 	//k plus petites distances jusqu'a present 
 	for (Empreinte empRef : reference.empreintes) {
-		d = distanceEmp(empRef, aTraiter);
-		if (d < dMins[dMins.size()-1]) {
-			dMins[dMins.size() - 1] = d;
-			//res.AjouterMaladie(empRef.getMaladies);
-			sort(dMins.begin(), dMins.end());
+		d = distanceEmp(empRef,  aTraiter);
+		if (d < dMins[dMins.size()-1].first) {
+			dMins[dMins.size() - 1].first = d;
+			dMins[dMins.size() - 1].second = empRef.getMaladies;
+			sort(dMins.begin(), dMins.end(),distComp);
 		}
 	 }
+	//calculer les probabilites 
+	unordered_map <string,double> maladies;//map<maladie,probabilite>
+	unordered_map<string, double>::iterator it;
+	for (unsigned int i = 0; i < k; i++) { 
+		for(string s : dMins[i].second){//partcourir la liste des maladies d'une seule empreinte
+			it = maladies.find(s);
+			if (it == maladies.end())
+				maladies.insert(pair<string, double>(s, 1.0 / k));
+			else
+				it->second += 1.0 / k;
+		}	
+	}
+	vector < pair <string, double> > maladiesVect;
+	//transformer le resultat en vecteur
+	for (auto elem : maladies) {
+		maladiesVect.push_back(pair <string, double>(elem.first, elem.second));
+	}
+	Resultat res(aTraiter.getId, maladiesVect);
+	return res;
+}
+
+bool distComp(pair<double, set<string> > p1, pair<double, set<string> >  p2) { 
+	return (p1.first<p2.first); 
 
 }
 
