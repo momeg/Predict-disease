@@ -16,6 +16,15 @@
     <ClInclude Include="..\..\src\TypeAttribut.hpp">
       <Filter>Metier</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\CatalogueMaladies.hpp">
+      <Filter>Metier</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Maladie.hpp">
+      <Filter>Metier</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ListeAttributs.hpp">
+      <Filter>Metier</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\Attribut.cpp">
@@ -28,6 +37,15 @@
       <Filter>Metier</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\AttributString.cpp">
+      <Filter>Metier</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Maladie.cpp">
+      <Filter>Metier</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\CatalogueMaladies.cpp">
+      <Filter>Metier</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ListeAttributs.cpp">
       <Filter>Metier</Filter>
     </ClCompile>
   </ItemGroup>
