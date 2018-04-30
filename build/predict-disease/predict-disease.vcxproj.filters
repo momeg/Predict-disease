@@ -53,5 +53,8 @@
     <Filter Include="Metier">
       <UniqueIdentifier>{fb6ba4b3-5628-4d16-9d13-a91203567235}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Algo">
+      <UniqueIdentifier>{277b197d-bd78-4857-8f55-f13afefeeeb6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

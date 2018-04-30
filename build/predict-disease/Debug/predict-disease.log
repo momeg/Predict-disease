@@ -1,11 +1,13 @@
-﻿  Maladie.cpp
-  ListeAttributs.cpp
-  Empreinte.cpp
+﻿  Empreinte.cpp
+  Attribut.cpp
+  Génération de code en cours...
+  Compilation en cours...
   CatalogueMaladies.cpp
   Génération de code en cours...
   Ignoré... (aucune modification pertinente détectée)
+  Maladie.cpp
+  ListeAttributs.cpp
   AttributString.cpp
   AttributDouble.cpp
-  Attribut.cpp
 MSVCRTD.lib(exe_main.obj) : error LNK2019: symbole externe non résolu _main référencé dans la fonction "int __cdecl invoke_main(void)" (?invoke_main@@YAHXZ)
 H:\Predict-disease\build\Debug\predict-disease.exe : fatal error LNK1120: 1 externes non résolus
