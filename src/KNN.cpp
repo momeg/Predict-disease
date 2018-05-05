@@ -15,11 +15,16 @@ KNN::~KNN()
 {
 }
 
+//analyser plusieures empreintes 
 vector<Resultat> KNN::analyser(const CatalogueEmpreintes& reference, const CatalogueEmpreintes& aTraiter)
 {
-
+	vector<Resultat> res;
+	for (Empreinte e : aTraiter.empreintes) {
+		res.push_back(analyser(reference, e));
+	}
 }
 
+//analyser une empreinte 
 Resultat KNN::analyser(const CatalogueEmpreintes& reference, const Empreinte& aTraiter)
 {
 	vector< pair<double,set<string> > > dMins(k);//vector<pair<distance,set<maladie>>> distance et la liste des 

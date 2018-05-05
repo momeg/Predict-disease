@@ -12,6 +12,6 @@ public:
 
 protected:
 	unsigned int id;
-	vector < pair <Maladie,double> > maladies;
+	vector < pair <string,double> > maladies;
 };
 
