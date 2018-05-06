@@ -6,7 +6,7 @@ Resultat::Resultat()
 {
 }
 
-Resultat::Resultat(unsigned int idEmp , vector < pair <string, double> > m)
+Resultat::Resultat(unsigned int idEmp , const vector < pair <string, double> > m)
 {
 	id = idEmp;
 	maladies = m;
