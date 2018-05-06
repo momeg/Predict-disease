@@ -1,27 +1,27 @@
 // 
 // Fichier : TypeAttribut.hpp
-// Description : Définition de l'énumération TypeAttribut.
-// Auteur : Loïc Saos (loic.saos@insa-lyon.fr).
-// Date de création : 30 avril 2018
+// Description : Dï¿½finition de l'ï¿½numï¿½ration TypeAttribut.
+// Auteur : Loï¿½c Saos (loic.saos@insa-lyon.fr).
+// Date de crï¿½ation : 30 avril 2018
 // Versions :
-// - 1.0 : Création de la classe.
+// - 1.0 : Crï¿½ation de la classe.
 //
 
 #ifndef TYPEATTRIBUT_HPP
 #define TYPEATTRIBUT_HPP
 
 //
-// Enumeration qui contient les différents types d'attributs existants.
+// Enumeration qui contient les diffï¿½rents types d'attributs existants.
 //
 enum TypeAttribut
 {
 	// Identifiant unique de l'empreinte.
 	ATTRIBUT_ID,
 
-	// Nombre à virgule (double).
+	// Nombre ï¿½ virgule (double).
 	ATTRIBUT_DOUBLE,
 
-	// Chaîne de caractères (std::string).
+	// Chaï¿½ne de caractï¿½res (std::string).
 	ATTRIBUT_STRING
 };
 

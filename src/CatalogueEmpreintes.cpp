@@ -1,5 +1,6 @@
 #include "CatalogueEmpreintes.hpp"
-#include "AttributDouble"
+#include "AttributDouble.hpp"
+#include "AttributString.hpp"
 
 #include <iostream>
 #include <fstream>
@@ -26,8 +27,8 @@ bool CatalogueEmpreintes::chargerFichier(const string &cheminFichier)
 
             string info;
             vector<string> ordreAttributs;
-            for(int i = 0; getline(infosLigne, info, ';'); i++){
-                ordreAttributs[i] = info;
+            while(getline(infosLigne, info, ';')){
+                ordreAttributs.push_back(info);
             }
 
             int numeroAttribut;
@@ -57,7 +58,7 @@ bool CatalogueEmpreintes::chargerFichier(const string &cheminFichier)
                             listeAttributs.ajouterAttribut(new AttributDouble(ordreAttributs[numeroAttribut],stod(info)));
                         }
                         else if (definitionAttributs[ordreAttributs[numeroAttribut]]==ATTRIBUT_STRING){
-                            listeAttributs.ajouterAttribut(new AttributDouble(ordreAttributs[numeroAttribut],info));
+                            listeAttributs.ajouterAttribut(new AttributString(ordreAttributs[numeroAttribut],info));
                         }
                         else if (definitionAttributs[ordreAttributs[numeroAttribut]]==ATTRIBUT_ID){
                             id = stoi(info);
@@ -69,15 +70,17 @@ bool CatalogueEmpreintes::chargerFichier(const string &cheminFichier)
                             }
                         }
                     }
+                    ++numeroAttribut;
                 }
 
                 if(idNonExistant){
                     empreintes.insert(make_pair(id,Empreinte(id, listeAttributs)));
                 }
-                if(malade){
+                if(malade && (empreintes.find(id)!=empreintes.end())){
                     empreintes[id].ajouterMaladie(maladie);
                 }
             }
+            return true;
         }
         else
         {
@@ -92,7 +95,7 @@ bool CatalogueEmpreintes::chargerFichier(const string &cheminFichier)
     }
 }
 
-bool CatalogueEmpreintes::chargerDefinitionAttribut(const string &cheminFichier)
+bool CatalogueEmpreintes::chargerDefinitionAttributs(const string &cheminFichier)
 {
     ifstream fichier;
     fichier.open(cheminFichier);
@@ -147,7 +150,7 @@ bool CatalogueEmpreintes::chargerDefinitionAttribut(const string &cheminFichier)
     }
 }
 
-CatalogueEmpreintes::ListeEmpreintes CatalogueEmpreintes::getEmpreintes()
+CatalogueEmpreintes::ListeEmpreintes CatalogueEmpreintes::getEmpreintes() const
 {
     return empreintes;
 }

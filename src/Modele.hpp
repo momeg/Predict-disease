@@ -1,5 +1,6 @@
 #include <vector>
-#include "Resultat.h"
+#include "Resultat.hpp"
+#include "CatalogueEmpreintes.hpp"
 class Modele
 {
 	public:

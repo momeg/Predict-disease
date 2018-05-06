@@ -1,7 +1,7 @@
-#include "Resultat.h"
+#include "Resultat.hpp"
 #include <vector>
 #include <unordered_map>
-#include "Modele.h"
+#include "Modele.hpp"
 #include "Attribut.hpp"
 #include "Empreinte.hpp"
 #include "algorithm"

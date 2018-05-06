@@ -1,10 +1,10 @@
 // 
 // Fichier : Empreinte.hpp
-// Description : Définition de la classe Empreinte.
-// Auteur : Loïc Saos (loic.saos@insa-lyon.fr).
-// Date de création : 30 avril 2018
+// Description : Dï¿½finition de la classe Empreinte.
+// Auteur : Loï¿½c Saos (loic.saos@insa-lyon.fr).
+// Date de crï¿½ation : 30 avril 2018
 // Versions :
-// - 1.0 : Création de la classe.
+// - 1.0 : Crï¿½ation de la classe.
 //
 
 #ifndef EMPREINTE_HPP
@@ -15,9 +15,9 @@
 #include <set>
 
 //
-// Classe qui représente une empreinte.
-// Une empreinte possède un identifiant (unique),
-// des attributs et des maladies associées.
+// Classe qui reprï¿½sente une empreinte.
+// Une empreinte possï¿½de un identifiant (unique),
+// des attributs et des maladies associï¿½es.
 //
 class Empreinte
 {
@@ -26,18 +26,20 @@ public:
 	typedef set<string> ListeMaladies;
 
 public:
+	Empreinte();
+
 	// Construit une empreinte.
-	// Paramètres :
+	// Paramï¿½tres :
 	// - lId : identifiant de l'empreinte.
 	// - lesAttributs : attributs de l'empreinte.
 	Empreinte(int lId, const ListeAttributs& lesAttributs);
 
 public:
-	// Ajoute une maladie à l'empreinte. Si l'empreinte
-	// possède déjà la maladie, rien ne se passe.
-	// Paramètres :
-	// - nomMaladie : nom de la maladie à ajouter.
-	//   Ce nom ne doit pas être vide.
+	// Ajoute une maladie ï¿½ l'empreinte. Si l'empreinte
+	// possï¿½de dï¿½jï¿½ la maladie, rien ne se passe.
+	// Paramï¿½tres :
+	// - nomMaladie : nom de la maladie ï¿½ ajouter.
+	//   Ce nom ne doit pas ï¿½tre vide.
 	void ajouterMaladie(const string& nomMaladie);
 
 	// Donne l'identifiant de l'empreinte.

@@ -1,4 +1,4 @@
-#include "KNN.h"
+#include "KNN.hpp"
 using namespace std;
 
 KNN::KNN()

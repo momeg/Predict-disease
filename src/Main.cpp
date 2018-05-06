@@ -3,10 +3,10 @@
 #include <fstream>
 #include <vector>
 #include "CatalogueEmpreintes.hpp"
-#include "CatalogueMaladie.hpp"
+#include "CatalogueMaladies.hpp"
 #include "Modele.hpp"
 #include "Maladie.hpp"
-#include "Resultat.hpp"
+//#include "Resultat.hpp"
 using namespace std;
 
 //protected CatalogueEmpreintes catalogueEmpreintes;
@@ -14,13 +14,13 @@ using namespace std;
 
 
 void creerEmpreintesReferences()
-// initialise les références à partir du fichier fourni
+// initialise les rï¿½fï¿½rences ï¿½ partir du fichier fourni
 {
 	string cheminFichier;
 
 	cout << "Vous avez choisi d'initialiser les empreintes de reference" << endl;
 
-	cout << "Veuillez fournir le chemin du fichier contenant la définition des caracteristiques des empreintes" << endl;
+	cout << "Veuillez fournir le chemin du fichier contenant la dï¿½finition des caracteristiques des empreintes" << endl;
 	cin >> cheminFichier;
 
 	while (!catalogueEmpreintes.chargerDefinitionAttributs(cheminFichier))
@@ -48,7 +48,7 @@ void creerEmpreintesReferences()
 }
 
 void ajouterEmpreintesReferences()
-// permets à l'utilisateur d'ajouter des empreintes de référence sans avoir à refaire l'initialisation des 5000 empreintes dans son intégralité
+// permets ï¿½ l'utilisateur d'ajouter des empreintes de rï¿½fï¿½rence sans avoir ï¿½ refaire l'initialisation des 5000 empreintes dans son intï¿½gralitï¿½
 {
 	string cheminFichier;
 
@@ -69,7 +69,7 @@ void ajouterEmpreintesReferences()
 }
 
 void analyserEmpreintes()
-// analyse les empreintes fournies par l'utilisateur et génère un fichier de sortie
+// analyse les empreintes fournies par l'utilisateur et gï¿½nï¿½re un fichier de sortie
 {
 	string cheminFichier;
 	CatalogueEmpreintes aAnalyser;
@@ -120,8 +120,8 @@ void analyserEmpreintes()
 }
 
 void afficherMaladies() 
-// affiche les maladies prises en compte par le système
-// demande à l'utilisateur s'il veut des détails sur l'une d'entre elle
+// affiche les maladies prises en compte par le systï¿½me
+// demande ï¿½ l'utilisateur s'il veut des dï¿½tails sur l'une d'entre elle
 {
 	string nomMaladie;
 	
@@ -148,7 +148,7 @@ int main ()
 {
 	
 	catalogueEmpreintes = new CatalogueEmpreintes();
-	catalogueMaladies = new Cataloguemaladies();
+	catalogueMaladies = new CatalogueMaladies();
 	modele = new Modele();
 
 	string option = "init";
