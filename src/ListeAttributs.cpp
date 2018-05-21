@@ -1,10 +1,10 @@
 // 
 // Fichier : ListeAttributs.cpp
-// Description : Implémentation de la classe ListeAttributs.
-// Auteur : Loïc Saos (loic.saos@insa-lyon.fr).
-// Date de création : 30 avril 2018
+// Description : Implï¿½mentation de la classe ListeAttributs.
+// Auteur : Loï¿½c Saos (loic.saos@insa-lyon.fr).
+// Date de crï¿½ation : 30 avril 2018
 // Versions :
-// - 1.0 : Création de la classe.
+// - 1.0 : Crï¿½ation de la classe.
 //
 
 #include "ListeAttributs.hpp"
@@ -101,4 +101,9 @@ const Attribut* ListeAttributs::getAttribut(const string& nom) const
 	}
 
 	return nullptr;
+}
+
+const Attribut* ListeAttributs::getAttribut(const int& index) const
+{
+	return attributs[index];
 }

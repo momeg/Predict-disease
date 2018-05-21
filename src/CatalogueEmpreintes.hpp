@@ -2,17 +2,16 @@
 #define CATALOGUEEMPREINTES_HPP
 
 
-#include "Attribut.hpp"
 #include "Empreinte.hpp"
+#include "DefinitionAttributs.hpp"
 
 #include <unordered_map>
+#include<vector>
 
 class CatalogueEmpreintes
 {
 public:
     typedef unordered_map <int, Empreinte> ListeEmpreintes;
-
-    typedef unordered_map <string, TypeAttribut> DefinitionAttributs;
 
 public:
     CatalogueEmpreintes();
@@ -34,11 +33,15 @@ public:
     ListeEmpreintes getEmpreintes() const;
     // Mode d'emploi : renvoie la liste empreintes
 
+    vector<DefinitionAttributs> getDefinitionAttributs() const;
+
 private:
     void ajouterUneDefinitionAttribut(const string& attribut, const string& type);
 
+    int indexAttribut(const string& attribut);
+
     ListeEmpreintes empreintes;
-    DefinitionAttributs definitionAttributs;
+    vector<DefinitionAttributs> definitionAttributs;
 };
 
 #endif // CATALOGUEEMPREINTES_HPP

@@ -1,7 +1,7 @@
 EXE = Predict-disease
 CLEAN = efface
 
-INT = Attribut.hpp AttributDouble.hpp AttributString.hpp CatalogueEmpreintes.hpp CatalogueMaladies.hpp Empreinte.hpp ListeAttributs.hpp Maladie.hpp MainTemporaire.hpp
+INT = Attribut.hpp AttributDouble.hpp AttributString.hpp CatalogueEmpreintes.hpp CatalogueMaladies.hpp Empreinte.hpp ListeAttributs.hpp Maladie.hpp MainTemporaire.hpp DefinitionAttributs.hpp
 REAL = $(INT:.hpp=.cpp)
 OBJ = $(REAL:.cpp=.o)
 
@@ -33,11 +33,13 @@ CatalogueMaladies.o : CatalogueMaladies.hpp
 
 Empreinte.o : Empreinte.hpp AttributDouble.hpp AttributString.hpp
 
+DefinitionAttributs.o : DefinitionAttributs.hpp
+
 #KNN.o : KNN.hpp
 
 ListeAttributs.o : ListeAttributs.hpp AttributDouble.hpp AttributString.hpp
 
-MainTemporaire.o : MainTemporaire.hpp CatalogueEmpreintes.hpp CatalogueMaladies.hpp Modele.hpp Maladie.hpp
+MainTemporaire.o : MainTemporaire.cpp CatalogueEmpreintes.hpp CatalogueMaladies.hpp Modele.hpp Maladie.hpp
 
 Maladie.o : Maladie.hpp
 

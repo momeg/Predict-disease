@@ -1,0 +1,41 @@
+Veuillez initialiser le catalogue
+Vous avez choisi d'initialiser les empreintes de reference
+Veuillez fournir le chemin du fichier contenant la definition des caracteristiques des empreintes
+Les caracteristiques des empreintes ont bien ete initialisees
+Veuillez fournir le chemin du fichier des empreintes de reference
+Le systeme a ete initialise avec succes
+ID : 0
+A1 : AA
+A2 : 152.522
+A3 : 147.966
+A4 : 132.34
+Maladie(s) : M1
+
+ID : 1
+A1 : AA
+A2 : 18.7132
+A3 : 23.0351
+A4 : 173.708
+Maladie(s) : M2
+
+ID : 2
+A1 : AA
+A2 : 119.644
+A3 : 39.7257
+A4 : 141.377
+Maladie(s) : M3
+
+ID : 3
+A1 : AA
+A2 : 38.9
+A3 : 108.51
+A4 : 167.669
+Maladie(s) : M4
+
+ID : 4
+A1 : AA
+A2 : 76.127
+A3 : 131.544
+A4 : 182.61
+Maladie(s) :
+

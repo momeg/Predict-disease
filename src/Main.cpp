@@ -9,8 +9,8 @@
 //#include "Resultat.hpp"
 using namespace std;
 
-//protected CatalogueEmpreintes catalogueEmpreintes;
-//protected Catalogue Maladie catalogueMaladie;
+protected CatalogueEmpreintes catalogueEmpreintes;
+protected Catalogue Maladie catalogueMaladie;
 
 
 void creerEmpreintesReferences()

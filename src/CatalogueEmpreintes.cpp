@@ -32,7 +32,8 @@ bool CatalogueEmpreintes::chargerFichier(const string &cheminFichier)
             }
 
             int numeroAttribut;
-            ListeAttributs listeAttributs;
+            ListeAttributs * listeAttributs;
+            int index;
 
             int id;
             bool idNonExistant;
@@ -41,9 +42,12 @@ bool CatalogueEmpreintes::chargerFichier(const string &cheminFichier)
             bool malade;
 
             while(getline(fichier, uneLigne)){  //On lit une ligne
-                listeAttributs.vider();
+                listeAttributs = new ListeAttributs();
                 numeroAttribut = 0;
+
+                infosLigne.clear();
                 infosLigne.str(uneLigne);
+
                 idNonExistant = true;
                 malade = false;
 
@@ -54,19 +58,20 @@ bool CatalogueEmpreintes::chargerFichier(const string &cheminFichier)
                     }
                     else if (idNonExistant){            //Si on retrouve deux fois la même id, c'est que l'on souhaite uniquement spécifier une autre maladie pour le client
                                                         // le reste n'a pas besoin d'être modifier
-                        if (definitionAttributs[ordreAttributs[numeroAttribut]]==ATTRIBUT_DOUBLE){
-                            listeAttributs.ajouterAttribut(new AttributDouble(ordreAttributs[numeroAttribut],stod(info)));
+                        index = indexAttribut(ordreAttributs[numeroAttribut]);
+                        if (definitionAttributs[index].getType()==ATTRIBUT_DOUBLE){
+                            listeAttributs->ajouterAttribut(new AttributDouble(ordreAttributs[numeroAttribut],stod(info)));
                         }
-                        else if (definitionAttributs[ordreAttributs[numeroAttribut]]==ATTRIBUT_STRING){
-                            listeAttributs.ajouterAttribut(new AttributString(ordreAttributs[numeroAttribut],info));
+                        else if (definitionAttributs[index].getType()==ATTRIBUT_STRING){
+                            listeAttributs->ajouterAttribut(new AttributString(ordreAttributs[numeroAttribut],info));
                         }
-                        else if (definitionAttributs[ordreAttributs[numeroAttribut]]==ATTRIBUT_ID){
+                        else if (definitionAttributs[index].getType()==ATTRIBUT_ID){
                             id = stoi(info);
                             if(empreintes.find(id)!=empreintes.end()){
                                 idNonExistant = false;
                             }
                             else{
-                                listeAttributs.ajouterAttribut(new AttributDouble(ordreAttributs[numeroAttribut],id));
+                                listeAttributs->ajouterAttribut(new AttributDouble(ordreAttributs[numeroAttribut],id));
                             }
                         }
                     }
@@ -74,7 +79,7 @@ bool CatalogueEmpreintes::chargerFichier(const string &cheminFichier)
                 }
 
                 if(idNonExistant){
-                    empreintes.insert(make_pair(id,Empreinte(id, listeAttributs)));
+                    empreintes.insert(make_pair(id,Empreinte(id, *listeAttributs)));
                 }
                 if(malade && (empreintes.find(id)!=empreintes.end())){
                     empreintes[id].ajouterMaladie(maladie);
@@ -117,6 +122,7 @@ bool CatalogueEmpreintes::chargerDefinitionAttributs(const string &cheminFichier
 
             if (info == "AttributeName"){   //L'attribut est avant le type
                 while (getline(fichier, uneLigne)){
+                    infosLigne.clear();
                     infosLigne.str(uneLigne);
 
                     getline(infosLigne, attribut, ';');
@@ -127,6 +133,7 @@ bool CatalogueEmpreintes::chargerDefinitionAttributs(const string &cheminFichier
             }
             else{                           //Le type est avant l'attribut
                 while (getline(fichier, uneLigne)){
+                    infosLigne.clear();
                     infosLigne.str(uneLigne);
 
                     getline(infosLigne, type, ';');
@@ -155,6 +162,11 @@ CatalogueEmpreintes::ListeEmpreintes CatalogueEmpreintes::getEmpreintes() const
     return empreintes;
 }
 
+vector<DefinitionAttributs> CatalogueEmpreintes::getDefinitionAttributs() const
+{
+    return definitionAttributs;
+}
+
 //-------------------------------------------- Constructeurs - destructeur
 CatalogueEmpreintes::CatalogueEmpreintes()
 {
@@ -162,15 +174,27 @@ CatalogueEmpreintes::CatalogueEmpreintes()
 
 //----------------------------------------------------------------- PRIVE
 
-void CatalogueEmpreintes::ajouterUneDefinitionAttribut(const string& attribut, const string& type){
-
+void CatalogueEmpreintes::ajouterUneDefinitionAttribut(const string& attribut, const string& type)
+{
     if (type == "double"){
-        definitionAttributs.insert(make_pair(attribut,ATTRIBUT_DOUBLE));
+        definitionAttributs.push_back(DefinitionAttributs(attribut,ATTRIBUT_DOUBLE));
     }
     else if (type == "string"){
-        definitionAttributs.insert(make_pair(attribut,ATTRIBUT_STRING));
+        definitionAttributs.push_back(DefinitionAttributs(attribut,ATTRIBUT_STRING));
     }
     else if (type == "ID"){
-        definitionAttributs.insert(make_pair(attribut,ATTRIBUT_ID));
+        definitionAttributs.push_back(DefinitionAttributs(attribut,ATTRIBUT_ID));
     }
+}
+
+int CatalogueEmpreintes::indexAttribut(const string& attribut)
+{
+    for(int i = 0; i<definitionAttributs.size(); i++)
+    {
+        if(definitionAttributs[i].getNom().compare(attribut)==0)
+        {
+            return i;
+        }
+    }
+    return NULL;
 }

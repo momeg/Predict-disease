@@ -4,16 +4,18 @@
 #include <vector>
 
 #include "CatalogueEmpreintes.hpp"
+#include "AttributDouble.hpp"
+#include "AttributString.hpp"
 
 using namespace std;
 
-int main ()
+int main (int argc, char *argv[])
 {
 	CatalogueEmpreintes catalogueEmpreintes = CatalogueEmpreintes();
 
-    cout << "Veuillez initialiser le catalogue" << endl;
+	cout << "Veuillez initialiser le catalogue" << endl;
 
-    string cheminFichier;
+	string cheminFichier;
 
 	cout << "Vous avez choisi d'initialiser les empreintes de reference" << endl;
 
@@ -40,4 +42,68 @@ int main ()
 	}
 	
 	cout << "Le systeme a ete initialise avec succes" << endl;
+	
+	if(argc>=2 && strcmp("test", argv[1])==0)
+	{
+		if(strcmp("definition", argv[2])==0)
+		{
+			vector<DefinitionAttributs> definitionAttributs = catalogueEmpreintes.getDefinitionAttributs();
+			for(vector<DefinitionAttributs>::iterator it=definitionAttributs.begin(); it!=definitionAttributs.end(); it++)
+			{
+				cout << it->getNom();
+				switch(it->getType())
+				{
+					case(ATTRIBUT_ID):
+						cout << ", ID" << endl;
+						break;
+					case(ATTRIBUT_DOUBLE):
+						cout<<", double"<< endl;
+						break;
+					case(ATTRIBUT_STRING):
+						cout<<", string"<< endl;
+						break;
+				}
+			}
+		}
+		else if(strcmp("empreinte", argv[2])==0)
+		{
+			AttributDouble * attDouble;
+			AttributString * attString;
+
+			vector<DefinitionAttributs> definitionAttributs = catalogueEmpreintes.getDefinitionAttributs();
+			CatalogueEmpreintes::ListeEmpreintes listeEmpreintes = catalogueEmpreintes.getEmpreintes();
+
+			for(CatalogueEmpreintes::ListeEmpreintes::iterator it=listeEmpreintes.begin(); it!=listeEmpreintes.end(); it++)
+			{
+				ListeAttributs listeAttributs = it->second.getAttributs();
+				vector<DefinitionAttributs>::const_iterator attDef=definitionAttributs.begin();
+				for(vector<Attribut*>::const_iterator attListe=listeAttributs.begin(); attListe!=listeAttributs.end() && attDef!=definitionAttributs.end(); attListe++, attDef++)
+				{
+					switch(attDef->getType())
+					{
+						case(ATTRIBUT_ID):
+							attDouble = dynamic_cast<AttributDouble*> (*attListe);
+							cout << "ID : " << attDouble->getValeur() << endl;
+							break;
+						case(ATTRIBUT_DOUBLE):
+							attDouble = dynamic_cast<AttributDouble*> (*attListe);
+							cout << attDef->getNom() << " : " << attDouble->getValeur() << endl;
+							break;
+						case(ATTRIBUT_STRING):
+							attString = dynamic_cast<AttributString*> (*attListe);
+							cout << attDef->getNom() << " : " << attString->getValeur() << endl;
+							break;
+					}
+				}
+
+				set<string> maladies = it->second.getMaladies();
+				cout << "Maladie(s) :";
+				for(set<string>::iterator mal=maladies.begin(); mal!=maladies.end(); mal++)
+				{
+					cout<<" "<<*mal;
+				}
+				cout << endl << endl;
+			}
+		}
+	}
 }
