@@ -1,4 +1,5 @@
 #include "KNN.hpp"
+#include <cassert>
 using namespace std;
 
 KNN::KNN()
@@ -8,6 +9,7 @@ KNN::KNN()
 
 KNN::KNN(unsigned int nbVoisins)
 {
+	assert(k != 0);
 	k = nbVoisins;
 }
 
@@ -19,7 +21,7 @@ KNN::~KNN()
 vector<Resultat> KNN::analyser(const CatalogueEmpreintes& reference, const CatalogueEmpreintes& aTraiter)
 {
 	vector<Resultat> res;
-	for (Empreinte e : aTraiter.empreintes) {
+	for (Empreinte e : aTraiter.getEmpreintes) {
 		res.push_back(analyser(reference, e));
 	}
 }
@@ -27,19 +29,24 @@ vector<Resultat> KNN::analyser(const CatalogueEmpreintes& reference, const Catal
 //analyser une empreinte 
 Resultat KNN::analyser(const CatalogueEmpreintes& reference, const Empreinte& aTraiter)
 {
-	vector< pair<double,set<string> > > dMins(k);//vector<pair<distance,set<maladie>>> distance et la liste des 
+	//Initialize dMins with max distance 
+	set<string> s;
+	s.insert("d");
+	pair<double, set<string>> p(numeric_limits<double>::max(), s);
+	vector< pair<double,set<string> > > dMins(k, p);//vector<pair<distance,set<maladie>>> distance et la liste des 
 	//maladies de l'empreinte correspondates
 
-	for (unsigned int i = 0; i <k; i++) {
-		dMins[i].first = numeric_limits<double>::max();
-	}
+	
+	//for (unsigned int i = 0; i <k; i++) {
+		//dMins[i].first = numeric_limits<double>::max();
+	//}
 	double maxd = numeric_limits<double>::max();
 	double d;
 	
 	//iterer sur toutes les empreintes du fichier de reference 
 	//garder la distance et les maladies associees si la distance fait partie des 
 	//k plus petites distances jusqu'a present 
-	for (Empreinte empRef : reference.empreintes) {
+	for (Empreinte empRef : reference.getEmpreintes) {
 		d = distanceEmp(empRef,  aTraiter);
 		if (d < dMins[dMins.size()-1].first) {
 			dMins[dMins.size() - 1].first = d;
@@ -79,7 +86,7 @@ double KNN::distanceEmp(const Empreinte& empRef, const Empreinte& empAAnalyser) 
 		if (empRef.getAttributs[i].typeAttribut() == "ATTRIBUT_STRING")
 			d += distanceStr(empRef.getAttributs[i].valeur, empAAnalyser.getAttributs[i].valeur);
 		else if (empRef.getAttributs[i].typeAttribut() == "ATTRIBUT_DOUBLE")
-			d += empAAnalyser.getAttributs[i].valeur - empRef.getAttributs[i].valeur;
+			d += empAAnalyser.getAttributs[i].getValeurNormalisee() - empRef.getAttributs[i].getValeurNormalisee();
 	}
 	return d;
 }
