@@ -29,13 +29,13 @@ public:
 	// Construit un attribut.
 	// Param�tres :
 	// - leNom : nom de l'attribut. Ce nom ne doit pas �tre vide.
-	DefinitionAttribut(const string& leNom);
+	DefinitionAttributId(const string& leNom);
 
-	DefinitionAttribut();
+	DefinitionAttributId();
 
 public:
 	// Donne le type de l'attribut.
-	const virtual TypeAttribut& getType() const;
+	virtual TypeAttribut getType() const;
 
 public:
 	virtual string toString() const;

@@ -21,9 +21,8 @@ class AttributString : public Attribut
 public:
 	// Construit un attribut de type string.
 	// Paramètres :
-	// - leNom : nom de l'attribut.
 	// - laValeur : valeur de l'attribut.
-	AttributString(const string& leNom, const string& laValeur);
+	AttributString(const string& laValeur);
 
 public:
 	// Donne le type de l'attribut.

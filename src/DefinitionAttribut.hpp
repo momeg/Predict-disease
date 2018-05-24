@@ -34,7 +34,7 @@ public:
 
 public:
 	// Donne le type de l'attribut.
-	const virtual TypeAttribut& getType() const = 0;
+	virtual TypeAttribut getType() const = 0;
 
 public:
 	// Donne le nom de l'attribut.
@@ -43,7 +43,7 @@ public:
 public:
 	virtual string toString() const;
 
-private:
+protected:
 	// Nom de l'attribut.
 	string nom;
 };

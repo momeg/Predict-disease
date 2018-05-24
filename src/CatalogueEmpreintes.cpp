@@ -1,6 +1,9 @@
 #include "CatalogueEmpreintes.hpp"
 #include "AttributDouble.hpp"
 #include "AttributString.hpp"
+#include "DefinitionAttributId.hpp"
+#include "DefinitionAttributString.hpp"
+#include "DefinitionAttributDouble.hpp"
 
 #include <iostream>
 #include <fstream>
@@ -59,13 +62,13 @@ bool CatalogueEmpreintes::chargerFichier(const string &cheminFichier)
                     else if (idNonExistant){            //Si on retrouve deux fois la même id, c'est que l'on souhaite uniquement spécifier une autre maladie pour le client
                                                         // le reste n'a pas besoin d'être modifier
                         index = indexAttribut(ordreAttributs[numeroAttribut]);
-                        if (definitionAttributs[index].getType()==ATTRIBUT_DOUBLE){
-                            listeAttributs->ajouterAttribut(new AttributDouble(ordreAttributs[numeroAttribut],stod(info)));
+                        if (definitionAttributs[index]->getType()==ATTRIBUT_DOUBLE){
+                            listeAttributs->ajouterAttribut(new AttributDouble(stod(info)));
                         }
-                        else if (definitionAttributs[index].getType()==ATTRIBUT_STRING){
-                            listeAttributs->ajouterAttribut(new AttributString(ordreAttributs[numeroAttribut],info));
+                        else if (definitionAttributs[index]->getType()==ATTRIBUT_STRING){
+                            listeAttributs->ajouterAttribut(new AttributString(info));
                         }
-                        else if (definitionAttributs[index].getType()==ATTRIBUT_ID){
+                        else if (definitionAttributs[index]->getType()==ATTRIBUT_ID){
                             id = stoi(info);
                             if(empreintes.find(id)!=empreintes.end()){
                                 idNonExistant = false;
@@ -159,7 +162,7 @@ CatalogueEmpreintes::ListeEmpreintes CatalogueEmpreintes::getEmpreintes() const
     return empreintes;
 }
 
-vector<DefinitionAttributs> CatalogueEmpreintes::getDefinitionAttributs() const
+ListeDefinitionAttributs CatalogueEmpreintes::getDefinitionAttribut() const
 {
     return definitionAttributs;
 }
@@ -174,13 +177,13 @@ CatalogueEmpreintes::CatalogueEmpreintes()
 void CatalogueEmpreintes::ajouterUneDefinitionAttribut(const string& attribut, const string& type)
 {
     if (type == "double"){
-        definitionAttributs.push_back(DefinitionAttributDouble(attribut));
+        definitionAttributs.ajouterDefinitionAttribut(new DefinitionAttributDouble(attribut));
     }
     else if (type == "string"){
-        definitionAttributs.push_back(DefinitionAttributString(attribut));
+        definitionAttributs.ajouterDefinitionAttribut(new DefinitionAttributString(attribut));
     }
     else if (type == "ID"){
-        definitionAttributs.push_back(DefinitionAttributId(attribut));
+        definitionAttributs.ajouterDefinitionAttribut(new DefinitionAttributId(attribut));
     }
 }
 
@@ -188,7 +191,7 @@ int CatalogueEmpreintes::indexAttribut(const string& attribut)
 {
     for(int i = 0; i<definitionAttributs.size(); i++)
     {
-        if(definitionAttributs[i].getNom().compare(attribut)==0)
+        if(definitionAttributs[i]->getNom().compare(attribut)==0)
         {
             return i;
         }

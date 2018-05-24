@@ -1,7 +1,7 @@
 EXE = Predict-disease
 CLEAN = efface
 
-INT = Attribut.hpp AttributDouble.hpp AttributString.hpp CatalogueEmpreintes.hpp CatalogueMaladies.hpp Empreinte.hpp ListeAttributs.hpp Maladie.hpp MainTemporaire.hpp DefinitionAttribut.hpp DefinitionAttributDouble.hpp DefinitionAttributString.hpp DefinitionAttributId.hpp KNN.hpp Resultat.hpp Modele.hpp
+INT = Attribut.hpp AttributDouble.hpp AttributString.hpp CatalogueEmpreintes.hpp CatalogueMaladies.hpp Empreinte.hpp ListeAttributs.hpp Maladie.hpp MainTemporaire.hpp DefinitionAttribut.hpp DefinitionAttributDouble.hpp DefinitionAttributString.hpp DefinitionAttributId.hpp Resultat.hpp Modele.hpp ListeDefinitionAttributs.hpp
 REAL = $(INT:.hpp=.cpp)
 OBJ = $(REAL:.cpp=.o)
 
@@ -27,7 +27,7 @@ AttributDouble.o : Attribut.hpp AttributDouble.hpp
 
 AttributString.o : Attribut.hpp AttributString.hpp
 
-CatalogueEmpreintes.o : CatalogueEmpreintes.hpp AttributDouble.hpp AttributString.hpp
+CatalogueEmpreintes.o : CatalogueEmpreintes.hpp DefinitionAttributId.hpp DefinitionAttributDouble.hpp DefinitionAttributString.hpp AttributDouble.hpp AttributString.hpp
 
 CatalogueMaladies.o : CatalogueMaladies.hpp
 
@@ -41,7 +41,7 @@ DefinitionAttributString.o : DefinitionAttribut.hpp DefinitionAttributString.hpp
 
 DefinitionAttributId.o : DefinitionAttribut.hpp DefinitionAttributId.hpp
 
-KNN.o : KNN.hpp Resultat.hpp Attribut.hpp Empreinte.hpp
+#KNN.o : KNN.hpp Resultat.hpp Attribut.hpp Empreinte.hpp
 
 ListeAttributs.o : ListeAttributs.hpp AttributDouble.hpp AttributString.hpp
 
@@ -52,6 +52,8 @@ Maladie.o : Maladie.hpp
 Modele.o : Modele.hpp CatalogueEmpreintes.hpp
 
 Resultat.o : Resultat.hpp
+
+ListeDefinitionAttributs.o : ListeDefinitionAttributs.hpp DefinitionAttribut.hpp
 
 %.o : %.cpp
 	$(ECHO) "compil de <$*>"

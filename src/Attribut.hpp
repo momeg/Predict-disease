@@ -1,10 +1,10 @@
 // 
 // Fichier : Attribut.hpp
-// Description : Dï¿½finition de la classe Attribut.
-// Auteur : Loï¿½c Saos (loic.saos@insa-lyon.fr).
-// Date de crï¿½ation : 30 avril 2018
+// Description : Definition de la classe Attribut.
+// Auteur : Loic Saos (loic.saos@insa-lyon.fr).
+// Date de creation : 30 avril 2018
 // Versions :
-// - 1.0 : Crï¿½ation de la classe.
+// - 1.0 : Creation de la classe.
 //
 
 #ifndef ATTRIBUT_HPP
@@ -17,30 +17,20 @@
 using namespace std;
 
 //
-// Classe abstraite qui reprï¿½sente un attribut d'une empreinte.
-// Un attribut possï¿½de un nom, un type et une valeur.
-// La valeur dï¿½pend du type de l'attribut et se trouve
+// Classe abstraite qui représente un attribut d'une empreinte.
+// Un attribut possède un type et une valeur.
+// La valeur dépend du type de l'attribut et se trouve
 // donc uniquement dans les classes filles.
 //
 class Attribut
- 
+{
 protected:
 	// Construit un attribut.
-	// Paramï¿½tres :
-	// - leNom : nom de l'attribut. Ce nom ne doit pas ï¿½tre vide.
-	Attribut(const string& leNom);
+	Attribut();
 
 public:
 	// Donne le type de l'attribut.
 	virtual TypeAttribut getType() const = 0;
-
-public:
-	// Donne le nom de l'attribut.
-	const string& getNom() const;
-
-private:
-	// Nom de l'attribut.
-	string nom;
 };
 
 #endif // ATTRIBUT_HPP

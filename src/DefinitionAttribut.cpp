@@ -12,7 +12,7 @@
 
 DefinitionAttribut::DefinitionAttribut(){}
 
-DefinitionAttribut::DefinitionAttribut(const string& leNom, const TypeAttribut& leType)
+DefinitionAttribut::DefinitionAttribut(const string& leNom)
 	: nom(leNom)
 {
 	assert(!nom.empty());

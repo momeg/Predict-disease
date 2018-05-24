@@ -1,10 +1,10 @@
 // 
 // Fichier : ListeAttributs.hpp
-// Description : D�finition de la classe ListeAttributs.
-// Auteur : Lo�c Saos (loic.saos@insa-lyon.fr).
-// Date de cr�ation : 30 avril 2018
+// Description : Definition de la classe ListeAttributs.
+// Auteur : Loic Saos (loic.saos@insa-lyon.fr).
+// Date de creation : 30 avril 2018
 // Versions :
-// - 1.0 : Cr�ation de la classe.
+// - 1.0 : Creation de la classe.
 //
 
 #ifndef LISTEATTRIBUTS_HPP
@@ -16,7 +16,7 @@
 
 //
 // Classe qui permet de stocker une liste d'attributs
-// sans se soucier de la gestion de la m�moire.
+// sans se soucier de la gestion de la memoire.
 //
 class ListeAttributs
 {
@@ -25,46 +25,36 @@ public:
 	ListeAttributs();
 
 	// Construit une liste d'attributs par copie.
-	// Param�tres :
-	// - liste : liste � copier.
+	// Parametres :
+	// - liste : liste a copier.
 	ListeAttributs(const ListeAttributs& liste);
 
-	// D�truit la liste d'attributs.
+	// Detruit la liste d'attributs.
 	~ListeAttributs();
 
 public:
-	// Op�rateur d'affectation de la liste d'attributs.
-	// R�alise une copie de la liste pass�e en param�tre.
-	// Param�tres :
-	// - liste : liste � copier.
+	// Operateur d'affectation de la liste d'attributs.
+	// Realise une copie de la liste passee en parametre.
+	// Parametres :
+	// - liste : liste a copier.
 	ListeAttributs& operator=(const ListeAttributs& liste);
+
+	// Donne l'attribut à l'indice donné ou null si
+	// l'indice n'est pas valide.
+	// Paramètres :
+	// - indice : indice de l'attribut à récupérer.
+	const Attribut* operator[](size_t indice) const;
 
 public:
 	// Supprime tous les attributs de la liste.
 	void vider();
 
-	// Ajoute un attribut � la liste. Si un attribut poss�dant
-	// le m�me nom existe d�j�, celui-ci est remplac�.
-	// Param�tres :
-	// - attribut : attribut � ajouter � la liste,
-	//   doit �tre un pointeur valide.
+	// Ajoute un attribut a la liste. Si un attribut possedant
+	// le meme nom existe deja, celui-ci est remplace.
+	// Parametres :
+	// - attribut : attribut a ajouter  la liste,
+	//   doit etre un pointeur valide.
 	void ajouterAttribut(Attribut* attribut);
-
-	// Donne l'attribut ayant le nom sp�cifi�.
-	// S'il n'y a pas d'attribut portant ce nom, renvoie nullptr.
-	// Param�tres :
-	// - nom : nom de l'attribut � chercher.
-	const Attribut* getAttribut(const string& nom) const;
-
-	const Attribut* getAttribut(const int& index) const;
-
-	// Donne une it�rateur pointant sur le premier �l�ment
-	// de la liste. Tr�s utile pour parcourir la liste.
-	vector<Attribut*>::const_iterator begin() const;
-
-	// Donne une it�rateur pointant apr�s le dernier �l�ment
-	// de la liste. Tr�s utile pour parcourir la liste.
-	vector<Attribut*>::const_iterator end() const;
 
 private:
 	// Conteneur des attributs.

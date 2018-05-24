@@ -149,20 +149,33 @@
     <ClInclude Include="..\..\src\Attribut.hpp" />
     <ClInclude Include="..\..\src\AttributDouble.hpp" />
     <ClInclude Include="..\..\src\AttributString.hpp" />
+    <ClInclude Include="..\..\src\CatalogueEmpreintes.hpp" />
     <ClInclude Include="..\..\src\CatalogueMaladies.hpp" />
+    <ClInclude Include="..\..\src\DefinitionAttributs.hpp" />
     <ClInclude Include="..\..\src\Empreinte.hpp" />
+    <ClInclude Include="..\..\src\KNN.hpp" />
     <ClInclude Include="..\..\src\ListeAttributs.hpp" />
+    <ClInclude Include="..\..\src\MainTemporaire.hpp" />
     <ClInclude Include="..\..\src\Maladie.hpp" />
+    <ClInclude Include="..\..\src\Modele.hpp" />
+    <ClInclude Include="..\..\src\Resultat.hpp" />
     <ClInclude Include="..\..\src\TypeAttribut.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\Attribut.cpp" />
     <ClCompile Include="..\..\src\AttributDouble.cpp" />
     <ClCompile Include="..\..\src\AttributString.cpp" />
+    <ClCompile Include="..\..\src\CatalogueEmpreintes.cpp" />
     <ClCompile Include="..\..\src\CatalogueMaladies.cpp" />
+    <ClCompile Include="..\..\src\DefinitionAttributs.cpp" />
     <ClCompile Include="..\..\src\Empreinte.cpp" />
+    <ClCompile Include="..\..\src\KNN.cpp" />
     <ClCompile Include="..\..\src\ListeAttributs.cpp" />
+    <ClCompile Include="..\..\src\Main.cpp" />
+    <ClCompile Include="..\..\src\MainTemporaire.cpp" />
     <ClCompile Include="..\..\src\Maladie.cpp" />
+    <ClCompile Include="..\..\src\Modele.cpp" />
+    <ClCompile Include="..\..\src\Resultat.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

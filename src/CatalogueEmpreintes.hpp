@@ -3,7 +3,7 @@
 
 
 #include "Empreinte.hpp"
-#include "DefinitionAttributs.hpp"
+#include "ListeDefinitionAttributs.hpp"
 
 #include <unordered_map>
 #include<vector>
@@ -33,7 +33,7 @@ public:
     ListeEmpreintes getEmpreintes() const;
     // Mode d'emploi : renvoie la liste empreintes
 
-    vector<DefinitionAttributs> getDefinitionAttributs() const;
+    ListeDefinitionAttributs getDefinitionAttribut() const;
 
 private:
     void ajouterUneDefinitionAttribut(const string& attribut, const string& type);
@@ -41,7 +41,7 @@ private:
     int indexAttribut(const string& attribut);
 
     ListeEmpreintes empreintes;
-    vector<DefinitionAttributs> definitionAttributs;
+    ListeDefinitionAttributs definitionAttributs;
 };
 
 #endif // CATALOGUEEMPREINTES_HPP

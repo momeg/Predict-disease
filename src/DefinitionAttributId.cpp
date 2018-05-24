@@ -2,14 +2,14 @@
 
 #include <cassert>
 
-DefinitionAttributString::DefinitionAttributId(){}
+DefinitionAttributId::DefinitionAttributId(){}
 
-DefinitionAttributString::DefinitionAttributId(const string& leNom)
+DefinitionAttributId::DefinitionAttributId(const string& leNom)
 {
 	assert(!nom.empty());
 }
 
-const virtual TypeAttribut& DefinitionAttributId::getType() const
+TypeAttribut DefinitionAttributId::getType() const
 {
 	return ATTRIBUT_ID;
 }
@@ -18,6 +18,6 @@ const virtual TypeAttribut& DefinitionAttributId::getType() const
 string DefinitionAttributId::toString() const
 {
 	string s = DefinitionAttribut::toString();
-	s+= " : " + "ID";
+	s+= " : ID";
 	return s;
 }
