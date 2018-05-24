@@ -20,7 +20,12 @@ class AttributDouble : public Attribut
 {
 public:
 	// Construit un attribut de type double.
+<<<<<<< HEAD
+	// Paramètres :
+=======
+	// Paramï¿½tres :
 	// - leNom : nom de l'attribut.
+>>>>>>> 115611d0d163ca73843a4d1babb0f4fc78308781
 	// - laValeur : valeur de l'attribut.
 	AttributDouble(double laValeur);
 
@@ -33,14 +38,14 @@ public:
 	// Donne la valeur de l'attribut.
 	double getValeur() const;
 
-	// Donne la valeur normalisï¿½e de l'attribut (entre 0 et 1).
+	// Donne la valeur normalisée de l'attribut (entre 0 et 1).
 	double getValeurNormalisee() const;
 
-	// Dï¿½finit la valeur normalisï¿½e de l'attribut.
+	// Définit la valeur normalisée de l'attribut.
 	// 0 signifie que l'attribut a la valeur minimale
 	// de son catalogue et 1 la valeur maximale.
-	// Paramï¿½tres :
-	// - laValeurNormalisee : la valeur normalisï¿½e entre 0 et 1.
+	// Paramètres :
+	// - laValeurNormalisee : la valeur normalisée entre 0 et 1.
 	void setValeurNormalisee(double laValeurNormalisee);
 
 	virtual string toString() const;
@@ -49,7 +54,7 @@ private:
 	// Valeur de l'attribut.
 	double valeur;
 
-	// Valeur normalisï¿½e de l'attribut.
+	// Valeur normalisée de l'attribut.
 	double valeurNormalisee;
 };
 

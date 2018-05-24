@@ -10,6 +10,9 @@ public:
 	Resultat(unsigned int idEmp, vector < pair < string, double > > m);
 	~Resultat();
 	void setId(unsigned int idEmp);
+	unsigned int getId();
+	vector < pair <string, double> > getMaladies();
+	friend ostream& operator<<(ostream& os, const Resultat& res);
 
 protected:
 	unsigned int id;
