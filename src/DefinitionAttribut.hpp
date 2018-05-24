@@ -13,6 +13,7 @@
 #include "TypeAttribut.hpp"
 
 #include <string>
+#include <iostream>
 
 using namespace std;
 
@@ -36,9 +37,12 @@ public:
 	// Donne le type de l'attribut.
 	virtual TypeAttribut getType() const = 0;
 
-public:
 	// Donne le nom de l'attribut.
 	const string& getNom() const;
+
+	int getIndice() const;
+
+	void setIndice(size_t indice);
 
 public:
 	virtual string toString() const;
@@ -46,6 +50,7 @@ public:
 protected:
 	// Nom de l'attribut.
 	string nom;
+	size_t indice;
 };
 
 #endif // DEFINITIONATTRIBUT_HPP

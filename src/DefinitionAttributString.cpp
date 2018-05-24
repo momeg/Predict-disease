@@ -5,10 +5,7 @@
 
 DefinitionAttributString::DefinitionAttributString(){}
 
-DefinitionAttributString::DefinitionAttributString(const string& leNom)
-{
-	assert(!nom.empty());
-}
+DefinitionAttributString::DefinitionAttributString(const string& leNom):DefinitionAttribut(leNom){}
 
 TypeAttribut DefinitionAttributString::getType() const
 {

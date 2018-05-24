@@ -1,10 +1,10 @@
 // 
 // Fichier : AttributString.hpp
-// Description : Définition de la classe AttributString.
-// Auteur : Loïc Saos (loic.saos@insa-lyon.fr).
-// Date de création : 30 avril 2018
+// Description : Dï¿½finition de la classe AttributString.
+// Auteur : Loï¿½c Saos (loic.saos@insa-lyon.fr).
+// Date de crï¿½ation : 30 avril 2018
 // Versions :
-// - 1.0 : Création de la classe.
+// - 1.0 : Crï¿½ation de la classe.
 //
 
 #ifndef ATTRIBUTSTRING_HPP
@@ -13,14 +13,14 @@
 #include "Attribut.hpp"
 
 //
-// Classe qui représente un attribut dont la valeur
-// est une chaîne de caractères (std::string).
+// Classe qui reprï¿½sente un attribut dont la valeur
+// est une chaï¿½ne de caractï¿½res (std::string).
 //
 class AttributString : public Attribut
 {
 public:
 	// Construit un attribut de type string.
-	// Paramètres :
+	// Paramï¿½tres :
 	// - laValeur : valeur de l'attribut.
 	AttributString(const string& laValeur);
 
@@ -32,6 +32,8 @@ public:
 public:
 	// Donne la valeur de l'attribut.
 	const string& getValeur() const;
+
+	virtual string toString() const;
 
 private:
 	// Valeur de l'attribut.

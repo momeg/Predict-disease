@@ -39,10 +39,6 @@ public:
 
 public:
 	virtual string toString() const;
-
-private:
-	// Nom de l'attribut.
-	string nom;
 };
 
 #endif // DEFINITIONATTRIBUT_HPP

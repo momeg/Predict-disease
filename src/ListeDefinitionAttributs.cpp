@@ -14,6 +14,9 @@
 
 #include <cassert>
 #include <iostream>
+#include <iostream>
+
+using namespace std;
 
 ListeDefinitionAttributs::ListeDefinitionAttributs()
 {
@@ -41,6 +44,7 @@ ListeDefinitionAttributs& ListeDefinitionAttributs::operator=(const ListeDefinit
 			{
             case ATTRIBUT_ID:
 				definitionAttributs.push_back(new DefinitionAttributId(*static_cast<DefinitionAttributId*>(definitionAttribut)));
+				idRentre = true;
 				break;
 			case ATTRIBUT_DOUBLE:
 				definitionAttributs.push_back(new DefinitionAttributDouble(*static_cast<DefinitionAttributDouble*>(definitionAttribut)));
@@ -80,7 +84,7 @@ void ListeDefinitionAttributs::vider()
 	definitionAttributs.clear();
 }
 
-int ListeDefinitionAttributs::size()
+int ListeDefinitionAttributs::size() const
 {
 	return definitionAttributs.size();
 }
@@ -88,6 +92,19 @@ int ListeDefinitionAttributs::size()
 void ListeDefinitionAttributs::ajouterDefinitionAttribut(DefinitionAttribut* definitionAttribut)
 {
 	assert(definitionAttribut);
+	
 
 	definitionAttributs.push_back(definitionAttribut);
+	if(idRentre)
+		definitionAttribut->setIndice(definitionAttributs.size()-2);
+	else
+	{
+		if(definitionAttribut->getType()==ATTRIBUT_ID)
+		{
+			idRentre=true;
+			definitionAttribut->setIndice(definitionAttributs.size()-2);
+		}
+		else
+			definitionAttribut->setIndice(definitionAttributs.size()-1);
+	}
 }

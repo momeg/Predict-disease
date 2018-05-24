@@ -1,10 +1,10 @@
 // 
 // Fichier : AttributDouble.cpp
-// Description : Implémentation de la classe AttributDouble.
-// Auteur : Loïc Saos (loic.saos@insa-lyon.fr).
-// Date de création : 30 avril 2018
+// Description : Implï¿½mentation de la classe AttributDouble.
+// Auteur : Loï¿½c Saos (loic.saos@insa-lyon.fr).
+// Date de crï¿½ation : 30 avril 2018
 // Versions :
-// - 1.0 : Création de la classe.
+// - 1.0 : Crï¿½ation de la classe.
 //
 
 #include "AttributDouble.hpp"
@@ -36,4 +36,9 @@ void AttributDouble::setValeurNormalisee(double laValeurNormalisee)
 {
 	assert(laValeurNormalisee >= 0.0 && laValeurNormalisee <= 1.0f);
 	valeurNormalisee = laValeurNormalisee;
+}
+
+string AttributDouble::toString() const
+{
+	return to_string(valeur);
 }
