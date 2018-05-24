@@ -25,6 +25,24 @@
     <ClInclude Include="..\..\src\ListeAttributs.hpp">
       <Filter>Metier</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\MainTemporaire.hpp">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\KNN.hpp">
+      <Filter>Algo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Modele.hpp">
+      <Filter>Algo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Resultat.hpp">
+      <Filter>Algo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\CatalogueEmpreintes.hpp">
+      <Filter>Metier</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\DefinitionAttributs.hpp">
+      <Filter>Metier</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\Attribut.cpp">
@@ -48,6 +66,27 @@
     <ClCompile Include="..\..\src\ListeAttributs.cpp">
       <Filter>Metier</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\Main.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\MainTemporaire.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\KNN.cpp">
+      <Filter>Algo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Modele.cpp">
+      <Filter>Algo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Resultat.cpp">
+      <Filter>Algo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\CatalogueEmpreintes.cpp">
+      <Filter>Metier</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\DefinitionAttributs.cpp">
+      <Filter>Metier</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Metier">
@@ -55,6 +94,9 @@
     </Filter>
     <Filter Include="Algo">
       <UniqueIdentifier>{277b197d-bd78-4857-8f55-f13afefeeeb6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main">
+      <UniqueIdentifier>{9c1f73bb-0e9f-4fb0-901d-71571702caf8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

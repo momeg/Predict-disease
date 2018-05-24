@@ -40,3 +40,6 @@ build/.vs/
 *.lastbuildstate
 *.tlog
 unsuccessfulbuild
+
+.DS_Store
+*.pdb

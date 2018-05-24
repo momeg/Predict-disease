@@ -177,13 +177,13 @@ CatalogueEmpreintes::CatalogueEmpreintes()
 void CatalogueEmpreintes::ajouterUneDefinitionAttribut(const string& attribut, const string& type)
 {
     if (type == "double"){
-        definitionAttributs.push_back(DefinitionAttributs(attribut,ATTRIBUT_DOUBLE));
+        definitionAttributs.push_back(DefinitionAttributDouble(attribut));
     }
     else if (type == "string"){
-        definitionAttributs.push_back(DefinitionAttributs(attribut,ATTRIBUT_STRING));
+        definitionAttributs.push_back(DefinitionAttributString(attribut));
     }
     else if (type == "ID"){
-        definitionAttributs.push_back(DefinitionAttributs(attribut,ATTRIBUT_ID));
+        definitionAttributs.push_back(DefinitionAttributId(attribut));
     }
 }
 

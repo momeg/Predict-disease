@@ -6,24 +6,25 @@
 // Versions :
 // - 1.0 : Cr�ation de la classe.
 //
-#include "DefinitionAttributs.hpp"
+#include "DefinitionAttribut.hpp"
 
 #include <cassert>
 
-DefinitionAttributs::DefinitionAttributs(){}
+DefinitionAttribut::DefinitionAttribut(){}
 
-DefinitionAttributs::DefinitionAttributs(const string& leNom, const TypeAttribut& leType)
-	: nom(leNom), type(leType)
+DefinitionAttribut::DefinitionAttribut(const string& leNom, const TypeAttribut& leType)
+	: nom(leNom)
 {
 	assert(!nom.empty());
 }
 
-const string& DefinitionAttributs::getNom() const
+const string& DefinitionAttribut::getNom() const
 {
 	return nom;
 }
 
-const TypeAttribut& DefinitionAttributs::getType() const
+string DefinitionAttribut::toString() const
 {
-	return type;
+	string s = nom;
+	return s;
 }

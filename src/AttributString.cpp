@@ -9,9 +9,8 @@
 
 #include "AttributString.hpp"
 
-AttributString::AttributString(const string& leNom, const string& laValeur)
-	: Attribut(leNom),
-	valeur(laValeur)
+AttributString::AttributString(const string& laValeur)
+	: valeur(laValeur)
 {
 }
 
