@@ -21,9 +21,8 @@ class AttributDouble : public Attribut
 public:
 	// Construit un attribut de type double.
 	// Paramètres :
-	// - leNom : nom de l'attribut.
 	// - laValeur : valeur de l'attribut.
-	AttributDouble(const string& leNom, double laValeur);
+	AttributDouble(double laValeur);
 
 public:
 	// Donne le type de l'attribut.
@@ -34,9 +33,22 @@ public:
 	// Donne la valeur de l'attribut.
 	double getValeur() const;
 
+	// Donne la valeur normalisée de l'attribut (entre 0 et 1).
+	double getValeurNormalisee() const;
+
+	// Définit la valeur normalisée de l'attribut.
+	// 0 signifie que l'attribut a la valeur minimale
+	// de son catalogue et 1 la valeur maximale.
+	// Paramètres :
+	// - laValeurNormalisee : la valeur normalisée entre 0 et 1.
+	void setValeurNormalisee(double laValeurNormalisee);
+
 private:
 	// Valeur de l'attribut.
 	double valeur;
+
+	// Valeur normalisée de l'attribut.
+	double valeurNormalisee;
 };
 
 #endif // ATTRIBUTDOUBLE_HPP

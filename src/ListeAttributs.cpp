@@ -1,10 +1,10 @@
 // 
 // Fichier : ListeAttributs.cpp
-// Description : Impl�mentation de la classe ListeAttributs.
-// Auteur : Lo�c Saos (loic.saos@insa-lyon.fr).
-// Date de cr�ation : 30 avril 2018
+// Description : Implementation de la classe ListeAttributs.
+// Auteur : Loic Saos (loic.saos@insa-lyon.fr).
+// Date de creation : 30 avril 2018
 // Versions :
-// - 1.0 : Cr�ation de la classe.
+// - 1.0 : Creation de la classe.
 //
 
 #include "ListeAttributs.hpp"
@@ -45,7 +45,7 @@ ListeAttributs& ListeAttributs::operator=(const ListeAttributs& liste)
 				attributs.push_back(new AttributString(*static_cast<AttributString*>(attribut)));
 				break;
 			default:
-				cerr << "Erreur lors de la copie d'une liste d'attributs : attribut '" << attribut->getNom() << "' de type " << attribut->getType() << " inconnu." << endl;
+				cerr << "Erreur lors de la copie d'une liste d'attributs : attribut de type " << attribut->getType() << " inconnu." << endl;
 				break;
 			}
 		}
@@ -54,14 +54,16 @@ ListeAttributs& ListeAttributs::operator=(const ListeAttributs& liste)
 	return *this;
 }
 
-vector<Attribut*>::const_iterator ListeAttributs::begin() const
+const Attribut* ListeAttributs::operator[](size_t indice) const
 {
-	return attributs.begin();
-}
-
-vector<Attribut*>::const_iterator ListeAttributs::end() const
-{
-	return attributs.end();
+	if (indice >= attributs.size())
+	{
+		return nullptr;
+	}
+	else
+	{
+		return attributs[indice];
+	}
 }
 
 void ListeAttributs::vider()
@@ -78,32 +80,5 @@ void ListeAttributs::ajouterAttribut(Attribut* attribut)
 {
 	assert(attribut);
 
-	for (vector<Attribut*>::iterator it = attributs.begin(); it != attributs.end(); it++)
-	{
-		if ((*it)->getNom() == attribut->getNom())
-		{
-			attributs.erase(it);
-			break;
-		}
-	}
-
 	attributs.push_back(attribut);
-}
-
-const Attribut* ListeAttributs::getAttribut(const string& nom) const
-{
-	for (const Attribut* attribut : attributs)
-	{
-		if (attribut->getNom() == nom)
-		{
-			return attribut;
-		}
-	}
-
-	return nullptr;
-}
-
-const Attribut* ListeAttributs::getAttribut(const int& index) const
-{
-	return attributs[index];
 }

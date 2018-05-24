@@ -9,9 +9,11 @@
 
 #include "AttributDouble.hpp"
 
-AttributDouble::AttributDouble(const string& leNom, double laValeur)
-	: Attribut(leNom),
-	valeur(laValeur)
+#include <cassert>
+
+AttributDouble::AttributDouble(double laValeur)
+	: valeur(laValeur),
+	valeurNormalisee(0.0)
 {
 }
 
@@ -23,4 +25,15 @@ TypeAttribut AttributDouble::getType() const
 double AttributDouble::getValeur() const
 {
 	return valeur;
+}
+
+double AttributDouble::getValeurNormalisee() const
+{
+	return valeurNormalisee;
+}
+
+void AttributDouble::setValeurNormalisee(double laValeurNormalisee)
+{
+	assert(laValeurNormalisee >= 0.0 && laValeurNormalisee <= 1.0f);
+	valeurNormalisee = laValeurNormalisee;
 }

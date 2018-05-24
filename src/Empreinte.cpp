@@ -1,10 +1,10 @@
 // 
 // Fichier : Empreinte.cpp
-// Description : Impl�mentation de la classe Empreinte.
-// Auteur : Lo�c Saos (loic.saos@insa-lyon.fr).
-// Date de cr�ation : 30 avril 2018
+// Description : Implementation de la classe Empreinte.
+// Auteur : Loic Saos (loic.saos@insa-lyon.fr).
+// Date de creation : 30 avril 2018
 // Versions :
-// - 1.0 : Cr�ation de la classe.
+// - 1.0 : Creation de la classe.
 //
 
 #include "Empreinte.hpp"
@@ -14,7 +14,9 @@
 #include <cassert>
 #include <iostream>
 
-Empreinte::Empreinte(){}
+Empreinte::Empreinte()
+{
+}
 
 Empreinte::Empreinte(int lId, const ListeAttributs& lesAttributs)
 	: id(lId),
