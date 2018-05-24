@@ -34,7 +34,7 @@ public:
 
 public:
 	// Donne le type de l'attribut.
-	const virtual TypeAttribut& getType() const;
+	const virtual TypeAttribut& getType() const = 0;
 
 public:
 	// Donne le nom de l'attribut.

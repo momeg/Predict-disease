@@ -70,9 +70,6 @@ bool CatalogueEmpreintes::chargerFichier(const string &cheminFichier)
                             if(empreintes.find(id)!=empreintes.end()){
                                 idNonExistant = false;
                             }
-                            else{
-                                listeAttributs->ajouterAttribut(new AttributDouble(ordreAttributs[numeroAttribut],id));
-                            }
                         }
                     }
                     ++numeroAttribut;
