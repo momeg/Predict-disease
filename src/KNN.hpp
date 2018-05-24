@@ -5,6 +5,7 @@
 #include "Attribut.hpp"
 #include "Empreinte.hpp"
 #include "algorithm"
+#include <cassert>
 
 class KNN :public  Modele
 {

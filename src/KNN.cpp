@@ -1,5 +1,5 @@
 #include "KNN.hpp"
-#include <cassert>
+
 using namespace std;
 
 KNN::KNN()

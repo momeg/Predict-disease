@@ -6,6 +6,8 @@
 #include "CatalogueEmpreintes.hpp"
 #include "AttributDouble.hpp"
 #include "AttributString.hpp"
+#include "KNN.hpp"
+#include "Resultat.hpp"
 
 using namespace std;
 
@@ -104,6 +106,49 @@ int main (int argc, char *argv[])
 				}
 				cout << endl << endl;
 			}
+		}
+		//tests knn1
+		else if (strcmp("knn1", argv[2]) == 0)
+		{
+			CatalogueEmpreintes catalogueEmpreintesAAnalyser = CatalogueEmpreintes();
+			cout << "Veuillez fournir le chemin du fichier des empreintes a analyser" << endl;
+			cin >> cheminFichier;
+
+			while (!catalogueEmpreintesAAnalyser.chargerFichier(cheminFichier))
+			{
+				cout << "Le fichier demande n'a pas pu etre ouvert" << endl;
+				cout << "Veuillez fournir un autre chemin d'acces" << endl;
+				cin >> cheminFichier;
+			}
+			cout << "Le fichier a analyser a ete charge avec succes" << endl;
+			KNN knn_model(1);
+			vector<Resultat> res = knn_model.analyser(catalogueEmpreintes,catalogueEmpreintesAAnalyser);
+			for (Resultat r : res) {
+				cout << r;
+			}
+
+		}
+
+		//tests knn2
+		else if (strcmp("knn2", argv[2]) == 0)
+		{
+			CatalogueEmpreintes catalogueEmpreintesAAnalyser = CatalogueEmpreintes();
+			cout << "Veuillez fournir le chemin du fichier des empreintes a analyser" << endl;
+			cin >> cheminFichier;
+
+			while (!catalogueEmpreintesAAnalyser.chargerFichier(cheminFichier))
+			{
+				cout << "Le fichier demande n'a pas pu etre ouvert" << endl;
+				cout << "Veuillez fournir un autre chemin d'acces" << endl;
+				cin >> cheminFichier;
+			}
+			cout << "Le fichier a analyser a ete charge avec succes" << endl;
+			KNN knn_model(1);
+			vector<Resultat> res = knn_model.analyser(catalogueEmpreintes, catalogueEmpreintesAAnalyser);
+			for (Resultat r : res) {
+				cout << r;
+			}
+
 		}
 	}
 }
