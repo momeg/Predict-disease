@@ -1,10 +1,10 @@
 // 
 // Fichier : AttributDouble.hpp
-// Description : Définition de la classe AttributDouble.
-// Auteur : Loïc Saos (loic.saos@insa-lyon.fr).
-// Date de création : 30 avril 2018
+// Description : Dï¿½finition de la classe AttributDouble.
+// Auteur : Loï¿½c Saos (loic.saos@insa-lyon.fr).
+// Date de crï¿½ation : 30 avril 2018
 // Versions :
-// - 1.0 : Création de la classe.
+// - 1.0 : Crï¿½ation de la classe.
 //
 
 #ifndef ATTRIBUTDOUBLE_HPP
@@ -13,14 +13,19 @@
 #include "Attribut.hpp"
 
 //
-// Classe qui représente un attribut dont la valeur
-// est un nombre à virgule (double).
+// Classe qui reprï¿½sente un attribut dont la valeur
+// est un nombre ï¿½ virgule (double).
 //
 class AttributDouble : public Attribut
 {
 public:
 	// Construit un attribut de type double.
+<<<<<<< HEAD
 	// Paramètres :
+=======
+	// Paramï¿½tres :
+	// - leNom : nom de l'attribut.
+>>>>>>> 115611d0d163ca73843a4d1babb0f4fc78308781
 	// - laValeur : valeur de l'attribut.
 	AttributDouble(double laValeur);
 

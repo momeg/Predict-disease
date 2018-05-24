@@ -1,10 +1,10 @@
 // 
 // Fichier : Attribut.hpp
-// Description : Définition de la classe Attribut.
-// Auteur : Loïc Saos (loic.saos@insa-lyon.fr).
-// Date de création : 30 avril 2018
+// Description : Definition de la classe Attribut.
+// Auteur : Loic Saos (loic.saos@insa-lyon.fr).
+// Date de creation : 30 avril 2018
 // Versions :
-// - 1.0 : Création de la classe.
+// - 1.0 : Creation de la classe.
 //
 
 #ifndef ATTRIBUT_HPP
