@@ -7,10 +7,11 @@
 // - 1.0 : Cr�ation de la classe.
 //
 
-#ifndef DEFINITIONATTRIBUT_HPP
-#define DEFINITIONATTRIBUT_HPP
+#ifndef DEFINITIONATTRIBUTSTRING_HPP
+#define DEFINITIONATTRIBUTSTRING_HPP
 
 #include "TypeAttribut.hpp"
+#include "DefinitionAttribut.hpp"
 
 #include <string>
 
@@ -22,30 +23,22 @@ using namespace std;
 // La valeur d�pend du type de l'attribut et se trouve
 // donc uniquement dans les classes filles.
 //
-class DefinitionAttribut
+class DefinitionAttributString : public DefinitionAttribut
 {
 public:
 	// Construit un attribut.
 	// Param�tres :
 	// - leNom : nom de l'attribut. Ce nom ne doit pas �tre vide.
-	DefinitionAttribut(const string& leNom);
+	DefinitionAttributString(const string& leNom);
 
-	DefinitionAttribut();
+	DefinitionAttributString();
 
 public:
 	// Donne le type de l'attribut.
 	const virtual TypeAttribut& getType() const;
 
 public:
-	// Donne le nom de l'attribut.
-	const string& getNom() const;
-
-public:
 	virtual string toString() const;
-
-private:
-	// Nom de l'attribut.
-	string nom;
 };
 
-#endif // DEFINITIONATTRIBUT_HPP
+#endif // DEFINITIONATTRIBUTSTRING_HPP
