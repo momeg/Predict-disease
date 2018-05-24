@@ -49,22 +49,10 @@ int main (int argc, char *argv[])
 	{
 		if(strcmp("definition", argv[2])==0)
 		{
-			vector<DefinitionAttributs> definitionAttributs = catalogueEmpreintes.getDefinitionAttributs();
-			for(vector<DefinitionAttributs>::iterator it=definitionAttributs.begin(); it!=definitionAttributs.end(); it++)
+			ListeDefinitionAttributs definitionAttributs = catalogueEmpreintes.getDefinitionAttribut();
+			for(int i = 0; i<definitionAttributs.size(); i++)
 			{
-				cout << it->getNom();
-				switch(it->getType())
-				{
-					case(ATTRIBUT_ID):
-						cout << ", ID" << endl;
-						break;
-					case(ATTRIBUT_DOUBLE):
-						cout<<", double"<< endl;
-						break;
-					case(ATTRIBUT_STRING):
-						cout<<", string"<< endl;
-						break;
-				}
+				cout << definitionAttributs[i]->toString() << endl;
 			}
 		}
 		else if(strcmp("empreinte", argv[2])==0)
@@ -150,5 +138,7 @@ int main (int argc, char *argv[])
 			}
 
 		}
+
+		
 	}
 }

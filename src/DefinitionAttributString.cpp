@@ -10,15 +10,15 @@ DefinitionAttributString::DefinitionAttributString(const string& leNom)
 	assert(!nom.empty());
 }
 
-const virtual TypeAttribut& DefinitionAttributsString::getType() const
+TypeAttribut DefinitionAttributString::getType() const
 {
 	return ATTRIBUT_STRING;
 }
 
 
-string DefinitionAttributsString::toString() const
+string DefinitionAttributString::toString() const
 {
 	string s = DefinitionAttribut::toString();
-	s+= " : " + "string";
+	s+= " : string";
 	return s;
 }
