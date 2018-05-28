@@ -1,6 +1,7 @@
 #include <string>
 #include <vector>
 #include <utility>
+#include <ostream>
 #pragma once
 
 
@@ -13,7 +14,7 @@ public:
 	Resultat(unsigned int idEmp, const vector < pair < string, double > >& m);
 	~Resultat();
 	void setId(unsigned int idEmp);
-	unsigned int getId();
+	unsigned int getId() const;
 	vector < pair <string, double> > getMaladies();
 	friend ostream& operator<<(ostream& os, const Resultat& res);
 

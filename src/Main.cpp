@@ -6,6 +6,7 @@
 #include "CatalogueMaladies.hpp"
 #include "KNN.hpp"
 #include "Maladie.hpp"
+#include "Test.hpp"
 //#include "Resultat.hpp"
 using namespace std;
 
@@ -145,48 +146,55 @@ void afficherMaladies()
 }
 
 
-int main ()
+int main (int argc, char *argv[])
 {
-	modele = new KNN();
-
-	string option = "init";
-
-	while (option.compare("5")) {
-
-		cout << "Que voulez-vous faire ?" << endl;
-		cout << "Initialiser les empreintes de reference: tapez 1" << endl;
-		cout << "Ajouter des empreintes de reference: tapez 2" << endl;
-		cout << "Analyser des empreintes: tapez 3" << endl;
-		cout << "Afficher la liste des maladies traitees: tapez 4" << endl;
-		cout << "Quitter l'application: tapez 5" << endl;
-
-		cin >> option;
-
-		if (!option.compare("1"))
-		{
-			creerEmpreintesReferences();
-		}
-		else if(!option.compare("2"))
-		{
-			ajouterEmpreintesReferences();
-		}
-		else if(!option.compare("3"))
-		{
-			analyserEmpreintes();
-		}
-
-		else if (!option.compare("4"))
-		{
-			afficherMaladies();
-		}
-		else
-		{
-			cout << "Veuillez choisir l'une des options proposees" << endl;
-		}
-
+	if(argc>=2 && strcmp("test", argv[1])==0)
+	{
+		Test::faireTest(argv[2]);
 	}
+	else
+	{
+		modele = new KNN();
 
-	cout << " Au revoir" << endl;
-	return 0;
+		string option = "init";
+
+		while (option.compare("5")) {
+
+			cout << "Que voulez-vous faire ?" << endl;
+			cout << "Initialiser les empreintes de reference: tapez 1" << endl;
+			cout << "Ajouter des empreintes de reference: tapez 2" << endl;
+			cout << "Analyser des empreintes: tapez 3" << endl;
+			cout << "Afficher la liste des maladies traitees: tapez 4" << endl;
+			cout << "Quitter l'application: tapez 5" << endl;
+
+			cin >> option;
+
+			if (!option.compare("1"))
+			{
+				creerEmpreintesReferences();
+			}
+			else if(!option.compare("2"))
+			{
+				ajouterEmpreintesReferences();
+			}
+			else if(!option.compare("3"))
+			{
+				analyserEmpreintes();
+			}
+
+			else if (!option.compare("4"))
+			{
+				afficherMaladies();
+			}
+			else
+			{
+				cout << "Veuillez choisir l'une des options proposees" << endl;
+			}
+
+		}
+
+		cout << " Au revoir" << endl;
+		return 0;
+	}
 }
 

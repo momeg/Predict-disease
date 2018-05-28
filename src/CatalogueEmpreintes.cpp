@@ -63,7 +63,10 @@ bool CatalogueEmpreintes::chargerFichier(const string &cheminFichier)
 														// le reste n'a pas besoin d'être modifier
 						index = indexAttribut(ordreAttributs[numeroAttribut]);
 						if (definitionAttributs[index]->getType() == ATTRIBUT_DOUBLE) {
-							listeAttributs->push_back(new AttributDouble(stod(info)));
+							double valeur = stod(info);
+							listeAttributs->push_back(new AttributDouble(valeur));
+							dynamic_cast <DefinitionAttributDouble*> ((DefinitionAttribut*)definitionAttributs[index])->setMin(valeur);
+							dynamic_cast <DefinitionAttributDouble*> ((DefinitionAttribut*)definitionAttributs[index])->setMax(valeur);
 						}
 						else if (definitionAttributs[index]->getType() == ATTRIBUT_STRING) {
 							listeAttributs->push_back(new AttributString(info));
@@ -167,6 +170,68 @@ const ListeDefinitionAttributs& CatalogueEmpreintes::getDefinitionAttribut() con
 	return definitionAttributs;
 }
 
+string CatalogueEmpreintes::toString() const
+{
+	string s;
+
+	for(auto emp = empreintes.begin(); emp!=empreintes.end(); emp++)
+	{
+		for(int i=0; i<definitionAttributs.size(); i++)
+		{
+			s+= definitionAttributs[i]->getNom() + " : ";
+
+			switch (definitionAttributs[i]->getType())
+			{
+				case(ATTRIBUT_DOUBLE):
+					s+= to_string(dynamic_cast<const AttributDouble*> ((const Attribut*) emp->second.getAttributs()[definitionAttributs[i]->getIndice()])->getValeur());
+					break;
+				case(ATTRIBUT_ID): 
+					s += to_string(emp->second.getId());
+					break;
+				case(ATTRIBUT_STRING):
+					s += dynamic_cast<const AttributString*> ((const Attribut*)emp->second.getAttributs()[definitionAttributs[i]->getIndice()])->getValeur();
+					break;
+			}
+			s+="\n";
+		}
+		s+= "Maladie(s) :";
+		set<string> maladies = emp->second.getMaladies();
+		for(auto mal = maladies.begin(); mal!=maladies.end(); mal++)
+		{
+			s+= " "+*mal;
+		}
+		s+="\n\n";
+	}
+
+	return s;
+}
+
+/**string CatalogueEmpreintes::toString() const 
+{
+    string s = "";
+    set<string> listeMaladie;
+    for(auto it = empreintes.begin(); it!=empreintes.end(); it++)
+    {
+        s += "ID : "+to_string(it->first)+"\n";
+        for(int i = 0; i<definitionAttributs.size(); i++)
+       {
+            if(definitionAttributs[i]->getType()!=ATTRIBUT_ID)
+            {
+                s+= definitionAttributs[i]->getNom() + " : " + it->second.getAttributs()[definitionAttributs[i]->getIndice()]->toString() + "\n";
+            }
+        }
+        s+="Maladie(s) :";
+
+        set<string> listeMaladie = it->second.getMaladies();
+        for(auto mal = listeMaladie.begin(); mal!=listeMaladie.end(); mal++)
+        {
+            s+=" "+ *mal;
+        }
+       s+="\n\n";
+    }
+    return s;
+}*/
+
 //-------------------------------------------- Constructeurs - destructeur
 CatalogueEmpreintes::CatalogueEmpreintes()
 {
@@ -184,6 +249,18 @@ void CatalogueEmpreintes::ajouterUneDefinitionAttribut(const string& attribut, c
 	}
 	else if (type == "ID") {
 		definitionAttributs.push_back(new DefinitionAttributId(attribut));
+		idDef = true;
+	}
+
+	int taille = definitionAttributs.size();
+
+	if(idDef)
+	{
+		definitionAttributs[taille-1]->setIndice(taille-2);
+	}
+	else
+	{
+		definitionAttributs[taille-1]->setIndice(taille-1);
 	}
 }
 

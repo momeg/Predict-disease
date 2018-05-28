@@ -1,7 +1,7 @@
 EXE = Predict-disease
 CLEAN = efface
 
-INT = Attribut.hpp AttributDouble.hpp AttributString.hpp CatalogueEmpreintes.hpp CatalogueMaladies.hpp Empreinte.hpp ListeAttributs.hpp Maladie.hpp Main.hpp DefinitionAttribut.hpp DefinitionAttributDouble.hpp DefinitionAttributString.hpp DefinitionAttributId.hpp Resultat.hpp Modele.hpp ListeDefinitionAttributs.hpp Test.hpp
+INT = Attribut.hpp AttributDouble.hpp AttributString.hpp CatalogueEmpreintes.hpp CatalogueMaladies.hpp Empreinte.hpp Maladie.hpp Main.hpp DefinitionAttribut.hpp DefinitionAttributDouble.hpp DefinitionAttributString.hpp DefinitionAttributId.hpp Resultat.hpp Modele.hpp Test.hpp KNN.hpp
 REAL = $(INT:.hpp=.cpp)
 OBJ = $(REAL:.cpp=.o)
 
@@ -41,9 +41,7 @@ DefinitionAttributString.o : DefinitionAttribut.hpp DefinitionAttributString.hpp
 
 DefinitionAttributId.o : DefinitionAttribut.hpp DefinitionAttributId.hpp
 
-#KNN.o : KNN.hpp Resultat.hpp Attribut.hpp Empreinte.hpp
-
-ListeAttributs.o : ListeAttributs.hpp AttributDouble.hpp AttributString.hpp
+KNN.o : KNN.hpp Resultat.hpp Attribut.hpp Empreinte.hpp
 
 Main.o : MainTemporaire.cpp CatalogueEmpreintes.hpp CatalogueMaladies.hpp Modele.hpp Maladie.hpp Test.hpp
 
@@ -52,8 +50,6 @@ Maladie.o : Maladie.hpp
 Modele.o : Modele.hpp CatalogueEmpreintes.hpp
 
 Resultat.o : Resultat.hpp
-
-ListeDefinitionAttributs.o : ListeDefinitionAttributs.hpp DefinitionAttribut.hpp
 
 Test.o : Test.hpp CatalogueEmpreintes.hpp AttributDouble.hpp AttributString.hpp
 

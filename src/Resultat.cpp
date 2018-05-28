@@ -16,7 +16,8 @@ void Resultat::setId(unsigned int  idEmp )
 {
 	id = idEmp;
 }
-unsigned int  Resultat::getId() {
+unsigned int  Resultat::getId() const
+{
 	return id;
 }
 
@@ -25,7 +26,7 @@ vector < pair <string, double> >  Resultat::getMaladies(){
 }
 
 ostream& operator<<(ostream& os, const Resultat& res) {
-	os << res.id;
+	os << res.getId();
 	for (pair <string, double> p : res.maladies) {
 		os <<";"<< p.first << ":" << p.second;
 	}

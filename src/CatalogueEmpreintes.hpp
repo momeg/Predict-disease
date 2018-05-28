@@ -35,6 +35,8 @@ public:
 
     const ListeDefinitionAttributs& getDefinitionAttribut() const;
 
+    string toString() const;
+
 private:
     void ajouterUneDefinitionAttribut(const string& attribut, const string& type);
 
@@ -42,6 +44,7 @@ private:
 
     ListeEmpreintes empreintes;
     ListeDefinitionAttributs definitionAttributs;
+    bool idDef  = true;
 };
 
 #endif // CATALOGUEEMPREINTES_HPP

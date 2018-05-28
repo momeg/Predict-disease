@@ -4,35 +4,35 @@ Veuillez fournir le chemin du fichier contenant la definition des caracteristiqu
 Les caracteristiques des empreintes ont bien ete initialisees
 Veuillez fournir le chemin du fichier des empreintes de reference
 Le systeme a ete initialise avec succes
-ID : 4
+NoID : 4
 A1 : AA
 A2 : 76.126961
 A3 : 131.543561
 A4 : 182.610347
 Maladie(s) :
 
-ID : 3
+NoID : 3
 A1 : AA
 A2 : 38.899999
 A3 : 108.510273
 A4 : 167.669113
 Maladie(s) : M4
 
-ID : 2
+NoID : 2
 A1 : AA
 A2 : 119.644177
 A3 : 39.725708
 A4 : 141.376788
 Maladie(s) : M3
 
-ID : 1
+NoID : 1
 A1 : AA
 A2 : 18.713158
 A3 : 23.035148
 A4 : 173.707814
 Maladie(s) : M2
 
-ID : 0
+NoID : 0
 A1 : AA
 A2 : 152.522202
 A3 : 147.966462

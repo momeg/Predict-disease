@@ -7,18 +7,19 @@
 #include "AttributDouble.hpp"
 #include "AttributString.hpp"
 #include "Test.hpp"
+#include "KNN.hpp"
 
 using namespace std;
 
 void Test::faireTest(string test)
 {
-    if(test.compare("definition")==0)
+    if(test == "definition")
         testDefinitionAttribut();
-    else if(test.compare("empreintes")==0)
+    else if(test == "empreintes")
         testCatalogueEmpreintes();
-	else if (strcmp("knn1", argv[2]) == 0)
+	else if (test == "knn1")
 		testKNN1();
-	else if (strcmp("knn2", argv[2]) == 0)
+	else if (test == "knn2")
 		testKNN2();
 }
 
@@ -102,6 +103,9 @@ void Test::testCatalogueEmpreintes()
 
 void Test::testKNN1()
 {
+	CatalogueEmpreintes catalogueEmpreintes = CatalogueEmpreintes();
+	string cheminFichier;
+
 	CatalogueEmpreintes catalogueEmpreintesAAnalyser = CatalogueEmpreintes();
 	cout << "Veuillez fournir le chemin du fichier des empreintes a analyser" << endl;
 	cin >> cheminFichier;
@@ -123,6 +127,9 @@ void Test::testKNN1()
 
 void Test::testKNN2()
 {
+	CatalogueEmpreintes catalogueEmpreintes = CatalogueEmpreintes();
+	string cheminFichier;
+
 	CatalogueEmpreintes catalogueEmpreintesAAnalyser = CatalogueEmpreintes();
 	cout << "Veuillez fournir le chemin du fichier des empreintes a analyser" << endl;
 	cin >> cheminFichier;
