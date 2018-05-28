@@ -6,6 +6,6 @@ class Modele
 	public:
 		Modele();
 		~Modele();
-		virtual vector<Resultat> analyser(const CatalogueEmpreintes& reference, CatalogueEmpreintes& aTraiter);
+		virtual vector<Resultat> analyser(const CatalogueEmpreintes& reference, CatalogueEmpreintes& aTraiter) = 0;
 };
 

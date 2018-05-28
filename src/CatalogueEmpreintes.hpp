@@ -33,7 +33,7 @@ public:
     ListeEmpreintes getEmpreintes() const;
     // Mode d'emploi : renvoie la liste empreintes
 
-    ListeDefinitionAttributs getDefinitionAttribut() const;
+    ListeDefinitionAttributs getDefinitionAttributs() const;
 
     string toString() const;
 

@@ -167,7 +167,7 @@ CatalogueEmpreintes::ListeEmpreintes CatalogueEmpreintes::getEmpreintes() const
     return empreintes;
 }
 
-ListeDefinitionAttributs CatalogueEmpreintes::getDefinitionAttribut() const
+ListeDefinitionAttributs CatalogueEmpreintes::getDefinitionAttributs() const
 {
     return definitionAttributs;
 }

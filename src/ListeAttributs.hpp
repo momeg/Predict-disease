@@ -56,6 +56,8 @@ public:
 	//   doit etre un pointeur valide.
 	void ajouterAttribut(Attribut* attribut);
 
+	int size() const;
+
 private:
 	// Conteneur des attributs.
 	vector<Attribut*> attributs;

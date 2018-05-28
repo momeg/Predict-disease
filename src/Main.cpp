@@ -4,13 +4,14 @@
 #include <vector>
 #include "CatalogueEmpreintes.hpp"
 #include "CatalogueMaladies.hpp"
-#include "Modele.hpp"
+#include "KNN.hpp"
 #include "Maladie.hpp"
 //#include "Resultat.hpp"
 using namespace std;
 
-protected CatalogueEmpreintes catalogueEmpreintes;
-protected Catalogue Maladie catalogueMaladie;
+CatalogueEmpreintes catalogueEmpreintes;
+CatalogueMaladies catalogueMaladies;
+Modele * modele;
 
 
 void creerEmpreintesReferences()
@@ -42,7 +43,7 @@ void creerEmpreintesReferences()
 		cin >> cheminFichier;
 	}
 
-	catalogueMaladie.remplirCatalogue(catalogueEmpreintes);
+	catalogueMaladies.remplirCatalogue(catalogueEmpreintes);
 	cout << "Le systeme a ete initialise avec succes" << endl;
 
 }
@@ -63,7 +64,7 @@ void ajouterEmpreintesReferences()
 		cin >> cheminFichier;
 	}
 
-	catalogueMaladie.remplirCatalogue(catalogueEmpreintes);
+	catalogueMaladies.remplirCatalogue(catalogueEmpreintes);
 	cout << "Les empreintes ont ete ajoutees avec succes" << endl;
 
 }
@@ -86,8 +87,7 @@ void analyserEmpreintes()
 		cout << "Veuillez fournir un autre chemin d'acces" << endl;
 		cin >> cheminFichier;
 	}
-
-	resultatsAnalyse = modele.analyser(catalogueEmpreintes, aAnalyser);
+	resultatsAnalyse = modele->analyser(catalogueEmpreintes, aAnalyser);
 
 
 
@@ -103,13 +103,14 @@ void analyserEmpreintes()
 	}
 
 	vector<Resultat>::iterator it;
-	for (it = resultatsAnalyse.begin(); i != resultatsAnalyse.end(); ++it)
+	for (it = resultatsAnalyse.begin(); it != resultatsAnalyse.end(); ++it)
 	{
-		fichier << *it->id << ",";
-		vector < pair<Maladie, double>>::iterator iu;
+		fichier << it->getId() << ",";
 
-		for (iu = *it->maladies.begin(); i != *it->maladies.end(); ++iu) {
-			fichier << *iu->first << ":" << *iu->second <<",";
+		auto maladies = it->getMaladies();
+
+		for (auto iu = maladies.begin(); iu != maladies.end(); ++iu) {
+			fichier << iu->first << ":" << iu->second <<",";
 		}
 		fichier << endl;
 	}
@@ -126,7 +127,7 @@ void afficherMaladies()
 	string nomMaladie;
 	
 	cout << "Vous avez choisi de consulter le liste des maladies prises en charge" << endl;
-	catalogueMaladie.afficherGlobale();
+	catalogueMaladies.afficherGlobale();
 	
 	cout << "Si vous souhaitez retourner au menu principal, veuillez taper 1" << endl;
 	cout << "Sinon, si vous souhaitez afficher les symptomes d'une maladie, veuillez taper son nom" << endl;
@@ -134,7 +135,7 @@ void afficherMaladies()
 
 	while (!nomMaladie.compare("1"))
 	{
-		catalogueMaladies.afficherparticulier(nomMaladie);
+		catalogueMaladies.afficherParticulier(nomMaladie);
 
 		cout << endl;
 		cout << "Si vous souhaitez retourner au menu principal, veuillez taper 1" << endl;
@@ -146,10 +147,7 @@ void afficherMaladies()
 
 int main ()
 {
-	
-	catalogueEmpreintes = new CatalogueEmpreintes();
-	catalogueMaladies = new CatalogueMaladies();
-	modele = new Modele();
+	modele = new KNN();
 
 	string option = "init";
 

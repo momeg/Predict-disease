@@ -1,7 +1,5 @@
 #include "Resultat.hpp"
 
-
-
 Resultat::Resultat()
 {
 }

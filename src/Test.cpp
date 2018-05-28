@@ -16,6 +16,10 @@ void Test::faireTest(string test)
         testDefinitionAttribut();
     else if(test.compare("empreintes")==0)
         testCatalogueEmpreintes();
+	else if (strcmp("knn1", argv[2]) == 0)
+		testKNN1();
+	else if (strcmp("knn2", argv[2]) == 0)
+		testKNN2();
 }
 
 void Test::testDefinitionAttribut()
@@ -94,4 +98,46 @@ void Test::testCatalogueEmpreintes()
 	cout << "Le systeme a ete initialise avec succes" << endl;
 
     cout << catalogueEmpreintes.toString() << endl;
+}
+
+void Test::testKNN1()
+{
+	CatalogueEmpreintes catalogueEmpreintesAAnalyser = CatalogueEmpreintes();
+	cout << "Veuillez fournir le chemin du fichier des empreintes a analyser" << endl;
+	cin >> cheminFichier;
+
+	while (!catalogueEmpreintesAAnalyser.chargerFichier(cheminFichier))
+	{
+		cout << "Le fichier demande n'a pas pu etre ouvert" << endl;
+		cout << "Veuillez fournir un autre chemin d'acces" << endl;
+		cin >> cheminFichier;
+	}
+	cout << "Le fichier a analyser a ete charge avec succes" << endl;
+	KNN knn_model(1);
+	vector<Resultat> res = knn_model.analyser(catalogueEmpreintes,catalogueEmpreintesAAnalyser);
+	for (Resultat r : res)
+	{
+		cout << r;
+	}
+}
+
+void Test::testKNN2()
+{
+	CatalogueEmpreintes catalogueEmpreintesAAnalyser = CatalogueEmpreintes();
+	cout << "Veuillez fournir le chemin du fichier des empreintes a analyser" << endl;
+	cin >> cheminFichier;
+
+	while (!catalogueEmpreintesAAnalyser.chargerFichier(cheminFichier))
+	{
+		cout << "Le fichier demande n'a pas pu etre ouvert" << endl;
+		cout << "Veuillez fournir un autre chemin d'acces" << endl;
+		cin >> cheminFichier;
+	}
+	cout << "Le fichier a analyser a ete charge avec succes" << endl;
+	KNN knn_model(1);
+	vector<Resultat> res = knn_model.analyser(catalogueEmpreintes, catalogueEmpreintesAAnalyser);
+	for (Resultat r : res)
+	{
+		cout << r;
+	}
 }

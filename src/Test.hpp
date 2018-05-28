@@ -21,6 +21,10 @@ private:
 
     static void testCatalogueEmpreintes();
 
+    static void testKNN1();
+
+    static void testKNN2();
+
 };
 
 #endif // TEST_HPP

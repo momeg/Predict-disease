@@ -1,3 +1,6 @@
+#ifndef RESULTAT_HPP
+#define RESULTAT_HPP
+
 #include <string>
 #include <vector>
 #include <utility>
@@ -18,4 +21,6 @@ protected:
 	unsigned int id;
 	vector < pair <string,double> > maladies;
 };
+
+#endif // RESULTAT_HPP
 

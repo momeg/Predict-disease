@@ -21,8 +21,8 @@ KNN::~KNN()
 vector<Resultat> KNN::analyser(const CatalogueEmpreintes& reference, const CatalogueEmpreintes& aTraiter)
 {
 	vector<Resultat> res;
-	for (Empreinte e : aTraiter.getEmpreintes) {
-		res.push_back(analyser(reference, e));
+	for (auto e : aTraiter.getEmpreintes()) {
+		res.push_back(analyser(reference, e.second));
 	}
 }
 
@@ -46,11 +46,11 @@ Resultat KNN::analyser(const CatalogueEmpreintes& reference, const Empreinte& aT
 	//iterer sur toutes les empreintes du fichier de reference 
 	//garder la distance et les maladies associees si la distance fait partie des 
 	//k plus petites distances jusqu'a present 
-	for (Empreinte empRef : reference.getEmpreintes) {
-		d = distanceEmp(empRef,  aTraiter);
+	for (auto empRef : reference.getEmpreintes()) {
+		d = distanceEmp(empRef.second,  aTraiter);
 		if (d < dMins[dMins.size()-1].first) {
 			dMins[dMins.size() - 1].first = d;
-			dMins[dMins.size() - 1].second = empRef.getMaladies;
+			dMins[dMins.size() - 1].second = empRef.second.getMaladies();
 			sort(dMins.begin(), dMins.end(),distComp);
 		}
 	 }
@@ -71,22 +71,21 @@ Resultat KNN::analyser(const CatalogueEmpreintes& reference, const Empreinte& aT
 	for (auto elem : maladies) {
 		maladiesVect.push_back(pair <string, double>(elem.first, elem.second));
 	}
-	Resultat res(aTraiter.getId, maladiesVect);
+	Resultat res(aTraiter.getId(), maladiesVect);
 	return res;
 }
 
 bool distComp(pair<double, set<string> > p1, pair<double, set<string> >  p2) { 
 	return (p1.first<p2.first); 
-
 }
 
 double KNN::distanceEmp(const Empreinte& empRef, const Empreinte& empAAnalyser) {
 	double d = 0;//distance entre les 2 empreintes 
-	for (unsigned int i = 0; i < empRef.getAttributs.size(); i++) {
-		if (empRef.getAttributs[i].typeAttribut() == "ATTRIBUT_STRING")
-			d += distanceStr(empRef.getAttributs[i].valeur, empAAnalyser.getAttributs[i].valeur);
-		else if (empRef.getAttributs[i].typeAttribut() == "ATTRIBUT_DOUBLE")
-			d += empAAnalyser.getAttributs[i].getValeurNormalisee() - empRef.getAttributs[i].getValeurNormalisee();
+	for (unsigned int i = 0; i < empRef.getAttributs().size(); i++) {
+		if (empRef.getAttributs()[i]->typeAttribut() == "ATTRIBUT_STRING")
+			d += distanceStr(empRef.getAttributs()[i]->valeur, empAAnalyser.getAttributs()[i]->valeur);
+		else if (empRef.getAttributs()[i]->typeAttribut() == "ATTRIBUT_DOUBLE")
+			d += empAAnalyser.getAttributs()[i]->getValeurNormalisee() - empRef.getAttributs()[i]->getValeurNormalisee();
 	}
 	return d;
 }

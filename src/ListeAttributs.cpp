@@ -82,3 +82,8 @@ void ListeAttributs::ajouterAttribut(Attribut* attribut)
 
 	attributs.push_back(attribut);
 }
+
+int ListeAttributs::size() const
+{
+	return attributs.size();
+}
