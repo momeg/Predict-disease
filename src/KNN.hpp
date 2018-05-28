@@ -3,6 +3,8 @@
 #include <unordered_map>
 #include "Modele.hpp"
 #include "Attribut.hpp"
+#include "AttributDouble.hpp"
+#include "AttributString.hpp"
 #include "Empreinte.hpp"
 #include "algorithm"
 #include <cassert>
@@ -22,3 +24,4 @@ class KNN :public  Modele
 		double distanceStr(const string& str1, const string& str2);
 };
 
+bool distComp(pair<double, set<string>> p1, pair<double, set<string>> p2);

@@ -1,16 +1,16 @@
-#ifndef RESULTAT_HPP
-#define RESULTAT_HPP
-
 #include <string>
 #include <vector>
 #include <utility>
+#pragma once
+
+
 
 using namespace std;
 class Resultat
 {
 public:
 	Resultat();
-	Resultat(unsigned int idEmp, vector < pair < string, double > > m);
+	Resultat(unsigned int idEmp, const vector < pair < string, double > >& m);
 	~Resultat();
 	void setId(unsigned int idEmp);
 	unsigned int getId();
@@ -21,6 +21,4 @@ protected:
 	unsigned int id;
 	vector < pair <string,double> > maladies;
 };
-
-#endif // RESULTAT_HPP
 

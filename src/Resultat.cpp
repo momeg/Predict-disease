@@ -1,10 +1,12 @@
 #include "Resultat.hpp"
 
+
+
 Resultat::Resultat()
 {
 }
 
-Resultat::Resultat(unsigned int idEmp , const vector < pair <string, double> > m)
+Resultat::Resultat(unsigned int idEmp , const vector < pair <string, double> >& m)
 {
 	id = idEmp;
 	maladies = m;
@@ -25,7 +27,7 @@ vector < pair <string, double> >  Resultat::getMaladies(){
 ostream& operator<<(ostream& os, const Resultat& res) {
 	os << res.id;
 	for (pair <string, double> p : res.maladies) {
-		os <<","<< p.first << ":" << p.second;
+		os <<";"<< p.first << ":" << p.second;
 	}
 	os << endl;
 	return os;

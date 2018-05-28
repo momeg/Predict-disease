@@ -21,9 +21,11 @@ KNN::~KNN()
 vector<Resultat> KNN::analyser(const CatalogueEmpreintes& reference, const CatalogueEmpreintes& aTraiter)
 {
 	vector<Resultat> res;
-	for (Empreinte e : aTraiter.getEmpreintes) {
-		res.push_back(analyser(reference, e));
+
+	for (pair<int, Empreinte> e : aTraiter.getEmpreintes()) {
+		res.push_back(analyser(reference, e.second));
 	}
+	return res;
 }
 
 //analyser une empreinte 
@@ -46,11 +48,11 @@ Resultat KNN::analyser(const CatalogueEmpreintes& reference, const Empreinte& aT
 	//iterer sur toutes les empreintes du fichier de reference 
 	//garder la distance et les maladies associees si la distance fait partie des 
 	//k plus petites distances jusqu'a present 
-	for (Empreinte empRef : reference.getEmpreintes) {
-		d = distanceEmp(empRef,  aTraiter);
+	for (pair<int, Empreinte> empRef : reference.getEmpreintes()) {
+		d = distanceEmp(empRef.second,  aTraiter, reference);
 		if (d < dMins[dMins.size()-1].first) {
 			dMins[dMins.size() - 1].first = d;
-			dMins[dMins.size() - 1].second = empRef.getMaladies;
+			dMins[dMins.size() - 1].second = empRef.second.getMaladies();
 			sort(dMins.begin(), dMins.end(),distComp);
 		}
 	 }
@@ -71,7 +73,7 @@ Resultat KNN::analyser(const CatalogueEmpreintes& reference, const Empreinte& aT
 	for (auto elem : maladies) {
 		maladiesVect.push_back(pair <string, double>(elem.first, elem.second));
 	}
-	Resultat res(aTraiter.getId, maladiesVect);
+	Resultat res(aTraiter.getId(), maladiesVect);
 	return res;
 }
 
@@ -80,18 +82,26 @@ bool distComp(pair<double, set<string> > p1, pair<double, set<string> >  p2) {
 
 }
 
-double KNN::distanceEmp(const Empreinte& empRef, const Empreinte& empAAnalyser,const CatalogueEmpreintes& catalague) {
+
+double KNN::distanceEmp(const Empreinte& empRef, const Empreinte& empAAnalyser,const CatalogueEmpreintes& catalogue) {
 	double d = 0;//distance entre les 2 empreintes 
-	for (unsigned int i = 0; i < empRef.getAttributs.size(); i++) {
-		if (catalague.getDefinitionAttribut[i].getType() == "ATTRIBUT_STRING")
-			d += distanceStr(empRef.getAttributs[i].valeur, empAAnalyser.getAttributs[i].valeur);
-		else if (catalague.getDefinitionAttribut[i].getType() == "ATTRIBUT_DOUBLE")
-			d += empAAnalyser.getAttributs[i].getValeurNormalisee() - empRef.getAttributs[i].getValeurNormalisee();
+	for (unsigned int i = 0; i < empRef.getAttributs().size(); i++) {
+		if (catalogue.getDefinitionAttribut()[i]->getType() == ATTRIBUT_STRING) {
+			const string& val = dynamic_cast<const AttributString*>((const Attribut*)(empAAnalyser.getAttributs()[i]))->getValeur();
+			const string& valRef = dynamic_cast<const AttributString*>((const Attribut*)(empRef.getAttributs()[i]))->getValeur();
+			d += distanceStr(valRef, val);
+		}
+		else if (catalogue.getDefinitionAttribut()[i]->getType() == ATTRIBUT_DOUBLE) {
+			const double val = dynamic_cast<const AttributDouble*>((const Attribut*)(empAAnalyser.getAttributs()[i]))->getValeurNormalisee();
+			const double valRef = dynamic_cast<const AttributDouble*>((const Attribut*)(empRef.getAttributs()[i]))->getValeurNormalisee();
+			d += (val - valRef);
+		}
+			
 	}
 	return d;
 }
 
-double distanceStr(const string& str1, const string& str2) {
+double KNN::distanceStr(const string& str1, const string& str2) {
 	if (str1 == str2)
 		return 0;
 	else
