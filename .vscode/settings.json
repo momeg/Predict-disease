@@ -17,6 +17,18 @@
         "typeinfo": "cpp",
         "__locale": "cpp",
         "locale": "cpp",
-        "iostream": "cpp"
-    }
+        "iostream": "cpp",
+        "__split_buffer": "cpp",
+        "set": "cpp",
+        "string": "cpp",
+        "__bit_reference": "cpp",
+        "bitset": "cpp",
+        "algorithm": "cpp",
+        "chrono": "cpp",
+        "limits": "cpp",
+        "ratio": "cpp",
+        "utility": "cpp",
+        "memory": "cpp"
+    },
+    "C_Cpp.errorSquiggles": "Disabled"
 }
