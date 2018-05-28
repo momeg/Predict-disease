@@ -51,6 +51,8 @@ public:
 	// Donne les maladies de l'empreinte.
 	const ListeMaladies& getMaladies() const;
 
+	
+
 private:
 	// Identifiant de l'empreinte.
 	int id;

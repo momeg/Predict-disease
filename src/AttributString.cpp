@@ -1,10 +1,10 @@
 // 
 // Fichier : AttributString.cpp
-// Description : Implémentation de la classe AttributString.
-// Auteur : Loïc Saos (loic.saos@insa-lyon.fr).
-// Date de création : 30 avril 2018
+// Description : Implï¿½mentation de la classe AttributString.
+// Auteur : Loï¿½c Saos (loic.saos@insa-lyon.fr).
+// Date de crï¿½ation : 30 avril 2018
 // Versions :
-// - 1.0 : Création de la classe.
+// - 1.0 : Crï¿½ation de la classe.
 //
 
 #include "AttributString.hpp"
@@ -20,6 +20,11 @@ TypeAttribut AttributString::getType() const
 }
 
 const string& AttributString::getValeur() const
+{
+	return valeur;
+}
+
+string AttributString::toString() const
 {
 	return valeur;
 }

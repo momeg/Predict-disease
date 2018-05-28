@@ -4,10 +4,7 @@
 
 DefinitionAttributId::DefinitionAttributId(){}
 
-DefinitionAttributId::DefinitionAttributId(const string& leNom)
-{
-	assert(!nom.empty());
-}
+DefinitionAttributId::DefinitionAttributId(const string& leNom):DefinitionAttribut(leNom){}
 
 TypeAttribut DefinitionAttributId::getType() const
 {

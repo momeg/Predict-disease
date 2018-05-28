@@ -35,6 +35,8 @@ public:
 
     ListeDefinitionAttributs getDefinitionAttribut() const;
 
+    string toString() const;
+
 private:
     void ajouterUneDefinitionAttribut(const string& attribut, const string& type);
 

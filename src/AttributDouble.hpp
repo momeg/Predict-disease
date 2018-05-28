@@ -43,6 +43,8 @@ public:
 	// - laValeurNormalisee : la valeur normalis�e entre 0 et 1.
 	void setValeurNormalisee(double laValeurNormalisee);
 
+	virtual string toString() const;
+
 private:
 	// Valeur de l'attribut.
 	double valeur;

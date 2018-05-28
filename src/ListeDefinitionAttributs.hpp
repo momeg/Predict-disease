@@ -49,7 +49,7 @@ public:
 	// Supprime tous les attributs de la liste.
 	void vider();
 
-	int size();
+	int size() const;
 
 	// Ajoute un attribut a la liste. Si un attribut possedant
 	// le meme nom existe deja, celui-ci est remplace.
@@ -61,6 +61,7 @@ public:
 private:
 	// Conteneur des attributs.
 	vector<DefinitionAttribut*> definitionAttributs;
+	bool idRentre = false;
 };
 
 #endif // LISTEDEFINITIONATTRIBUTS_HPP

@@ -17,9 +17,9 @@
 using namespace std;
 
 //
-// Classe abstraite qui représente un attribut d'une empreinte.
-// Un attribut possède un type et une valeur.
-// La valeur dépend du type de l'attribut et se trouve
+// Classe abstraite qui reprï¿½sente un attribut d'une empreinte.
+// Un attribut possï¿½de un type et une valeur.
+// La valeur dï¿½pend du type de l'attribut et se trouve
 // donc uniquement dans les classes filles.
 //
 class Attribut
@@ -31,6 +31,8 @@ protected:
 public:
 	// Donne le type de l'attribut.
 	virtual TypeAttribut getType() const = 0;
+
+	virtual string toString() const = 0;
 };
 
 #endif // ATTRIBUT_HPP

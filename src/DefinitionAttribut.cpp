@@ -23,6 +23,16 @@ const string& DefinitionAttribut::getNom() const
 	return nom;
 }
 
+void DefinitionAttribut::setIndice(size_t indice)
+{
+	this->indice = indice;
+}
+
+int DefinitionAttribut::getIndice() const
+{
+	return indice;
+}
+
 string DefinitionAttribut::toString() const
 {
 	string s = nom;

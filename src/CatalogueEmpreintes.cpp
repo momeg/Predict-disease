@@ -63,7 +63,10 @@ bool CatalogueEmpreintes::chargerFichier(const string &cheminFichier)
                                                         // le reste n'a pas besoin d'être modifier
                         index = indexAttribut(ordreAttributs[numeroAttribut]);
                         if (definitionAttributs[index]->getType()==ATTRIBUT_DOUBLE){
-                            listeAttributs->ajouterAttribut(new AttributDouble(stod(info)));
+                            double valeur = stod(info);
+                            listeAttributs->ajouterAttribut(new AttributDouble(valeur));
+                            ((DefinitionAttributDouble*) definitionAttributs[index])->setMin(valeur);
+                            ((DefinitionAttributDouble*) definitionAttributs[index])->setMax(valeur);
                         }
                         else if (definitionAttributs[index]->getType()==ATTRIBUT_STRING){
                             listeAttributs->ajouterAttribut(new AttributString(info));
@@ -133,6 +136,8 @@ bool CatalogueEmpreintes::chargerDefinitionAttributs(const string &cheminFichier
             }
             else{                           //Le type est avant l'attribut
                 while (getline(fichier, uneLigne)){
+
+                    cout << uneLigne << endl;
                     infosLigne.clear();
                     infosLigne.str(uneLigne);
 
@@ -165,6 +170,32 @@ CatalogueEmpreintes::ListeEmpreintes CatalogueEmpreintes::getEmpreintes() const
 ListeDefinitionAttributs CatalogueEmpreintes::getDefinitionAttribut() const
 {
     return definitionAttributs;
+}
+
+string CatalogueEmpreintes::toString() const 
+{
+    string s = "";
+    set<string> listeMaladie;
+    for(auto it = empreintes.begin(); it!=empreintes.end(); it++)
+    {
+        s += "ID : "+to_string(it->first)+"\n";
+        for(int i = 0; i<definitionAttributs.size(); i++)
+        {
+            if(definitionAttributs[i]->getType()!=ATTRIBUT_ID)
+            {
+                s+= definitionAttributs[i]->getNom() + " : " + it->second.getAttributs()[definitionAttributs[i]->getIndice()]->toString() + "\n";
+            }
+        }
+        s+="Maladie(s) :";
+
+        set<string> listeMaladie = it->second.getMaladies();
+        for(auto mal = listeMaladie.begin(); mal!=listeMaladie.end(); mal++)
+        {
+            s+=" "+ *mal;
+        }
+        s+="\n\n";
+    }
+    return s;
 }
 
 //-------------------------------------------- Constructeurs - destructeur

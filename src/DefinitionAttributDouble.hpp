@@ -37,8 +37,20 @@ public:
 	// Donne le type de l'attribut.
 	virtual TypeAttribut getType() const;
 
+	const double& getMin() const;
+
+	const double& getMax() const;
+
+	void setMin(double newMin);
+
+	void setMax(double newMax);
+
 public:
 	virtual string toString() const;
+
+protected :
+	double max;
+	double min;
 };
 
 #endif // DEFINITIONATTRIBUTDOUBLE_HPP
