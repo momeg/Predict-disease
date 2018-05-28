@@ -14,7 +14,7 @@
 #include "Maladie.hpp"
 
 #include <unordered_map>
-
+#include <cmath>
 //
 // Classe qui represente un catalogue de maladies.
 // Ce catalogue permet de detecter les maladies a

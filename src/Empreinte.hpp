@@ -11,7 +11,7 @@
 #define EMPREINTE_HPP
 
 #include "Attribut.hpp"
-
+#include <algorithm>
 #include <set>
 
 //

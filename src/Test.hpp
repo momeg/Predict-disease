@@ -25,6 +25,7 @@ private:
     void testKNN1();
 
     void testKNN2();
+    void testKNN3();
 
 protected:
     string cheminFichierDefAttribut;

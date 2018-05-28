@@ -1,5 +1,5 @@
 #include <iostream>
-#include <string>
+#include <cstring>
 #include <fstream>
 #include <vector>
 #include "CatalogueEmpreintes.hpp"
@@ -7,6 +7,7 @@
 #include "KNN.hpp"
 #include "Maladie.hpp"
 #include "Test.hpp"
+#include <stdio.h>
 //#include "Resultat.hpp"
 using namespace std;
 

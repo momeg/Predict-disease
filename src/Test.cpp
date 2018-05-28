@@ -32,7 +32,6 @@ void Test::faireTest(string test)
 
 void Test::initialisation()
 {
-	CatalogueEmpreintes catalogueRef = CatalogueEmpreintes();
 
 	cout << "Veuillez initialiser le catalogue" << endl;
 
@@ -81,13 +80,11 @@ void Test::testCatalogueEmpreintes()
     cout << catalogueRef.toString() << endl;
 }
 
-void Test::testKNN1()
+void Test::testKNN1( )
 {
 	string cheminFichier;
-
 	CatalogueEmpreintes catalogueEmpreintesAAnalyser = CatalogueEmpreintes();
 	catalogueEmpreintesAAnalyser.chargerDefinitionAttributs(cheminFichierDefAttribut);
-
 	cout << "Veuillez fournir le chemin du fichier des empreintes a analyser" << endl;
 	cin >> cheminFichier;
 
@@ -116,7 +113,8 @@ void Test::testKNN2()
 	
 	cout << "Veuillez fournir le chemin du fichier des empreintes a analyser" << endl;
 	cin >> cheminFichier;
-
+	
+	cout<<cheminFichier;
 	while (!catalogueEmpreintesAAnalyser.chargerFichier(cheminFichier))
 	{
 		cout << "Le fichier demande n'a pas pu etre ouvert" << endl;
@@ -124,10 +122,11 @@ void Test::testKNN2()
 		cin >> cheminFichier;
 	}
 	cout << "Le fichier a analyser a ete charge avec succes" << endl;
-	KNN knn_model(1);
+	KNN knn_model(3);
 	vector<Resultat> res = knn_model.analyser(catalogueRef, catalogueEmpreintesAAnalyser);
 	for (Resultat r : res)
 	{
 		cout << r;
 	}
 }
+

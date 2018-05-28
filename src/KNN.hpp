@@ -8,6 +8,7 @@
 #include "Empreinte.hpp"
 #include "algorithm"
 #include <cassert>
+#include <iostream>
 
 class KNN :public  Modele
 {

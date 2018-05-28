@@ -11,7 +11,7 @@
 #define MALADIE_HPP
 
 #include "DefinitionAttribut.hpp"
-
+#include <algorithm>
 //
 // Classe qui represente une maladie.
 // Une maladie possede un nom est des symptomes,
