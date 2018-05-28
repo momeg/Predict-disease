@@ -80,12 +80,12 @@ bool distComp(pair<double, set<string> > p1, pair<double, set<string> >  p2) {
 
 }
 
-double KNN::distanceEmp(const Empreinte& empRef, const Empreinte& empAAnalyser) {
+double KNN::distanceEmp(const Empreinte& empRef, const Empreinte& empAAnalyser,const CatalogueEmpreintes& catalague) {
 	double d = 0;//distance entre les 2 empreintes 
 	for (unsigned int i = 0; i < empRef.getAttributs.size(); i++) {
-		if (empRef.getAttributs[i].typeAttribut() == "ATTRIBUT_STRING")
+		if (catalague.getDefinitionAttribut[i].getType() == "ATTRIBUT_STRING")
 			d += distanceStr(empRef.getAttributs[i].valeur, empAAnalyser.getAttributs[i].valeur);
-		else if (empRef.getAttributs[i].typeAttribut() == "ATTRIBUT_DOUBLE")
+		else if (catalague.getDefinitionAttribut[i].getType() == "ATTRIBUT_DOUBLE")
 			d += empAAnalyser.getAttributs[i].getValeurNormalisee() - empRef.getAttributs[i].getValeurNormalisee();
 	}
 	return d;
