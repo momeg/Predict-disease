@@ -10,7 +10,7 @@
 #ifndef EMPREINTE_HPP
 #define EMPREINTE_HPP
 
-#include "ListeAttributs.hpp"
+#include "Attribut.hpp"
 
 #include <set>
 
@@ -51,7 +51,7 @@ public:
 	// Donne les maladies de l'empreinte.
 	const ListeMaladies& getMaladies() const;
 
-	
+	bool aMaladie(const string& nomMaladie) const;
 
 private:
 	// Identifiant de l'empreinte.

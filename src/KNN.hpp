@@ -18,7 +18,7 @@ class KNN :public  Modele
 		vector<Resultat> analyser(const CatalogueEmpreintes& reference, const CatalogueEmpreintes& aTraiter);
 		Resultat analyser(const CatalogueEmpreintes& reference, const Empreinte& aTraiter);
 	private:
-		double distanceEmp(const Empreinte& empRef , const Empreinte& empAAnalyser);
+		double distanceEmp(const Empreinte& empRef , const Empreinte& empAAnalyser, const CatalogueEmpreintes& catalague);
 		double distanceStr(const string& str1, const string& str2);
 };
 

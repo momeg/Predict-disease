@@ -1,7 +1,4 @@
-
 #include "DefinitionAttributString.hpp"
-
-#include <cassert>
 
 DefinitionAttributString::DefinitionAttributString(){}
 
@@ -12,10 +9,14 @@ TypeAttribut DefinitionAttributString::getType() const
 	return ATTRIBUT_STRING;
 }
 
-
 string DefinitionAttributString::toString() const
 {
 	string s = DefinitionAttribut::toString();
 	s+= " : string";
 	return s;
+}
+
+DefinitionAttribut* DefinitionAttributString::cloner() const
+{
+	return new DefinitionAttributString(*this);
 }

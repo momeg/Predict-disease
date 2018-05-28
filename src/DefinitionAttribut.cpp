@@ -1,10 +1,10 @@
 // 
 // Fichier : Attribut.cpp
-// Description : Impl�mentation de la classe Attribut.
-// Auteur : Lo�c Saos (loic.saos@insa-lyon.fr).
-// Date de cr�ation : 30 avril 2018
+// Description : Implementation de la classe Attribut.
+// Auteur : Loic Saos (loic.saos@insa-lyon.fr).
+// Date de creation : 30 avril 2018
 // Versions :
-// - 1.0 : Cr�ation de la classe.
+// - 1.0 : Creation de la classe.
 //
 #include "DefinitionAttribut.hpp"
 
@@ -18,6 +18,10 @@ DefinitionAttribut::DefinitionAttribut(const string& leNom)
 	assert(!nom.empty());
 }
 
+DefinitionAttribut::~DefinitionAttribut()
+{
+}
+
 const string& DefinitionAttribut::getNom() const
 {
 	return nom;
@@ -28,7 +32,7 @@ void DefinitionAttribut::setIndice(size_t indice)
 	this->indice = indice;
 }
 
-int DefinitionAttribut::getIndice() const
+size_t DefinitionAttribut::getIndice() const
 {
 	return indice;
 }

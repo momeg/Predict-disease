@@ -45,3 +45,8 @@ const Empreinte::ListeMaladies& Empreinte::getMaladies() const
 {
 	return maladies;
 }
+
+bool Empreinte::aMaladie(const string& nomMaladie) const
+{
+	return find(maladies.begin(), maladies.end(), nomMaladie) != maladies.end();
+}
