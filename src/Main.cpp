@@ -150,7 +150,8 @@ int main (int argc, char *argv[])
 {
 	if(argc>=2 && strcmp("test", argv[1])==0)
 	{
-		Test::faireTest(argv[2]);
+		Test test;
+		test.faireTest(argv[2]);
 	}
 	else
 	{

@@ -11,8 +11,15 @@
 
 using namespace std;
 
+Test::Test()
+{
+
+}
+
+
 void Test::faireTest(string test)
 {
+	initialisation();
     if(test == "definition")
         testDefinitionAttribut();
     else if(test == "empreintes")
@@ -23,9 +30,9 @@ void Test::faireTest(string test)
 		testKNN2();
 }
 
-void Test::testDefinitionAttribut()
+void Test::initialisation()
 {
-    CatalogueEmpreintes catalogueEmpreintes = CatalogueEmpreintes();
+	CatalogueEmpreintes catalogueRef = CatalogueEmpreintes();
 
 	cout << "Veuillez initialiser le catalogue" << endl;
 
@@ -36,19 +43,21 @@ void Test::testDefinitionAttribut()
 	cout << "Veuillez fournir le chemin du fichier contenant la definition des caracteristiques des empreintes" << endl;
 	cin >> cheminFichier;
 
-	while (!catalogueEmpreintes.chargerDefinitionAttributs(cheminFichier))
+	while (!catalogueRef.chargerDefinitionAttributs(cheminFichier))
 	{
 		cout << "Le fichier demande n'a pas pu etre ouvert" << endl;
 		cout << "Veuillez fournir un autre chemin d'acces" << endl;
 		cin >> cheminFichier;
 	}
 
+	cheminFichierDefAttribut = cheminFichier;
+
 	cout << "Les caracteristiques des empreintes ont bien ete initialisees" << endl;
 
 	cout << "Veuillez fournir le chemin du fichier des empreintes de reference" << endl;
 	cin >> cheminFichier;
 
-	while (!catalogueEmpreintes.chargerFichier(cheminFichier))
+	while (!catalogueRef.chargerFichier(cheminFichier))
 	{
 		cout << "Le fichier demande n'a pas pu etre ouvert" << endl;
 		cout << "Veuillez fournir un autre chemin d'acces" << endl;
@@ -56,8 +65,11 @@ void Test::testDefinitionAttribut()
 	}
 	
 	cout << "Le systeme a ete initialise avec succes" << endl;
+}
 
-    ListeDefinitionAttributs definitionAttributs = catalogueEmpreintes.getDefinitionAttribut();
+void Test::testDefinitionAttribut()
+{
+    ListeDefinitionAttributs definitionAttributs = catalogueRef.getDefinitionAttribut();
     for(int i = 0; i<definitionAttributs.size(); i++)
     {
         cout << definitionAttributs[i]->toString() << endl;
@@ -66,47 +78,16 @@ void Test::testDefinitionAttribut()
 
 void Test::testCatalogueEmpreintes()
 {
-     CatalogueEmpreintes catalogueEmpreintes = CatalogueEmpreintes();
-
-	cout << "Veuillez initialiser le catalogue" << endl;
-
-	string cheminFichier;
-
-	cout << "Vous avez choisi d'initialiser les empreintes de reference" << endl;
-
-	cout << "Veuillez fournir le chemin du fichier contenant la definition des caracteristiques des empreintes" << endl;
-	cin >> cheminFichier;
-
-	while (!catalogueEmpreintes.chargerDefinitionAttributs(cheminFichier))
-	{
-		cout << "Le fichier demande n'a pas pu etre ouvert" << endl;
-		cout << "Veuillez fournir un autre chemin d'acces" << endl;
-		cin >> cheminFichier;
-	}
-
-	cout << "Les caracteristiques des empreintes ont bien ete initialisees" << endl;
-
-	cout << "Veuillez fournir le chemin du fichier des empreintes de reference" << endl;
-	cin >> cheminFichier;
-
-	while (!catalogueEmpreintes.chargerFichier(cheminFichier))
-	{
-		cout << "Le fichier demande n'a pas pu etre ouvert" << endl;
-		cout << "Veuillez fournir un autre chemin d'acces" << endl;
-		cin >> cheminFichier;
-	}
-	
-	cout << "Le systeme a ete initialise avec succes" << endl;
-
-    cout << catalogueEmpreintes.toString() << endl;
+    cout << catalogueRef.toString() << endl;
 }
 
 void Test::testKNN1()
 {
-	CatalogueEmpreintes catalogueEmpreintes = CatalogueEmpreintes();
 	string cheminFichier;
 
 	CatalogueEmpreintes catalogueEmpreintesAAnalyser = CatalogueEmpreintes();
+	catalogueEmpreintesAAnalyser.chargerDefinitionAttributs(cheminFichierDefAttribut);
+
 	cout << "Veuillez fournir le chemin du fichier des empreintes a analyser" << endl;
 	cin >> cheminFichier;
 
@@ -116,9 +97,10 @@ void Test::testKNN1()
 		cout << "Veuillez fournir un autre chemin d'acces" << endl;
 		cin >> cheminFichier;
 	}
+
 	cout << "Le fichier a analyser a ete charge avec succes" << endl;
 	KNN knn_model(1);
-	vector<Resultat> res = knn_model.analyser(catalogueEmpreintes,catalogueEmpreintesAAnalyser);
+	vector<Resultat> res = knn_model.analyser(catalogueRef,catalogueEmpreintesAAnalyser);
 	for (Resultat r : res)
 	{
 		cout << r;
@@ -127,10 +109,11 @@ void Test::testKNN1()
 
 void Test::testKNN2()
 {
-	CatalogueEmpreintes catalogueEmpreintes = CatalogueEmpreintes();
 	string cheminFichier;
 
 	CatalogueEmpreintes catalogueEmpreintesAAnalyser = CatalogueEmpreintes();
+	catalogueEmpreintesAAnalyser.chargerDefinitionAttributs(cheminFichierDefAttribut);
+	
 	cout << "Veuillez fournir le chemin du fichier des empreintes a analyser" << endl;
 	cin >> cheminFichier;
 
@@ -142,7 +125,7 @@ void Test::testKNN2()
 	}
 	cout << "Le fichier a analyser a ete charge avec succes" << endl;
 	KNN knn_model(1);
-	vector<Resultat> res = knn_model.analyser(catalogueEmpreintes, catalogueEmpreintesAAnalyser);
+	vector<Resultat> res = knn_model.analyser(catalogueRef, catalogueEmpreintesAAnalyser);
 	for (Resultat r : res)
 	{
 		cout << r;

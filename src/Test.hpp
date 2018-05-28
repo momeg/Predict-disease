@@ -13,16 +13,23 @@ public:
     Test();
 
 public:
-    static void faireTest(string test);
+    void faireTest(string test);
 
 private:
-    static void testDefinitionAttribut();
+    void initialisation();
 
-    static void testCatalogueEmpreintes();
+    void testDefinitionAttribut();
 
-    static void testKNN1();
+    void testCatalogueEmpreintes();
 
-    static void testKNN2();
+    void testKNN1();
+
+    void testKNN2();
+
+protected:
+    string cheminFichierDefAttribut;
+    CatalogueEmpreintes catalogueRef;
+    
 
 };
 

@@ -9,7 +9,7 @@ KNN::KNN()
 
 KNN::KNN(unsigned int nbVoisins)
 {
-	assert(k != 0);
+	assert(nbVoisins != 0);
 	k = nbVoisins;
 }
 
@@ -85,8 +85,8 @@ bool distComp(pair<double, set<string> > p1, pair<double, set<string> >  p2) {
 
 double KNN::distanceEmp(const Empreinte& empRef, const Empreinte& empAAnalyser,const CatalogueEmpreintes& catalogue) {
 	double d = 0;//distance entre les 2 empreintes
-	for (const DefinitionAttribut* definition : empreintes.getDefinitionAttribut()){
-		unsigned int i = definition.getIndice();
+	for (const DefinitionAttribut* definition : catalogue.getDefinitionAttribut()){
+		unsigned int i = definition->getIndice();
 		if (definition->getType() == ATTRIBUT_STRING) {
 			const string& val = dynamic_cast<const AttributString*>((const Attribut*)(empAAnalyser.getAttributs()[i]))->getValeur();
 			const string& valRef = dynamic_cast<const AttributString*>((const Attribut*)(empRef.getAttributs()[i]))->getValeur();
