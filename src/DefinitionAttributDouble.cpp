@@ -23,12 +23,12 @@ void DefinitionAttributDouble::setMin(double newMin)
 		min = newMin;
 }
 
-const double& DefinitionAttributDouble::getMax() const
+double DefinitionAttributDouble::getMax() const
 {
 	return max;
 }
 
-const double& DefinitionAttributDouble::getMin() const
+double DefinitionAttributDouble::getMin() const
 {
 	return min;
 }
@@ -38,4 +38,9 @@ string DefinitionAttributDouble::toString() const
 	string s = DefinitionAttribut::toString();
 	s+= " : double";
 	return s;
+}
+
+DefinitionAttribut* DefinitionAttributDouble::cloner() const
+{
+	return new DefinitionAttributDouble(*this);
 }

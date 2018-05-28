@@ -1,10 +1,10 @@
 // 
 // Fichier : CatalogueMaladies.hpp
-// Description : Définition de la classe CatalogueMaladies.
-// Auteur : Loïc Saos (loic.saos@insa-lyon.fr).
-// Date de création : 30 avril 2018
+// Description : Definition de la classe CatalogueMaladies.
+// Auteur : Loic Saos (loic.saos@insa-lyon.fr).
+// Date de creation : 30 avril 2018
 // Versions :
-// - 1.0 : Création de la classe.
+// - 1.0 : Creation de la classe.
 //
 
 #ifndef CATALOGUEMALADIES_HPP
@@ -16,10 +16,10 @@
 #include <unordered_map>
 
 //
-// Classe qui représente un catalogue de maladies.
-// Ce catalogue permet de détecter les maladies à
+// Classe qui represente un catalogue de maladies.
+// Ce catalogue permet de detecter les maladies a
 // partir d'un catalogue d'empreintes et de calculer
-// leurs symptomes. Il permet également d'afficher
+// leurs symptomes. Il permet egalement d'afficher
 // ces maladies.
 //
 class CatalogueMaladies
@@ -32,18 +32,21 @@ public:
 	// Affiche les noms des maladies dans la sortie standard.
 	void afficherGlobale() const;
 
-	// Affiche les caractéristiques d'une maladie dans la
+	// Affiche les caracteristiques d'une maladie dans la
 	// sortie standard. Si la maladie n'existe pas,
-	// affiche un message à l'utilisateur.
-	// Paramètres :
-	// - nomMaladie : nom de la maladie à afficher.
+	// affiche un message a l'utilisateur.
+	// Parametres :
+	// - nomMaladie : nom de la maladie a afficher.
 	void afficherParticulier(const string& nomMaladie) const;
 
-	// Remplit le catalogue à partir d'un catalogue d'empreintes.
-	// Détecte les maladies et calcule leurs caractéristiques.
-	// Paramètres :
+	// Remplit le catalogue a partir d'un catalogue d'empreintes.
+	// Detecte les maladies et calcule leurs caracteristiques.
+	// Parametres :
 	// - empreintes : catalogue des empreintes.
 	void remplirCatalogue(const CatalogueEmpreintes& empreintes);
+
+private:
+	void ajouterMaladie(const CatalogueEmpreintes& empreintes, const string& nomMaladie);
 
 private:
 	// Conteneur des maladies.
