@@ -23,7 +23,7 @@ void creerEmpreintesReferences()
 
 	cout << "Vous avez choisi d'initialiser les empreintes de reference" << endl;
 
-	cout << "Veuillez fournir le chemin du fichier contenant la d�finition des caracteristiques des empreintes" << endl;
+	cout << "Veuillez fournir le chemin du fichier contenant la definition des caracteristiques des empreintes" << endl;
 	cin >> cheminFichier;
 
 	while (!catalogueEmpreintes.chargerDefinitionAttributs(cheminFichier))
@@ -160,10 +160,12 @@ int main (int argc, char *argv[])
 
 		string option = "init";
 
+		creerEmpreintesReferences();
+
 		while (option.compare("5")) {
 
 			cout << "Que voulez-vous faire ?" << endl;
-			cout << "Initialiser les empreintes de reference: tapez 1" << endl;
+			cout << "Reinitialiser les empreintes de reference: tapez 1" << endl;
 			cout << "Ajouter des empreintes de reference: tapez 2" << endl;
 			cout << "Analyser des empreintes: tapez 3" << endl;
 			cout << "Afficher la liste des maladies traitees: tapez 4" << endl;
@@ -188,14 +190,14 @@ int main (int argc, char *argv[])
 			{
 				afficherMaladies();
 			}
-			else
+			else if(option.compare("5"))
 			{
 				cout << "Veuillez choisir l'une des options proposees" << endl;
 			}
 
 		}
 
-		cout << " Au revoir" << endl;
+		cout << "Au revoir" << endl;
 		return 0;
 	}
 }
