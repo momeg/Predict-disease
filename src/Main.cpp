@@ -19,6 +19,8 @@ Modele * modele;
 void creerEmpreintesReferences()
 // initialise les r�f�rences � partir du fichier fourni
 {
+	catalogueEmpreintes = CatalogueEmpreintes();
+
 	string cheminFichier;
 
 	cout << "Vous avez choisi d'initialiser les empreintes de reference" << endl;
