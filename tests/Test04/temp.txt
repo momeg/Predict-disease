@@ -3,8 +3,7 @@ Veuillez fournir le chemin du fichier contenant la definition des caracteristiqu
 Les caracteristiques des empreintes ont bien ete initialisees
 Veuillez fournir le chemin du fichier des empreintes de reference
 Le systeme a ete initialise avec succes
-NoID : ID
-A1 : string
-A2 : double
-A3 : double
-A4 : double
+
+A2 : max = 152, min = 18
+A3 : max = 147, min = 23
+A4 : max = 182, min = 132

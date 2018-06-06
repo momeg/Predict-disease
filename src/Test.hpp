@@ -22,6 +22,8 @@ private:
 
     void testCatalogueEmpreintes();
 
+    void testBornes();
+
     void testKNN1();
 
     void testKNN2();

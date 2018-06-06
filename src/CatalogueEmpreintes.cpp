@@ -134,7 +134,7 @@ bool CatalogueEmpreintes::chargerDefinitionAttributs(const string &cheminFichier
 					ajouterUneDefinitionAttribut(attribut, type);
 				}
 			}
-			else {                           //Le type est avant l'attribut
+			else if(info == "AttributeType") {                           //Le type est avant l'attribut
 				while (getline(fichier, uneLigne)) {
 					infosLigne.clear();
 					infosLigne.str(uneLigne);
@@ -145,6 +145,8 @@ bool CatalogueEmpreintes::chargerDefinitionAttributs(const string &cheminFichier
 					ajouterUneDefinitionAttribut(attribut, type);
 				}
 			}
+			else
+				return false;
 			return true;
 		}
 		else
@@ -202,35 +204,8 @@ string CatalogueEmpreintes::toString() const
 		}
 		s+="\n\n";
 	}
-
 	return s;
 }
-
-/**string CatalogueEmpreintes::toString() const 
-{
-    string s = "";
-    set<string> listeMaladie;
-    for(auto it = empreintes.begin(); it!=empreintes.end(); it++)
-    {
-        s += "ID : "+to_string(it->first)+"\n";
-        for(int i = 0; i<definitionAttributs.size(); i++)
-       {
-            if(definitionAttributs[i]->getType()!=ATTRIBUT_ID)
-            {
-                s+= definitionAttributs[i]->getNom() + " : " + it->second.getAttributs()[definitionAttributs[i]->getIndice()]->toString() + "\n";
-            }
-        }
-        s+="Maladie(s) :";
-
-        set<string> listeMaladie = it->second.getMaladies();
-        for(auto mal = listeMaladie.begin(); mal!=listeMaladie.end(); mal++)
-        {
-            s+=" "+ *mal;
-        }
-       s+="\n\n";
-    }
-    return s;
-}*/
 
 //-------------------------------------------- Constructeurs - destructeur
 CatalogueEmpreintes::CatalogueEmpreintes()

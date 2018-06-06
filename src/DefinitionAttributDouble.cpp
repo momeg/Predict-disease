@@ -1,10 +1,15 @@
 #include "DefinitionAttributDouble.hpp"
 
 #include <cassert>
+#include <climits>
 
 DefinitionAttributDouble::DefinitionAttributDouble(){}
 
-DefinitionAttributDouble::DefinitionAttributDouble(const string& leNom):DefinitionAttribut(leNom){}
+DefinitionAttributDouble::DefinitionAttributDouble(const string& leNom):DefinitionAttribut(leNom)
+{
+	max = INT_MIN;
+	min = INT_MAX;
+}
 
 TypeAttribut DefinitionAttributDouble::getType() const
 {

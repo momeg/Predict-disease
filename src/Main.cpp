@@ -137,13 +137,14 @@ void afficherMaladies()
 	cout << "Sinon, si vous souhaitez afficher les symptomes d'une maladie, veuillez taper son nom" << endl;
 	cin >> nomMaladie;
 
-	while (!nomMaladie.compare("1"))
+	while (nomMaladie.compare("1")!=0)
 	{
 		catalogueMaladies.afficherParticulier(nomMaladie);
 
 		cout << endl;
 		cout << "Si vous souhaitez retourner au menu principal, veuillez taper 1" << endl;
 		cout << "Sinon, si vous souhaitez afficher les symptomes d'une autre maladie, veuillez taper son nom" << endl;
+		cin >> nomMaladie;
 	}
 
 }
@@ -164,7 +165,7 @@ int main (int argc, char *argv[])
 
 		creerEmpreintesReferences();
 
-		while (option.compare("5")) {
+		while (option.compare("5")!=0) {
 
 			cout << "Que voulez-vous faire ?" << endl;
 			cout << "Reinitialiser les empreintes de reference: tapez 1" << endl;
@@ -175,24 +176,24 @@ int main (int argc, char *argv[])
 
 			cin >> option;
 
-			if (!option.compare("1"))
+			if (option.compare("1")==0)
 			{
 				creerEmpreintesReferences();
 			}
-			else if(!option.compare("2"))
+			else if(option.compare("2")==0)
 			{
 				ajouterEmpreintesReferences();
 			}
-			else if(!option.compare("3"))
+			else if(option.compare("3")==0)
 			{
 				analyserEmpreintes();
 			}
 
-			else if (!option.compare("4"))
+			else if (option.compare("4")==0)
 			{
 				afficherMaladies();
 			}
-			else if(option.compare("5"))
+			else if(option.compare("5")!=0)
 			{
 				cout << "Veuillez choisir l'une des options proposees" << endl;
 			}

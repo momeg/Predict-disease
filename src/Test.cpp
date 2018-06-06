@@ -6,6 +6,9 @@
 #include "CatalogueEmpreintes.hpp"
 #include "AttributDouble.hpp"
 #include "AttributString.hpp"
+#include "DefinitionAttributDouble.hpp"
+#include "DefinitionAttributString.hpp"
+#include "DefinitionAttributId.hpp"
 #include "Test.hpp"
 #include "KNN.hpp"
 
@@ -24,6 +27,8 @@ void Test::faireTest(string test)
         testDefinitionAttribut();
     else if(test == "empreintes")
         testCatalogueEmpreintes();
+	else if (test == "bornes")
+		testBornes();
 	else if (test == "knn1")
 		testKNN1();
 	else if (test == "knn2")
@@ -32,12 +37,9 @@ void Test::faireTest(string test)
 
 void Test::initialisation()
 {
-
-	cout << "Veuillez initialiser le catalogue" << endl;
-
 	string cheminFichier;
 
-	cout << "Vous avez choisi d'initialiser les empreintes de reference" << endl;
+	cout << "Veuillez initialiser le catalogue" << endl;
 
 	cout << "Veuillez fournir le chemin du fichier contenant la definition des caracteristiques des empreintes" << endl;
 	cin >> cheminFichier;
@@ -78,6 +80,22 @@ void Test::testDefinitionAttribut()
 void Test::testCatalogueEmpreintes()
 {
     cout << catalogueRef.toString() << endl;
+}
+
+void Test::testBornes()
+{
+	ListeDefinitionAttributs definitionAttributs = catalogueRef.getDefinitionAttribut();
+
+	cout << endl;
+    for(int i = 0; i<definitionAttributs.size(); i++)
+    {
+		if(definitionAttributs[i]->getType()==ATTRIBUT_DOUBLE)
+		{
+			cout << definitionAttributs[i] -> getNom() << " : ";
+			cout << "max = " << dynamic_cast<const DefinitionAttributDouble*> ((const DefinitionAttribut*)definitionAttributs[i])->getMax();
+			cout << ", min = " << dynamic_cast<const DefinitionAttributDouble*> ((const DefinitionAttribut*)definitionAttributs[i])->getMin() << endl;
+		}
+    }
 }
 
 void Test::testKNN1( )

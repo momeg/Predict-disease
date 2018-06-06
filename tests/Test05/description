@@ -1,2 +1,1 @@
-Ce test permet de vérifier la sortie de l'algorithme dans le cas d'une prediction saine 
-on teste egalement le fait de tester plusieures emprentes a la fois (en mode batch)
+Ce test permet de vérifier la sortie de l'algorithme dans le cas d'une prediction avec une seule maladie 

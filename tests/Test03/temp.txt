@@ -1,5 +1,4 @@
 Veuillez initialiser le catalogue
-Vous avez choisi d'initialiser les empreintes de reference
 Veuillez fournir le chemin du fichier contenant la definition des caracteristiques des empreintes
 Les caracteristiques des empreintes ont bien ete initialisees
 Veuillez fournir le chemin du fichier des empreintes de reference
@@ -37,6 +36,6 @@ A1 : AA
 A2 : 152.522202
 A3 : 147.966462
 A4 : 132.340194
-Maladie(s) : M1
+Maladie(s) : M1 M5
 
 
