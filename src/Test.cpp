@@ -2,6 +2,7 @@
 #include <string>
 #include <fstream>
 #include <vector>
+#include <chrono>
 
 #include "CatalogueEmpreintes.hpp"
 #include "AttributDouble.hpp"
@@ -13,6 +14,7 @@
 #include "KNN.hpp"
 
 using namespace std;
+using namespace std::chrono;
 
 Test::Test()
 {
@@ -33,6 +35,12 @@ void Test::faireTest(string test)
 		testKNN1();
 	else if (test == "knn2")
 		testKNN2();
+	else if (test == "knn3")
+		testKNN3();
+	else if (test == "knn4")
+		testKNN4();
+	else if (test == "knn5")
+		testKNN5();
 }
 
 void Test::initialisation()
@@ -64,7 +72,7 @@ void Test::initialisation()
 		cout << "Veuillez fournir un autre chemin d'acces" << endl;
 		cin >> cheminFichier;
 	}
-	
+
 	cout << "Le systeme a ete initialise avec succes" << endl;
 }
 
@@ -128,10 +136,10 @@ void Test::testKNN2()
 
 	CatalogueEmpreintes catalogueEmpreintesAAnalyser = CatalogueEmpreintes();
 	catalogueEmpreintesAAnalyser.chargerDefinitionAttributs(cheminFichierDefAttribut);
-	
+
 	cout << "Veuillez fournir le chemin du fichier des empreintes a analyser" << endl;
 	cin >> cheminFichier;
-	
+
 	cout<<cheminFichier;
 	while (!catalogueEmpreintesAAnalyser.chargerFichier(cheminFichier))
 	{
@@ -148,3 +156,103 @@ void Test::testKNN2()
 	}
 }
 
+//tester le temps d'xecution de KNN
+void Test::testKNN3()
+{
+	string cheminFichier;
+
+	CatalogueEmpreintes catalogueEmpreintesAAnalyser = CatalogueEmpreintes();
+	catalogueEmpreintesAAnalyser.chargerDefinitionAttributs(cheminFichierDefAttribut);
+
+	cout << "Veuillez fournir le chemin du fichier des empreintes a analyser" << endl;
+	cin >> cheminFichier;
+
+	cout<<cheminFichier;
+	while (!catalogueEmpreintesAAnalyser.chargerFichier(cheminFichier))
+	{
+		cout << "Le fichier demande n'a pas pu etre ouvert" << endl;
+		cout << "Veuillez fournir un autre chemin d'acces" << endl;
+		cin >> cheminFichier;
+	}
+	cout << "Le fichier a analyser a ete charge avec succes" << endl;
+	KNN knn_model(3);
+	auto start = high_precission_clock::now();
+	vector<Resultat> res = knn_model.analyser(catalogueRef, catalogueEmpreintesAAnalyser);
+	auto stop = high_precission_clock()::now;
+	auto duration = duration_cast<microseconds>(stop - start);
+	cout <<"Temps d'execution de l;algorithme d'analyse KNN : "<<duration.count() << endl;
+
+}
+
+//tester la precision de l'algorithe KNN pour differents K (de 1 a 14 iclu)
+void Test::testKNN4()
+{
+	string cheminFichier;
+
+	CatalogueEmpreintes catalogueEmpreintesAAnalyser = CatalogueEmpreintes();
+	catalogueEmpreintesAAnalyser.chargerDefinitionAttributs(cheminFichierDefAttribut);
+
+	cout << "Veuillez fournir le chemin du fichier des empreintes a analyser" << endl;
+	cin >> cheminFichier;
+
+	cout<<cheminFichier;
+	while (!catalogueEmpreintesAAnalyser.chargerFichier(cheminFichier))
+	{
+		cout << "Le fichier demande n'a pas pu etre ouvert" << endl;
+		cout << "Veuillez fournir un autre chemin d'acces" << endl;
+		cin >> cheminFichier;
+	}
+	cout << "Le fichier a analyser a ete charge avec succes" << endl;
+
+	//charger le fichier des empreintes a analyser(avec labeles)
+	CatalogueEmpreintes catalogueEmpreintesAAnalyserLabeled = CatalogueEmpreintes();
+	catalogueEmpreintesAAnalyserLabeled .chargerDefinitionAttributs(cheminFichierDefAttribut);
+	cout << "Veuillez fournir le chemin du fichier des empreintes a analyser(avec labeles)" << endl;
+	cin >> cheminFichier;
+
+	cout<<cheminFichier;
+	while (!catalogueEmpreintesAAnalyserLabeled.chargerFichier(cheminFichier))
+	{
+		cout << "Le fichier demande n'a pas pu etre ouvert" << endl;
+		cout << "Veuillez fournir un autre chemin d'acces" << endl;
+		cin >> cheminFichier;
+	}
+	cout << "Le fichier a analyser avec labels a ete charge avec succes" << endl;
+	for(int k = 1; k<15 ;k++){
+		KNN knn_model(k);
+		vector<Resultat> res = knn_model.analyser(catalogueRef, catalogueEmpreintesAAnalyser);
+		double precision = knn_model.calculerPrecision(catalogueEmpreintesAAnalyserLabeled,catalogueEmpreintesAAnalyser);
+		cout<<k<<","<<precision;
+	}
+
+}
+
+//Mesuerer le temps d'execution pour plusiueres valeurs de K
+void Test::testKNN5()
+{
+	string cheminFichier;
+
+	CatalogueEmpreintes catalogueEmpreintesAAnalyser = CatalogueEmpreintes();
+	catalogueEmpreintesAAnalyser.chargerDefinitionAttributs(cheminFichierDefAttribut);
+
+	cout << "Veuillez fournir le chemin du fichier des empreintes a analyser" << endl;
+	cin >> cheminFichier;
+
+	cout<<cheminFichier;
+	while (!catalogueEmpreintesAAnalyser.chargerFichier(cheminFichier))
+	{
+		cout << "Le fichier demande n'a pas pu etre ouvert" << endl;
+		cout << "Veuillez fournir un autre chemin d'acces" << endl;
+		cin >> cheminFichier;
+	}
+	cout << "Le fichier a analyser a ete charge avec succes" << endl;
+
+	for(int k = 1; k<15 ;k++){
+		KNN knn_model(k);
+		auto start = high_precission_clock::now();
+		vector<Resultat> res = knn_model.analyser(catalogueRef, catalogueEmpreintesAAnalyser);
+		auto stop = high_precission_clock()::now;
+		auto duration = duration_cast<microseconds>(stop - start);
+		cout <<k<<","<<duration.count() << endl;
+	}
+}

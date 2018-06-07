@@ -25,14 +25,14 @@ private:
     void testBornes();
 
     void testKNN1();
-
     void testKNN2();
     void testKNN3();
+    void testKNN4();
 
 protected:
     string cheminFichierDefAttribut;
     CatalogueEmpreintes catalogueRef;
-    
+
 
 };
 

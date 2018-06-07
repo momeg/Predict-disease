@@ -9,7 +9,7 @@
 #include "algorithm"
 #include <cassert>
 #include <iostream>
-
+#include <cmath>
 class KNN :public  Modele
 {
 	protected:

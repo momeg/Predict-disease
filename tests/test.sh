@@ -172,6 +172,4 @@ then
     echo "$Directory;$resultRC;$resultOut;$resultErr;$resultFiles;$resultGlobal" >>$2
   fi
 fi
-
 exit $resultGlobal
-

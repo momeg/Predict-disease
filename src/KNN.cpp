@@ -9,7 +9,7 @@ KNN::KNN()
 
 KNN::KNN(unsigned int nbVoisins)
 {
-	
+
 	assert(nbVoisins != 0);
 	k = nbVoisins;
 }
@@ -32,7 +32,7 @@ vector<Resultat> KNN::analyser(const CatalogueEmpreintes& reference, const Catal
 //analyser une empreinte
 Resultat KNN::analyser(const CatalogueEmpreintes& reference, const Empreinte& aTraiter)
 {
-					
+
 	//Initialize dMins with max distance
 	set<string> s;
 	s.insert("d");
@@ -47,11 +47,11 @@ Resultat KNN::analyser(const CatalogueEmpreintes& reference, const Empreinte& aT
 	double maxd = numeric_limits<double>::max();
 	double d;
 
-	
+
 	//iterer sur toutes les empreintes du fichier de reference
 	//garder la distance et les maladies associees si la distance fait partie des
 	//k plus petites distances jusqu'a present
-	
+
 	for (pair<int, Empreinte> empRef : reference.getEmpreintes()) {
 		d = distanceEmp(empRef.second,  aTraiter, reference);
 		if (d < dMins[dMins.size()-1].first) {
@@ -60,7 +60,7 @@ Resultat KNN::analyser(const CatalogueEmpreintes& reference, const Empreinte& aT
 			sort(dMins.begin(), dMins.end(),distComp);
 		}
 	 }
-	 
+
 	//calculer les probabilites
 	unordered_map <string,double> maladies;//map<maladie,probabilite>
 	unordered_map<string, double>::iterator it;
@@ -98,13 +98,13 @@ double KNN::distanceEmp(const Empreinte& empRef, const Empreinte& empAAnalyser,c
 			d += distanceStr(valRef, val);
 		}//ATTENTION PAS DE NORMALISATION
 		else if (definition->getType() == ATTRIBUT_DOUBLE) {
-			const double val = dynamic_cast<const AttributDouble*>((const Attribut*)(empAAnalyser.getAttributs()[i]))->getValeur();//getValeurNormalisee()
-			const double valRef = dynamic_cast<const AttributDouble*>((const Attribut*)(empRef.getAttributs()[i]))->getValeur();//getValeurNormalisee()
+			const double val = dynamic_cast<const AttributDouble*>((const Attribut*)(empAAnalyser.getAttributs()[i]))->getValeurNormalisee();//getValeurNormalisee()
+			const double valRef = dynamic_cast<const AttributDouble*>((const Attribut*)(empRef.getAttributs()[i]))->getValeurNormalisee();//getValeurNormalisee()
 			d += (val - valRef);
 		}
 
 	}
-				cout<<"############## empreinte num :"<<empRef.getId()<<"  "<<abs(d)<<endl;//show distances 
+				cout<<"############## empreinte num :"<<empRef.getId()<<"  "<<abs(d)<<endl;//show distances
 
 	return abs(d);
 }
