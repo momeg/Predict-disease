@@ -203,6 +203,7 @@ string CatalogueEmpreintes::toString() const
 			{
 				case(ATTRIBUT_DOUBLE):
 					s+= to_string(dynamic_cast<const AttributDouble*> ((const Attribut*) emp->second.getAttributs()[definitionAttributs[i]->getIndice()])->getValeur());
+					s+= ", valeur normalisee : " + to_string(dynamic_cast<const AttributDouble*> ((const Attribut*) emp->second.getAttributs()[definitionAttributs[i]->getIndice()])->getValeurNormalisee());
 					break;
 				case(ATTRIBUT_ID): 
 					s += to_string(emp->second.getId());
@@ -222,6 +223,11 @@ string CatalogueEmpreintes::toString() const
 		s+="\n\n";
 	}
 	return s;
+}
+
+void CatalogueEmpreintes::setDefinitionAttribut(ListeDefinitionAttributs liste)
+{
+	definitionAttributs = liste;
 }
 
 //-------------------------------------------- Constructeurs - destructeur

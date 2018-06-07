@@ -22,8 +22,8 @@ double Modele::calculerPrecision(const CatalogueEmpreintes& labeled,const Catalo
 	int nb= 0 ;
 	for (pair<int, Empreinte> empLabeled : labeled.getEmpreintes()){
 		nb++;
-		empPred =(prediction.getEmpreintes().find(empLabeled.first)).second;
-		if(empPred.getMaladies == empLabeled.second.getMaladies()){
+		empPred =prediction.getEmpreintes().find(empLabeled.first)->second;
+		if(empPred.getMaladies() == empLabeled.second.getMaladies()){
 			nbOk++;
 		}
 	}
@@ -33,6 +33,7 @@ double Modele::calculerPrecision(const CatalogueEmpreintes& labeled,const Catalo
 
 
 
-
+/**
 for (pair<int, Empreinte> empRef : reference.getEmpreintes()) {
 	d = distanceEmp(empRef.second,  aTraiter, reference);
+*/

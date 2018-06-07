@@ -5,37 +5,37 @@ Veuillez fournir le chemin du fichier des empreintes de reference
 Le systeme a ete initialise avec succes
 NoID : 4
 A1 : AA
-A2 : 76.126961
-A3 : 131.543561
-A4 : 182.610347
+A2 : 76.126961, valeur normalisee : 0.429073
+A3 : 131.543561, valeur normalisee : 0.868545
+A4 : 182.610347, valeur normalisee : 1.000000
 Maladie(s) :
 
 NoID : 3
 A1 : AA
-A2 : 38.899999
-A3 : 108.510273
-A4 : 167.669113
+A2 : 38.899999, valeur normalisee : 0.150863
+A3 : 108.510273, valeur normalisee : 0.684177
+A4 : 167.669113, valeur normalisee : 0.702781
 Maladie(s) : M4
 
 NoID : 2
 A1 : AA
-A2 : 119.644177
-A3 : 39.725708
-A4 : 141.376788
+A2 : 119.644177, valeur normalisee : 0.754291
+A3 : 39.725708, valeur normalisee : 0.133598
+A4 : 141.376788, valeur normalisee : 0.179761
 Maladie(s) : M3
 
 NoID : 1
 A1 : AA
-A2 : 18.713158
-A3 : 23.035148
-A4 : 173.707814
+A2 : 18.713158, valeur normalisee : 0.000000
+A3 : 23.035148, valeur normalisee : 0.000000
+A4 : 173.707814, valeur normalisee : 0.822906
 Maladie(s) : M2
 
 NoID : 0
 A1 : AA
-A2 : 152.522202
-A3 : 147.966462
-A4 : 132.340194
+A2 : 152.522202, valeur normalisee : 1.000000
+A3 : 147.966462, valeur normalisee : 1.000000
+A4 : 132.340194, valeur normalisee : 0.000000
 Maladie(s) : M1 M5
 
 

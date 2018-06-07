@@ -93,7 +93,7 @@ public:
 	// - pointeurClonable : pointeur a cloner.
 	PointeurClonable& operator=(const PointeurClonable& pointeurClonable)
 	{
-		if (*this != &pointeurClonable)
+		if (*this != pointeurClonable)
 		{
 			if (pointeur)
 			{

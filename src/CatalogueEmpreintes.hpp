@@ -35,6 +35,8 @@ public:
 
     const ListeDefinitionAttributs& getDefinitionAttribut() const;
 
+    void setDefinitionAttribut(ListeDefinitionAttributs liste);
+
     string toString() const;
 
 private:
