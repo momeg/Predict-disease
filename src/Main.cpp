@@ -7,7 +7,10 @@
 #include "KNN.hpp"
 #include "Maladie.hpp"
 #include "Test.hpp"
+
 #include <stdio.h>
+#include <fstream>
+#include <ctime>
 //#include "Resultat.hpp"
 using namespace std;
 
@@ -15,6 +18,27 @@ CatalogueEmpreintes catalogueEmpreintes;
 CatalogueMaladies catalogueMaladies;
 Modele * modele;
 
+string pseudo;
+ofstream historique;
+
+
+//Ajoute l'heure actuelle dans l'historique
+void heureHistorique()
+{
+	time_t t = time(0);   // get time now
+    tm* now = localtime(&t);
+	historique << now->tm_mday <<"/"<< now->tm_mon <<"/"<< now->tm_year+1900 <<" "<<now->tm_hour<<"h"<<now->tm_min;
+}
+
+void authentification()
+//récupère le pseudo de l'utilisateur (pour le log)
+{
+	cout << "Bonjour" << endl;
+	cout << "Veuillez rentrer votre nom d'utilisateur" << endl;
+	cin >> pseudo;
+	historique <<"Conn:" << pseudo <<":";
+	heureHistorique();
+}
 
 void creerEmpreintesReferences()
 // initialise les r�f�rences � partir du fichier fourni
@@ -49,6 +73,11 @@ void creerEmpreintesReferences()
 
 	catalogueMaladies.remplirCatalogue(catalogueEmpreintes);
 	cout << "Le systeme a ete initialise avec succes" << endl;
+
+	time_t time;
+	historique <<",Entraînement:";
+	heureHistorique();
+	historique <<":"<<cheminFichier;
 
 }
 
@@ -105,7 +134,9 @@ void analyserEmpreintes()
 		cout << "Impossible d'ouvrir fichier demande, veuillez specifier un autre chemin d'acces" << endl;
 		cin >> cheminFichier;
 	}
+	string nomFichierAnalyse = cheminFichier;
 
+	int nbrEmpreintes = 0;
 	vector<Resultat>::iterator it;
 	for (it = resultatsAnalyse.begin(); it != resultatsAnalyse.end(); ++it)
 	{
@@ -117,9 +148,13 @@ void analyserEmpreintes()
 			fichier << iu->first << ":" << iu->second <<",";
 		}
 		fichier << endl;
+		nbrEmpreintes++;
 	}
 
 	fichier.close();
+	historique << ",PredBatch:";
+	heureHistorique();
+	historique<<":"<<nomFichierAnalyse<<":"<<nbrEmpreintes;
 	cout << "Le fichier a ete genere avec succes" << endl;
 
 }
@@ -152,6 +187,8 @@ void afficherMaladies()
 
 int main (int argc, char *argv[])
 {
+	historique.open("log.txt", ios::app);
+
 	if(argc>=2 && strcmp("test", argv[1])==0)
 	{
 		Test test;
@@ -162,6 +199,8 @@ int main (int argc, char *argv[])
 		modele = new KNN();
 
 		string option = "init";
+
+		authentification();
 
 		creerEmpreintesReferences();
 
@@ -200,8 +239,11 @@ int main (int argc, char *argv[])
 
 		}
 
+		historique <<",Deconn:";
+		heureHistorique();
+		historique << endl;
+		historique.close();
 		cout << "Au revoir" << endl;
 		return 0;
 	}
 }
-
