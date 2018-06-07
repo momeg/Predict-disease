@@ -88,6 +88,23 @@ bool CatalogueEmpreintes::chargerFichier(const string &cheminFichier)
 					empreintes[id].ajouterMaladie(maladie);
 				}
 			}
+
+			for(auto emp = empreintes.begin(); emp!=empreintes.end(); emp++)
+			{
+				for(index = 0; index<definitionAttributs.size(); index ++)
+				{
+					if(definitionAttributs[index]->getType()==ATTRIBUT_DOUBLE)
+					{
+						double max = dynamic_cast<DefinitionAttributDouble*> ((DefinitionAttribut*)definitionAttributs[index])->getMax();
+						double min = dynamic_cast<DefinitionAttributDouble*> ((DefinitionAttribut*)definitionAttributs[index])->getMin();
+						AttributDouble* attDouble = dynamic_cast<AttributDouble*> (emp->second.getAttributs()[definitionAttributs[index]->getIndice()]->cloner());
+						double valeur = attDouble->getValeur();
+						double vNorm = (valeur-min)/(max-min);
+						attDouble->setValeurNormalisee(vNorm);
+						emp->second.setAttributIndice(attDouble, definitionAttributs[index]->getIndice());
+					}
+				}
+			}
 			return true;
 		}
 		else

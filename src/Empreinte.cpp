@@ -41,6 +41,11 @@ const ListeAttributs& Empreinte::getAttributs() const
 	return attributs;
 }
 
+void Empreinte::setAttributIndice(Attribut* unAttribut, int indice)
+{
+	attributs[indice]=unAttribut;
+}
+
 const Empreinte::ListeMaladies& Empreinte::getMaladies() const
 {
 	return maladies;
