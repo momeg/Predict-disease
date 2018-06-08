@@ -30,6 +30,9 @@ public:
 	// Donne le nom de la maladie.
 	const string& getNom() const;
 
+	// Donne les symptomes de la maladie.
+	const ListeDefinitionAttributs& getSymptomes() const;
+
 	// Affiche la maladie et ses caracteristiques
 	// dans la sortie standard.
 	void afficher() const;
