@@ -65,6 +65,11 @@ void CatalogueMaladies::remplirCatalogue(const CatalogueEmpreintes& empreintes)
 	}
 }
 
+const unordered_map<string, Maladie>& CatalogueMaladies::getMaladies() const
+{
+	return maladies;
+}
+
 void CatalogueMaladies::ajouterMaladie(const CatalogueEmpreintes& empreintes, const string& nomMaladie)
 {
 	ListeDefinitionAttributs symptomes;
@@ -114,7 +119,7 @@ void CatalogueMaladies::ajouterMaladie(const CatalogueEmpreintes& empreintes, co
 
 			if (ecartType < seuilEcartType)
 			{
-				DefinitionAttributDouble* symptome = new DefinitionAttributDouble(definition->getNom());
+				DefinitionAttributDouble* symptome = dynamic_cast<DefinitionAttributDouble*>(definition->cloner());
 				symptome->setEcartType(ecartType);
 				symptome->setMoyenne(moyenne);
 				symptomes.push_back(symptome);
@@ -161,7 +166,7 @@ void CatalogueMaladies::ajouterMaladie(const CatalogueEmpreintes& empreintes, co
 				{
 					if (it->second > seuilFrequence)
 					{
-						DefinitionAttributString* symptome = new DefinitionAttributString(definition->getNom());
+						DefinitionAttributString* symptome = dynamic_cast<DefinitionAttributString*>(definition->cloner());
 						symptome->setValeurSignificative(it->first);
 						symptomes.push_back(symptome);
 

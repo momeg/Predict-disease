@@ -1,0 +1,1 @@
+Conn:saos:8/5/2018 14h18,Entraînement:8/5/2018 14h18:C:\Users\lsaos\Desktop\Predict-disease\tests\donnees\HealthMeasurementsWithLabels.txt,PredBatch:8/5/2018 14h19:C:\Users\lsaos\Desktop\test.txt:5000,Deconn:8/5/2018 14h30

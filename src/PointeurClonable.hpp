@@ -7,7 +7,8 @@
 // - 1.0 : Creation de la classe.
 //
 
-#pragma once
+#ifndef POINTEURCLONABLE_HPP
+#define POINTEURCLONABLE_HPP
 
 //
 // Classe template utilitaire permettant de copier
@@ -159,3 +160,5 @@ private:
 	// Pointeur brut vers l'objet stocke.
 	ClasseMere * pointeur;
 };
+
+#endif // POINTEURCLONABLE_HPP

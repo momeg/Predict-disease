@@ -45,6 +45,9 @@ public:
 	// - empreintes : catalogue des empreintes.
 	void remplirCatalogue(const CatalogueEmpreintes& empreintes);
 
+	// Donne les maladies du catalogue.
+	const unordered_map<string, Maladie>& getMaladies() const;
+
 private:
 	// Analyse une maladie à partir des empreintes donnees
 	// et l'ajoute dans le catalogue.

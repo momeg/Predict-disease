@@ -25,6 +25,11 @@ const string& Maladie::getNom() const
 	return nom;
 }
 
+const ListeDefinitionAttributs& Maladie::getSymptomes() const
+{
+	return symptomes;
+}
+
 void Maladie::afficher() const
 {
 	cout << "Maladie '" << nom << "' : ";
