@@ -5,4 +5,5 @@ Veuillez fournir le chemin du fichier des empreintes de reference
 Le systeme a ete initialise avec succes
 Veuillez fournir le chemin du fichier des empreintes a analyser
 Le fichier a analyser a ete charge avec succes
+4
 3;M4:1

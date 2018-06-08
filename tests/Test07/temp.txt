@@ -4,5 +4,5 @@ Les caracteristiques des empreintes ont bien ete initialisees
 Veuillez fournir le chemin du fichier des empreintes de reference
 Le systeme a ete initialise avec succes
 Veuillez fournir le chemin du fichier des empreintes a analyser
-Le fichier a analyser a ete charge avec succes
-3;M4:1
+ToAnalyze.txtLe fichier a analyser a ete charge avec succes
+0;M5:0.333333;M1:0.666667

@@ -1,0 +1,1 @@
+Ce test permet de vérifier la preformance en -terme de temps d'execution- de l'algo KNN. Test effectue sur 1 empreinte a analyser et 4000 empreintes de reference.

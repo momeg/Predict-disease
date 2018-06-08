@@ -368,7 +368,7 @@ void Test::testStatistique3()
 	vector<Resultat> res = stat_model.analyserEmpreintes(maladies, catalogueRef, catalogueEmpreintesAAnalyser);
 	auto stop = high_resolution_clock::now();
 	auto duration = duration_cast<microseconds>(stop - start);
-	cout << "Temps d'execution de l;algorithme d'analyse Statistique : " << duration.count() << endl;
+	cout << "Temps d'execution en microsecondes: " << duration.count() << endl;
 
 }
 
