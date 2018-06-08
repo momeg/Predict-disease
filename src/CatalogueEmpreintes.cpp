@@ -1,3 +1,11 @@
+// 
+// Fichier : CatalogueEmpreintes.cpp
+// Description : Implementation de la classe CatalogueEmpreintes.
+// Auteur : Martin Greco (martin.greco@insa-lyon.fr).
+// Date de creation : 30 avril 2018
+// Versions :
+// - 1.0 : Creation de la classe.
+// 
 #include "CatalogueEmpreintes.hpp"
 #include "AttributDouble.hpp"
 #include "AttributString.hpp"

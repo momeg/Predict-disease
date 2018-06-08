@@ -1,3 +1,10 @@
+// 
+// Fichier : Main.cpp
+// Description : Implementation de la classe DefinitionAttributString.
+// Auteur : Mathilde Goigoux (mathilde.goigoux@insa-lyon.fr).
+// Date de creation : 30 avril 2018
+//
+
 #include <iostream>
 #include <cstring>
 #include <fstream>
