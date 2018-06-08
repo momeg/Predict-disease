@@ -206,7 +206,7 @@ void Test::testKNN4()
 
 	//charger le fichier des empreintes a analyser(avec labeles)
 	CatalogueEmpreintes catalogueEmpreintesAAnalyserLabeled = CatalogueEmpreintes();
-	catalogueEmpreintesAAnalyserLabeled .setDefinitionAttribut(catalogueRef.getDefinitionAttribut());
+	catalogueEmpreintesAAnalyserLabeled.setDefinitionAttribut(catalogueRef.getDefinitionAttribut());
 	cout << "Veuillez fournir le chemin du fichier des empreintes a analyser(avec labeles)" << endl;
 	cin >> cheminFichier;
 

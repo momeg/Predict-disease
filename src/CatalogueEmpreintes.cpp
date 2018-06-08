@@ -89,7 +89,8 @@ bool CatalogueEmpreintes::chargerFichier(const string &cheminFichier)
 				}
 			}
 
-			for(auto emp = empreintes.begin(); emp!=empreintes.end(); emp++)
+			for(auto emp = empreintes.begin(); emp!=empreintes.end(); emp++) 	//On parcours la liste des empreintes créées pour placer les
+																				//les valeurs normalisées
 			{
 				for(index = 0; index<definitionAttributs.size(); index ++)
 				{
@@ -151,7 +152,7 @@ bool CatalogueEmpreintes::chargerDefinitionAttributs(const string &cheminFichier
 					ajouterUneDefinitionAttribut(attribut, type);
 				}
 			}
-			else if(info == "AttributeType") {                           //Le type est avant l'attribut
+			else if(info == "AttributeType") { 	//Le type est avant l'attribut
 				while (getline(fichier, uneLigne)) {
 					infosLigne.clear();
 					infosLigne.str(uneLigne);

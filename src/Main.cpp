@@ -22,8 +22,8 @@ string pseudo;
 ofstream historique;
 
 
-//Ajoute l'heure actuelle dans l'historique
 void heureHistorique()
+//Ajoute l'heure actuelle dans l'historique
 {
 	time_t t = time(0);   // get time now
 	tm* now = localtime(&t);
@@ -41,9 +41,9 @@ void authentification()
 }
 
 void creerEmpreintesReferences()
-// initialise les r�f�rences � partir du fichier fourni
+// initialise les références à partir du fichier fourni
 {
-	catalogueEmpreintes = CatalogueEmpreintes();
+	catalogueEmpreintes = CatalogueEmpreintes();	//On (re)initialise le catalogue d'empreintes
 
 	string cheminFichier;
 
@@ -52,7 +52,7 @@ void creerEmpreintesReferences()
 	cout << "Veuillez fournir le chemin du fichier contenant la definition des caracteristiques des empreintes" << endl;
 	cin >> cheminFichier;
 
-	while (!catalogueEmpreintes.chargerDefinitionAttributs(cheminFichier))
+	while (!catalogueEmpreintes.chargerDefinitionAttributs(cheminFichier)) //tant que l'adresse n'est pas valide
 	{
 		cout << "Le fichier demande n'a pas pu etre ouvert" << endl;
 		cout << "Veuillez fournir un autre chemin d'acces" << endl;
@@ -64,25 +64,24 @@ void creerEmpreintesReferences()
 	cout << "Veuillez fournir le chemin du fichier des empreintes de reference" << endl;
 	cin >> cheminFichier;
 
-	while (!catalogueEmpreintes.chargerFichier(cheminFichier))
+	while (!catalogueEmpreintes.chargerFichier(cheminFichier)) //tant que l'adresse n'est pas valide
 	{
 		cout << "Le fichier demande n'a pas pu etre ouvert" << endl;
 		cout << "Veuillez fournir un autre chemin d'acces" << endl;
 		cin >> cheminFichier;
 	}
 
-	catalogueMaladies.remplirCatalogue(catalogueEmpreintes);
+	catalogueMaladies.remplirCatalogue(catalogueEmpreintes);//A partir des empreintes de références, on remplit le catalogue des maladies
 	cout << "Le systeme a ete initialise avec succes" << endl;
 
-	time_t time;
-	historique << ",Entraînement:";
+	historique << ",Entraînement:";	//on remplit l'historique
 	heureHistorique();
 	historique << ":" << cheminFichier;
 
 }
 
 void ajouterEmpreintesReferences()
-// permets � l'utilisateur d'ajouter des empreintes de r�f�rence sans avoir � refaire l'initialisation des 5000 empreintes dans son int�gralit�
+// permets à l'utilisateur d'ajouter des empreintes de référence sans avoir à refaire l'initialisation des 5000 empreintes dans son intégralité
 {
 	string cheminFichier;
 
@@ -103,7 +102,7 @@ void ajouterEmpreintesReferences()
 }
 
 void analyserEmpreintes()
-// analyse les empreintes fournies par l'utilisateur et g�n�re un fichier de sortie
+// analyse les empreintes fournies par l'utilisateur et génère un fichier de sortie
 {
 	string cheminFichier;
 	CatalogueEmpreintes aAnalyser = CatalogueEmpreintes();
@@ -116,7 +115,7 @@ void analyserEmpreintes()
 	cout << " Veuillez fournir le chemin d'acces du fichier contenant les empreintes a analyser" << endl;
 	cin >> cheminFichier;
 
-	while (!aAnalyser.chargerFichier(cheminFichier))
+	while (!aAnalyser.chargerFichier(cheminFichier))//tant que l'adresse n'est pas valide
 	{
 		cout << "Le fichier demande n'a pas pu etre ouvert" << endl;
 		cout << "Veuillez fournir un autre chemin d'acces" << endl;
@@ -124,21 +123,18 @@ void analyserEmpreintes()
 	}
 	resultatsAnalyse = modele->analyserEmpreintes(catalogueMaladies, catalogueEmpreintes, aAnalyser);
 
-
-
 	cout << "Analyse terminee. A quelle adresse generer le fichier de sortie ?" << endl;
 	cin >> cheminFichier;
 
 	ofstream fichier(cheminFichier, ios::trunc);
 
-	while (!fichier)
+	while (!fichier)//tant que l'adresse de sortie n'est pas valide
 	{
 		cout << "Impossible d'ouvrir fichier demande, veuillez specifier un autre chemin d'acces" << endl;
 		cin >> cheminFichier;
 	}
 	string nomFichierAnalyse = cheminFichier;
 
-	int nbrEmpreintes = 0;
 	vector<Resultat>::iterator it;
 	for (it = resultatsAnalyse.begin(); it != resultatsAnalyse.end(); ++it)
 	{
@@ -150,20 +146,20 @@ void analyserEmpreintes()
 			fichier << iu->first << ":" << iu->second << ",";
 		}
 		fichier << endl;
-		nbrEmpreintes++;
 	}
 
 	fichier.close();
-	historique << ",PredBatch:";
+
+	historique << ",PredBatch:";	//on remplit l'historique
 	heureHistorique();
-	historique << ":" << nomFichierAnalyse << ":" << nbrEmpreintes;
+	historique << ":" << nomFichierAnalyse << ":"<< resultatsAnalyse.size();
 	cout << "Le fichier a ete genere avec succes" << endl;
 
 }
 
 void afficherMaladies()
-// affiche les maladies prises en compte par le syst�me
-// demande � l'utilisateur s'il veut des d�tails sur l'une d'entre elle
+// affiche les maladies prises en compte par le système
+// demande à l'utilisateur s'il veut des détails sur l'une d'entre elle
 {
 	string nomMaladie;
 
@@ -241,6 +237,7 @@ int main(int argc, char *argv[])
 			}
 
 		}
+		//le client se déconnecte
 
 		historique << ",Deconn:";
 		heureHistorique();

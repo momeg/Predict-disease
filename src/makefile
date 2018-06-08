@@ -43,7 +43,7 @@ DefinitionAttributId.o : DefinitionAttribut.hpp DefinitionAttributId.hpp
 
 KNN.o : KNN.hpp Resultat.hpp Attribut.hpp Empreinte.hpp
 
-Main.o : MainTemporaire.cpp CatalogueEmpreintes.hpp CatalogueMaladies.hpp Modele.hpp Maladie.hpp Test.hpp
+Main.o : Main.cpp CatalogueEmpreintes.hpp CatalogueMaladies.hpp Modele.hpp Maladie.hpp Test.hpp
 
 Maladie.o : Maladie.hpp
 

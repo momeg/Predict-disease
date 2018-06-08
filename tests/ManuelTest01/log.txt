@@ -1,1 +1,4 @@
 Conn:test:8/5/2018 12h24,Entraînement:8/5/2018 12h24:HealthMeasurementsWithLabels.txt,PredBatch:8/5/2018 12h24:./Test11:0,Deconn:8/5/2018 12h24
+Conn:test:8/5/2018 14h47,Entraînement:8/5/2018 14h47:HealthMeasurementsWithLabels.txt,PredBatch:8/5/2018 14h47:./Test11:1  1,Deconn:8/5/2018 14h47
+Conn:test:8/5/2018 14h49,Entraînement:8/5/2018 14h49:HealthMeasurementsWithLabels.txt,PredBatch:8/5/2018 14h49:./Resultat:1  1,Deconn:8/5/2018 14h49
+Conn:test:8/5/2018 14h50,Entraînement:8/5/2018 14h50:HealthMeasurementsWithLabels.txt,PredBatch:8/5/2018 14h50:./Resultat:1,Deconn:8/5/2018 14h50

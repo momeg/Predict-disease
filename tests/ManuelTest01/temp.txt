@@ -13,6 +13,11 @@ Afficher la liste des maladies traitees: tapez 4
 Quitter l'application: tapez 5
 Vous avez choisi d'analyser des empreintes
  Veuillez fournir le chemin d'acces du fichier contenant les empreintes a analyser
+############## empreinte num :4  0.297617
+############## empreinte num :3  0.462179
+############## empreinte num :2  0.93235
+############## empreinte num :1  1.17709
+############## empreinte num :0  0
 Analyse terminee. A quelle adresse generer le fichier de sortie ?
 Le fichier a ete genere avec succes
 Que voulez-vous faire ?
