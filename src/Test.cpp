@@ -274,9 +274,9 @@ void Test::testCatalogueMaladies()
 
 	maladies.afficherGlobale();
 
-	for (const auto& maladies : maladies.getMaladies())
+	for (const auto& maladie : maladies.getMaladies())
 	{
-		maladies.second.afficher();
+		maladie.second.afficher();
 	}
 }
 
