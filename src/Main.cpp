@@ -1,8 +1,10 @@
 // 
 // Fichier : Main.cpp
-// Description : Implementation de la classe DefinitionAttributString.
+// Description : Point d'entree de l'application.
 // Auteur : Mathilde Goigoux (mathilde.goigoux@insa-lyon.fr).
 // Date de creation : 30 avril 2018
+// Versions :
+// - 1.0 : Creation de la classe.
 //
 
 #include <iostream>

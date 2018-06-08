@@ -6,6 +6,7 @@
 // Versions :
 // - 1.0 : Creation de la classe.
 // 
+
 #include "CatalogueEmpreintes.hpp"
 #include "AttributDouble.hpp"
 #include "AttributString.hpp"
