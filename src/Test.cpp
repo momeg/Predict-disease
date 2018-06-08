@@ -12,23 +12,23 @@
 #include "DefinitionAttributId.hpp"
 #include "Test.hpp"
 #include "KNN.hpp"
+#include "Statistique.hpp"
 
 using namespace std;
 using namespace std::chrono;
 
 Test::Test()
 {
-
 }
-
 
 void Test::faireTest(string test)
 {
 	initialisation();
-    if(test == "definition")
-        testDefinitionAttribut();
-    else if(test == "empreintes")
-        testCatalogueEmpreintes();
+
+	if (test == "definition")
+		testDefinitionAttribut();
+	else if (test == "empreintes")
+		testCatalogueEmpreintes();
 	else if (test == "bornes")
 		testBornes();
 	else if (test == "knn1")
@@ -41,6 +41,16 @@ void Test::faireTest(string test)
 		testKNN4();
 	else if (test == "knn5")
 		testKNN5();
+	else if (test == "stat1")
+		testStatistique1();
+	else if (test == "stat2")
+		testStatistique3();
+	else if (test == "stat3")
+		testStatistique3();
+	else if (test == "stat4")
+		testStatistique4();
+	else if (test == "maladies")
+		testCatalogueMaladies();
 }
 
 void Test::initialisation()
@@ -78,16 +88,16 @@ void Test::initialisation()
 
 void Test::testDefinitionAttribut()
 {
-    ListeDefinitionAttributs definitionAttributs = catalogueRef.getDefinitionAttribut();
-    for(int i = 0; i<definitionAttributs.size(); i++)
-    {
-        cout << definitionAttributs[i]->toString() << endl;
-    }
+	ListeDefinitionAttributs definitionAttributs = catalogueRef.getDefinitionAttribut();
+	for (size_t i = 0; i < definitionAttributs.size(); i++)
+	{
+		cout << definitionAttributs[i]->toString() << endl;
+	}
 }
 
 void Test::testCatalogueEmpreintes()
 {
-    cout << catalogueRef.toString() << endl;
+	cout << catalogueRef.toString() << endl;
 }
 
 void Test::testBornes()
@@ -95,18 +105,18 @@ void Test::testBornes()
 	ListeDefinitionAttributs definitionAttributs = catalogueRef.getDefinitionAttribut();
 
 	cout << endl;
-    for(int i = 0; i<definitionAttributs.size(); i++)
-    {
-		if(definitionAttributs[i]->getType()==ATTRIBUT_DOUBLE)
+	for (size_t i = 0; i < definitionAttributs.size(); i++)
+	{
+		if (definitionAttributs[i]->getType() == ATTRIBUT_DOUBLE)
 		{
-			cout << definitionAttributs[i] -> getNom() << " : ";
+			cout << definitionAttributs[i]->getNom() << " : ";
 			cout << "max = " << dynamic_cast<const DefinitionAttributDouble*> ((const DefinitionAttribut*)definitionAttributs[i])->getMax();
 			cout << ", min = " << dynamic_cast<const DefinitionAttributDouble*> ((const DefinitionAttribut*)definitionAttributs[i])->getMin() << endl;
 		}
-    }
+	}
 }
 
-void Test::testKNN1( )
+void Test::testKNN1()
 {
 	string cheminFichier;
 	CatalogueEmpreintes catalogueEmpreintesAAnalyser = CatalogueEmpreintes();
@@ -123,7 +133,7 @@ void Test::testKNN1( )
 
 	cout << "Le fichier a analyser a ete charge avec succes" << endl;
 	KNN knn_model(1);
-	vector<Resultat> res = knn_model.analyserEmpreintes(CatalogueMaladies(), catalogueRef,catalogueEmpreintesAAnalyser);
+	vector<Resultat> res = knn_model.analyserEmpreintes(CatalogueMaladies(), catalogueRef, catalogueEmpreintesAAnalyser);
 	for (Resultat r : res)
 	{
 		cout << r;
@@ -140,7 +150,7 @@ void Test::testKNN2()
 	cout << "Veuillez fournir le chemin du fichier des empreintes a analyser" << endl;
 	cin >> cheminFichier;
 
-	cout<<cheminFichier;
+	cout << cheminFichier;
 	while (!catalogueEmpreintesAAnalyser.chargerFichier(cheminFichier))
 	{
 		cout << "Le fichier demande n'a pas pu etre ouvert" << endl;
@@ -167,7 +177,7 @@ void Test::testKNN3()
 	cout << "Veuillez fournir le chemin du fichier des empreintes a analyser" << endl;
 	cin >> cheminFichier;
 
-	cout<<cheminFichier;
+	cout << cheminFichier;
 	while (!catalogueEmpreintesAAnalyser.chargerFichier(cheminFichier))
 	{
 		cout << "Le fichier demande n'a pas pu etre ouvert" << endl;
@@ -180,7 +190,7 @@ void Test::testKNN3()
 	vector<Resultat> res = knn_model.analyserEmpreintes(CatalogueMaladies(), catalogueRef, catalogueEmpreintesAAnalyser);
 	auto stop = high_resolution_clock::now();
 	auto duration = duration_cast<microseconds>(stop - start);
-	cout <<"Temps d'execution de l;algorithme d'analyse KNN : "<<duration.count() << endl;
+	cout << "Temps d'execution de l;algorithme d'analyse KNN : " << duration.count() << endl;
 
 }
 
@@ -195,7 +205,7 @@ void Test::testKNN4()
 	cout << "Veuillez fournir le chemin du fichier des empreintes a analyser" << endl;
 	cin >> cheminFichier;
 
-	cout<<cheminFichier;
+	cout << cheminFichier;
 	while (!catalogueEmpreintesAAnalyser.chargerFichier(cheminFichier))
 	{
 		cout << "Le fichier demande n'a pas pu etre ouvert" << endl;
@@ -210,7 +220,7 @@ void Test::testKNN4()
 	cout << "Veuillez fournir le chemin du fichier des empreintes a analyser(avec labeles)" << endl;
 	cin >> cheminFichier;
 
-	cout<<cheminFichier;
+	cout << cheminFichier;
 	while (!catalogueEmpreintesAAnalyserLabeled.chargerFichier(cheminFichier))
 	{
 		cout << "Le fichier demande n'a pas pu etre ouvert" << endl;
@@ -218,11 +228,11 @@ void Test::testKNN4()
 		cin >> cheminFichier;
 	}
 	cout << "Le fichier a analyser avec labels a ete charge avec succes" << endl;
-	for(int k = 1; k<15 ;k++){
+	for (int k = 1; k < 15; k++) {
 		KNN knn_model(k);
 		vector<Resultat> res = knn_model.analyserEmpreintes(CatalogueMaladies(), catalogueRef, catalogueEmpreintesAAnalyser);
-		double precision = knn_model.calculerPrecision(catalogueEmpreintesAAnalyserLabeled,res);
-		cout<<k<<","<<precision<<endl;
+		double precision = knn_model.calculerPrecision(catalogueEmpreintesAAnalyserLabeled, res);
+		cout << k << "," << precision << endl;
 	}
 
 }
@@ -238,7 +248,7 @@ void Test::testKNN5()
 	cout << "Veuillez fournir le chemin du fichier des empreintes a analyser" << endl;
 	cin >> cheminFichier;
 
-	cout<<cheminFichier;
+	cout << cheminFichier;
 	while (!catalogueEmpreintesAAnalyser.chargerFichier(cheminFichier))
 	{
 		cout << "Le fichier demande n'a pas pu etre ouvert" << endl;
@@ -247,12 +257,163 @@ void Test::testKNN5()
 	}
 	cout << "Le fichier a analyser a ete charge avec succes" << endl;
 
-	for(int k = 1; k<15 ;k++){
+	for (int k = 1; k < 15; k++) {
 		KNN knn_model(k);
 		auto start = high_resolution_clock::now();
 		vector<Resultat> res = knn_model.analyserEmpreintes(CatalogueMaladies(), catalogueRef, catalogueEmpreintesAAnalyser);
 		auto stop = high_resolution_clock::now();
 		auto duration = duration_cast<microseconds>(stop - start);
-		cout <<k<<","<<duration.count() << endl;
+		cout << k << "," << duration.count() << endl;
 	}
+}
+
+void Test::testCatalogueMaladies()
+{
+	CatalogueMaladies maladies;
+	maladies.remplirCatalogue(catalogueRef);
+
+	maladies.afficherGlobale();
+
+	for (const auto& maladies : maladies.getMaladies())
+	{
+		maladies.second.afficher();
+	}
+}
+
+void Test::testStatistique1()
+{
+	string cheminFichier;
+	CatalogueEmpreintes catalogueEmpreintesAAnalyser = CatalogueEmpreintes();
+	catalogueEmpreintesAAnalyser.setDefinitionAttribut(catalogueRef.getDefinitionAttribut());
+	cout << "Veuillez fournir le chemin du fichier des empreintes a analyser" << endl;
+	cin >> cheminFichier;
+
+	while (!catalogueEmpreintesAAnalyser.chargerFichier(cheminFichier))
+	{
+		cout << "Le fichier demande n'a pas pu etre ouvert" << endl;
+		cout << "Veuillez fournir un autre chemin d'acces" << endl;
+		cin >> cheminFichier;
+	}
+
+	cout << "Le fichier a analyser a ete charge avec succes" << endl;
+
+	CatalogueMaladies maladies;
+	maladies.remplirCatalogue(catalogueRef);
+
+	Statistique stat_model;
+
+	vector<Resultat> res = stat_model.analyserEmpreintes(maladies, catalogueRef, catalogueEmpreintesAAnalyser);
+	for (Resultat r : res)
+	{
+		cout << r;
+	}
+}
+
+void Test::testStatistique2()
+{
+	string cheminFichier;
+
+	CatalogueEmpreintes catalogueEmpreintesAAnalyser = CatalogueEmpreintes();
+	catalogueEmpreintesAAnalyser.setDefinitionAttribut(catalogueRef.getDefinitionAttribut());
+
+	cout << "Veuillez fournir le chemin du fichier des empreintes a analyser" << endl;
+	cin >> cheminFichier;
+
+	cout << cheminFichier;
+	while (!catalogueEmpreintesAAnalyser.chargerFichier(cheminFichier))
+	{
+		cout << "Le fichier demande n'a pas pu etre ouvert" << endl;
+		cout << "Veuillez fournir un autre chemin d'acces" << endl;
+		cin >> cheminFichier;
+	}
+	cout << "Le fichier a analyser a ete charge avec succes" << endl;
+
+	CatalogueMaladies maladies;
+	maladies.remplirCatalogue(catalogueRef);
+
+	Statistique stat_model;
+
+	vector<Resultat> res = stat_model.analyserEmpreintes(maladies, catalogueRef, catalogueEmpreintesAAnalyser);
+	for (Resultat r : res)
+	{
+		cout << r;
+	}
+}
+
+//tester le temps d'xecution de Statistique
+void Test::testStatistique3()
+{
+	string cheminFichier;
+
+	CatalogueEmpreintes catalogueEmpreintesAAnalyser = CatalogueEmpreintes();
+	catalogueEmpreintesAAnalyser.setDefinitionAttribut(catalogueRef.getDefinitionAttribut());
+
+	cout << "Veuillez fournir le chemin du fichier des empreintes a analyser" << endl;
+	cin >> cheminFichier;
+
+	cout << cheminFichier;
+	while (!catalogueEmpreintesAAnalyser.chargerFichier(cheminFichier))
+	{
+		cout << "Le fichier demande n'a pas pu etre ouvert" << endl;
+		cout << "Veuillez fournir un autre chemin d'acces" << endl;
+		cin >> cheminFichier;
+	}
+	cout << "Le fichier a analyser a ete charge avec succes" << endl;
+
+	CatalogueMaladies maladies;
+	maladies.remplirCatalogue(catalogueRef);
+
+	Statistique stat_model;
+	auto start = high_resolution_clock::now();
+	vector<Resultat> res = stat_model.analyserEmpreintes(maladies, catalogueRef, catalogueEmpreintesAAnalyser);
+	auto stop = high_resolution_clock::now();
+	auto duration = duration_cast<microseconds>(stop - start);
+	cout << "Temps d'execution de l;algorithme d'analyse Statistique : " << duration.count() << endl;
+
+}
+
+//tester la precision de l'algorithe Statistique
+void Test::testStatistique4()
+{
+	string cheminFichier;
+
+	CatalogueEmpreintes catalogueEmpreintesAAnalyser = CatalogueEmpreintes();
+	catalogueEmpreintesAAnalyser.setDefinitionAttribut(catalogueRef.getDefinitionAttribut());
+
+	cout << "Veuillez fournir le chemin du fichier des empreintes a analyser" << endl;
+	cin >> cheminFichier;
+
+	cout << cheminFichier;
+	while (!catalogueEmpreintesAAnalyser.chargerFichier(cheminFichier))
+	{
+		cout << "Le fichier demande n'a pas pu etre ouvert" << endl;
+		cout << "Veuillez fournir un autre chemin d'acces" << endl;
+		cin >> cheminFichier;
+	}
+	cout << "Le fichier a analyser a ete charge avec succes" << endl;
+
+	//charger le fichier des empreintes a analyser(avec labeles)
+	CatalogueEmpreintes catalogueEmpreintesAAnalyserLabeled = CatalogueEmpreintes();
+	catalogueEmpreintesAAnalyserLabeled.setDefinitionAttribut(catalogueRef.getDefinitionAttribut());
+	cout << "Veuillez fournir le chemin du fichier des empreintes a analyser(avec labeles)" << endl;
+	cin >> cheminFichier;
+
+	cout << cheminFichier;
+	while (!catalogueEmpreintesAAnalyserLabeled.chargerFichier(cheminFichier))
+	{
+		cout << "Le fichier demande n'a pas pu etre ouvert" << endl;
+		cout << "Veuillez fournir un autre chemin d'acces" << endl;
+		cin >> cheminFichier;
+	}
+	cout << "Le fichier a analyser avec labels a ete charge avec succes" << endl;
+
+	CatalogueMaladies maladies;
+	maladies.remplirCatalogue(catalogueRef);
+
+	Statistique stat_model;
+
+	vector<Resultat> res = stat_model.analyserEmpreintes(maladies, catalogueRef, catalogueEmpreintesAAnalyser);
+	double precision = stat_model.calculerPrecision(catalogueEmpreintesAAnalyserLabeled, res);
+	cout << precision << endl;
+
 }

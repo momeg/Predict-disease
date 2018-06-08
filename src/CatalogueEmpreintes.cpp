@@ -98,18 +98,18 @@ bool CatalogueEmpreintes::chargerFichier(const string &cheminFichier)
 				}
 			}
 
-			for(auto emp = empreintes.begin(); emp!=empreintes.end(); emp++) 	//On parcourt la liste des empreintes créées pour placer les
+			for (auto emp = empreintes.begin(); emp != empreintes.end(); emp++) 	//On parcourt la liste des empreintes créées pour placer les
 																				//les valeurs normalisées
 			{
-				for(index = 0; index<definitionAttributs.size(); index ++)
+				for (index = 0; index < (int)definitionAttributs.size(); index++)
 				{
-					if(definitionAttributs[index]->getType()==ATTRIBUT_DOUBLE)
+					if (definitionAttributs[index]->getType() == ATTRIBUT_DOUBLE)
 					{
 						double max = dynamic_cast<DefinitionAttributDouble*> ((DefinitionAttribut*)definitionAttributs[index])->getMax();
 						double min = dynamic_cast<DefinitionAttributDouble*> ((DefinitionAttribut*)definitionAttributs[index])->getMin();
 						AttributDouble* attDouble = dynamic_cast<AttributDouble*> (emp->second.getAttributs()[definitionAttributs[index]->getIndice()]->cloner());
 						double valeur = attDouble->getValeur();
-						double vNorm = (valeur-min)/(max-min);
+						double vNorm = (valeur - min) / (max - min);
 						attDouble->setValeurNormalisee(vNorm);
 						emp->second.setAttributIndice(attDouble, definitionAttributs[index]->getIndice());
 					}
@@ -161,7 +161,7 @@ bool CatalogueEmpreintes::chargerDefinitionAttributs(const string &cheminFichier
 					ajouterUneDefinitionAttribut(attribut, type);
 				}
 			}
-			else if(info == "AttributeType") { 	//Le type est avant l'attribut
+			else if (info == "AttributeType") { 	//Le type est avant l'attribut
 				while (getline(fichier, uneLigne)) {
 					infosLigne.clear();
 					infosLigne.str(uneLigne);
@@ -203,34 +203,34 @@ string CatalogueEmpreintes::toString() const
 {
 	string s;
 
-	for(auto emp = empreintes.begin(); emp!=empreintes.end(); emp++)
+	for (auto emp = empreintes.begin(); emp != empreintes.end(); emp++)
 	{
-		for(int i=0; i<definitionAttributs.size(); i++)
+		for (size_t i = 0; i < definitionAttributs.size(); i++)
 		{
-			s+= definitionAttributs[i]->getNom() + " : ";
+			s += definitionAttributs[i]->getNom() + " : ";
 
 			switch (definitionAttributs[i]->getType())
 			{
-				case(ATTRIBUT_DOUBLE):
-					s+= to_string(dynamic_cast<const AttributDouble*> ((const Attribut*) emp->second.getAttributs()[definitionAttributs[i]->getIndice()])->getValeur());
-					s+= ", valeur normalisee : " + to_string(dynamic_cast<const AttributDouble*> ((const Attribut*) emp->second.getAttributs()[definitionAttributs[i]->getIndice()])->getValeurNormalisee());
-					break;
-				case(ATTRIBUT_ID): 
-					s += to_string(emp->second.getId());
-					break;
-				case(ATTRIBUT_STRING):
-					s += dynamic_cast<const AttributString*> ((const Attribut*)emp->second.getAttributs()[definitionAttributs[i]->getIndice()])->getValeur();
-					break;
+			case(ATTRIBUT_DOUBLE):
+				s += to_string(dynamic_cast<const AttributDouble*> ((const Attribut*)emp->second.getAttributs()[definitionAttributs[i]->getIndice()])->getValeur());
+				s += ", valeur normalisee : " + to_string(dynamic_cast<const AttributDouble*> ((const Attribut*)emp->second.getAttributs()[definitionAttributs[i]->getIndice()])->getValeurNormalisee());
+				break;
+			case(ATTRIBUT_ID):
+				s += to_string(emp->second.getId());
+				break;
+			case(ATTRIBUT_STRING):
+				s += dynamic_cast<const AttributString*> ((const Attribut*)emp->second.getAttributs()[definitionAttributs[i]->getIndice()])->getValeur();
+				break;
 			}
-			s+="\n";
+			s += "\n";
 		}
-		s+= "Maladie(s) :";
+		s += "Maladie(s) :";
 		set<string> maladies = emp->second.getMaladies();
-		for(auto mal = maladies.begin(); mal!=maladies.end(); mal++)
+		for (auto mal = maladies.begin(); mal != maladies.end(); mal++)
 		{
-			s+= " "+*mal;
+			s += " " + *mal;
 		}
-		s+="\n\n";
+		s += "\n\n";
 	}
 	return s;
 }
@@ -262,13 +262,13 @@ void CatalogueEmpreintes::ajouterUneDefinitionAttribut(const string& attribut, c
 
 	int taille = definitionAttributs.size();
 
-	if(idDef)
+	if (idDef)
 	{
-		definitionAttributs[taille-1]->setIndice(taille-2);
+		definitionAttributs[taille - 1]->setIndice(taille - 2);
 	}
 	else
 	{
-		definitionAttributs[taille-1]->setIndice(taille-1);
+		definitionAttributs[taille - 1]->setIndice(taille - 1);
 	}
 }
 

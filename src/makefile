@@ -1,7 +1,7 @@
 EXE = Predict-disease
 CLEAN = efface
 
-INT = Attribut.hpp AttributDouble.hpp AttributString.hpp CatalogueEmpreintes.hpp CatalogueMaladies.hpp Empreinte.hpp Maladie.hpp Main.hpp DefinitionAttribut.hpp DefinitionAttributDouble.hpp DefinitionAttributString.hpp DefinitionAttributId.hpp Resultat.hpp Modele.hpp Test.hpp KNN.hpp
+INT = Attribut.hpp AttributDouble.hpp AttributString.hpp CatalogueEmpreintes.hpp CatalogueMaladies.hpp Empreinte.hpp Maladie.hpp Main.hpp DefinitionAttribut.hpp DefinitionAttributDouble.hpp DefinitionAttributString.hpp DefinitionAttributId.hpp Resultat.hpp Modele.hpp Test.hpp KNN.hpp Statistique.hpp
 REAL = $(INT:.hpp=.cpp)
 OBJ = $(REAL:.cpp=.o)
 
@@ -52,6 +52,8 @@ Modele.o : Modele.hpp CatalogueEmpreintes.hpp
 Resultat.o : Resultat.hpp
 
 Test.o : Test.hpp CatalogueEmpreintes.hpp AttributDouble.hpp AttributString.hpp
+
+Statistique.o : Statistique.hpp
 
 %.o : %.cpp
 	$(ECHO) "compil de <$*>"
