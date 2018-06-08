@@ -44,7 +44,7 @@ void Test::faireTest(string test)
 	else if (test == "stat1")
 		testStatistique1();
 	else if (test == "stat2")
-		testStatistique3();
+		testStatistique2();
 	else if (test == "stat3")
 		testStatistique3();
 	else if (test == "stat4")
