@@ -20,7 +20,7 @@ vector<Resultat> Modele::analyserEmpreintes(const CatalogueMaladies& maladiesRef
 	return res;
 }
 
-double Modele::calculerPrecision(const CatalogueEmpreintes& labeled,const vector<Resultat>& resultats)
+double Modele::calculerPrecision(const CatalogueEmpreintes& labeled, const vector<Resultat>& resultats)
 {
 	Empreinte empPred;
 	double precision;
@@ -31,8 +31,10 @@ double Modele::calculerPrecision(const CatalogueEmpreintes& labeled,const vector
 	for (Resultat res : resultats) {
 		nb++;
 		set<string> maladiesRes;
-		for(pair<string, double> p : res.getMaladies()){
-			maladiesRes.insert(p.first);
+		for (pair<string, double> p : res.getMaladies()) {
+			if (p.second > 0.5) {
+				maladiesRes.insert(p.first);
+			}
 		}
 		Empreinte empLabeled = labeled.getEmpreintes().find(res.getId())->second;
 		if (maladiesRes == empLabeled.getMaladies()) {
@@ -42,8 +44,3 @@ double Modele::calculerPrecision(const CatalogueEmpreintes& labeled,const vector
 	precision = nbOk / (1.0*nb);
 	return precision;
 }
-
-/**
-for (pair<int, Empreinte> empRef : reference.getEmpreintes()) {
-	d = distanceEmp(empRef.second,  aTraiter, reference);
-*/

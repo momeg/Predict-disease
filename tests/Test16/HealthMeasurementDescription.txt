@@ -1,0 +1,4 @@
+AttributeName;AttributeType
+NoID;ID
+A1;string
+A2;double
