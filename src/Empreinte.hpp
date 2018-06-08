@@ -54,6 +54,10 @@ public:
 	// Donne les maladies de l'empreinte.
 	const ListeMaladies& getMaladies() const;
 
+	// Indique si l'empreinte possede la
+	// maladie specifiee ou non.
+	// Parametres :
+	// - nomMaladie : maladie a tester.
 	bool aMaladie(const string& nomMaladie) const;
 
 private:
