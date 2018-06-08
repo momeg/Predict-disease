@@ -1,0 +1,26 @@
+Veuillez initialiser le catalogue
+Veuillez fournir le chemin du fichier contenant la definition des caracteristiques des empreintes
+Les caracteristiques des empreintes ont bien ete initialisees
+Veuillez fournir le chemin du fichier des empreintes de reference
+Le systeme a ete initialise avec succes
+3 maladie(s) repertoriee(s) :
+- M2
+- M1
+- M3
+Maladie 'M2' : 1 symptome(s)
+- A2
+  Type : nombre
+  Moyenne : 2.5
+  Ecart-type : 1.58146
+Maladie 'M1' : 1 symptome(s)
+- A1
+  Type : chaine de caracteres
+  Valeur significative : 'AA'
+Maladie 'M3' : 2 symptome(s)
+- A1
+  Type : chaine de caracteres
+  Valeur significative : 'AA'
+- A2
+  Type : nombre
+  Moyenne : 2.5
+  Ecart-type : 1.58146
