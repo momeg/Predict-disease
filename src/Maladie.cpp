@@ -8,8 +8,11 @@
 //
 
 #include "Maladie.hpp"
+#include "DefinitionAttributDouble.hpp"
+#include "DefinitionAttributString.hpp"
 
 #include <iostream>
+#include <algorithm>
 
 Maladie::Maladie(const string& leNom, const ListeDefinitionAttributs& lesSymptomes)
 	: nom(leNom),
@@ -37,6 +40,27 @@ void Maladie::afficher() const
 
 	for (const DefinitionAttribut* symptome : symptomes)
 	{
-		cout << "- " << symptome->getNom() << endl;
+		cout << "- " << symptome->getNom() << endl
+			<< "  Type : ";
+
+		if (symptome->getType() == ATTRIBUT_DOUBLE)
+		{
+			const DefinitionAttributDouble* symptomeDouble = dynamic_cast<const DefinitionAttributDouble*>(symptome);
+
+			cout << "nombre" << endl
+				<< "  Moyenne : " << symptomeDouble->getMoyenne() << endl
+				<< "  Ecart-type : " << symptomeDouble->getEcartType() << endl;
+		}
+		else if (symptome->getType() == ATTRIBUT_STRING)
+		{
+			const DefinitionAttributString* symptomeString = dynamic_cast<const DefinitionAttributString*>(symptome);
+
+			cout << "chaine de caracteres" << endl
+				<< "  Valeur significative : '" << symptomeString->getValeurSignificative() << '\'' << endl;
+		}
+		else
+		{
+			cout << "inconnu" << endl;
+		}
 	}
 }

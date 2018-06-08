@@ -1,33 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClInclude Include="..\..\src\Attribut.hpp">
-      <Filter>Metier</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\Empreinte.hpp">
-      <Filter>Metier</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\AttributDouble.hpp">
-      <Filter>Metier</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\AttributString.hpp">
-      <Filter>Metier</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\TypeAttribut.hpp">
-      <Filter>Metier</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\CatalogueMaladies.hpp">
-      <Filter>Metier</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\Maladie.hpp">
-      <Filter>Metier</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\ListeAttributs.hpp">
-      <Filter>Metier</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\MainTemporaire.hpp">
-      <Filter>Main</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\KNN.hpp">
       <Filter>Algo</Filter>
     </ClInclude>
@@ -37,41 +10,49 @@
     <ClInclude Include="..\..\src\Resultat.hpp">
       <Filter>Algo</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\Attribut.hpp">
+      <Filter>Metier\Attribut</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\AttributDouble.hpp">
+      <Filter>Metier\Attribut</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\AttributString.hpp">
+      <Filter>Metier\Attribut</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\DefinitionAttribut.hpp">
+      <Filter>Metier\DefinitionAttribut</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\DefinitionAttributDouble.hpp">
+      <Filter>Metier\DefinitionAttribut</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\DefinitionAttributId.hpp">
+      <Filter>Metier\DefinitionAttribut</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\DefinitionAttributString.hpp">
+      <Filter>Metier\DefinitionAttribut</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\TypeAttribut.hpp">
+      <Filter>Metier\Attribut</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\CatalogueEmpreintes.hpp">
+      <Filter>Metier\Empreinte</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Empreinte.hpp">
+      <Filter>Metier\Empreinte</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Main.hpp" />
+    <ClInclude Include="..\..\src\Test.hpp" />
+    <ClInclude Include="..\..\src\PointeurClonable.hpp">
       <Filter>Metier</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\DefinitionAttributs.hpp">
-      <Filter>Metier</Filter>
+    <ClInclude Include="..\..\src\CatalogueMaladies.hpp">
+      <Filter>Metier\Maladie</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Maladie.hpp">
+      <Filter>Metier\Maladie</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\Attribut.cpp">
-      <Filter>Metier</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\Empreinte.cpp">
-      <Filter>Metier</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\AttributDouble.cpp">
-      <Filter>Metier</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\AttributString.cpp">
-      <Filter>Metier</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\Maladie.cpp">
-      <Filter>Metier</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\CatalogueMaladies.cpp">
-      <Filter>Metier</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\ListeAttributs.cpp">
-      <Filter>Metier</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\Main.cpp">
-      <Filter>Main</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\MainTemporaire.cpp">
-      <Filter>Main</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\KNN.cpp">
       <Filter>Algo</Filter>
     </ClCompile>
@@ -81,11 +62,40 @@
     <ClCompile Include="..\..\src\Resultat.cpp">
       <Filter>Algo</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\CatalogueEmpreintes.cpp">
-      <Filter>Metier</Filter>
+    <ClCompile Include="..\..\src\Main.cpp" />
+    <ClCompile Include="..\..\src\Attribut.cpp">
+      <Filter>Metier\Attribut</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\DefinitionAttributs.cpp">
-      <Filter>Metier</Filter>
+    <ClCompile Include="..\..\src\AttributDouble.cpp">
+      <Filter>Metier\Attribut</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\AttributString.cpp">
+      <Filter>Metier\Attribut</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\DefinitionAttribut.cpp">
+      <Filter>Metier\DefinitionAttribut</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\DefinitionAttributDouble.cpp">
+      <Filter>Metier\DefinitionAttribut</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\DefinitionAttributId.cpp">
+      <Filter>Metier\DefinitionAttribut</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\DefinitionAttributString.cpp">
+      <Filter>Metier\DefinitionAttribut</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\CatalogueEmpreintes.cpp">
+      <Filter>Metier\Empreinte</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Empreinte.cpp">
+      <Filter>Metier\Empreinte</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Test.cpp" />
+    <ClCompile Include="..\..\src\CatalogueMaladies.cpp">
+      <Filter>Metier\Maladie</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Maladie.cpp">
+      <Filter>Metier\Maladie</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -95,8 +105,17 @@
     <Filter Include="Algo">
       <UniqueIdentifier>{277b197d-bd78-4857-8f55-f13afefeeeb6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Main">
-      <UniqueIdentifier>{9c1f73bb-0e9f-4fb0-901d-71571702caf8}</UniqueIdentifier>
+    <Filter Include="Metier\Attribut">
+      <UniqueIdentifier>{0e3606f7-0dc3-44ce-9e1e-57d92fed7f54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Metier\DefinitionAttribut">
+      <UniqueIdentifier>{b9295a34-7d9b-46e1-893e-5a4f914f2f6a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Metier\Empreinte">
+      <UniqueIdentifier>{4c545b60-029f-41e8-88da-5707dcca8e01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Metier\Maladie">
+      <UniqueIdentifier>{b4eb8651-4ed8-4b0f-ab83-63bd48f471e2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

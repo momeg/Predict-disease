@@ -14,7 +14,7 @@
 #include "Maladie.hpp"
 
 #include <unordered_map>
-#include <cmath>
+
 //
 // Classe qui represente un catalogue de maladies.
 // Ce catalogue permet de detecter les maladies a
@@ -46,6 +46,11 @@ public:
 	void remplirCatalogue(const CatalogueEmpreintes& empreintes);
 
 private:
+	// Analyse une maladie à partir des empreintes donnees
+	// et l'ajoute dans le catalogue.
+	// Parametres :
+	// - empreintes : liste des empreintes a analyser.
+	// - nomMaladie : nom de la maladie a analyser et ajouter.
 	void ajouterMaladie(const CatalogueEmpreintes& empreintes, const string& nomMaladie);
 
 private:

@@ -12,29 +12,27 @@
 
 #include "DefinitionAttribut.hpp"
 
-
 //
-// 
+// Classe qui represente les metadonnees d'un attribut dont la valeur
+// est un ID (entier).
 //
 class DefinitionAttributId : public DefinitionAttribut
 {
 public:
-	// Construit un attribut.
+	// Construit une definition d'attribut de type ID.
 	// Parametres :
-	// - leNom : nom de l'attribut. Ce nom ne doit pas �tre vide.
+	// - leNom : nom de l'attribut. Ce nom ne doit pas etre vide.
 	DefinitionAttributId(const string& leNom);
-
-	DefinitionAttributId();
 
 public:
 	// Donne le type de l'attribut.
 	virtual TypeAttribut getType() const;
 
+	// Affiche l'attribut (utilise en test uniquement).
+	virtual string toString() const;
+
 	// Retourne un clone de la definition d'attribut.
 	virtual DefinitionAttribut* cloner() const;
-
-public:
-	virtual string toString() const;
 };
 
 #endif // DEFINITIONATTRIBUT_HPP

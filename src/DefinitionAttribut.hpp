@@ -19,14 +19,14 @@
 using namespace std;
 
 //
-// Classe abstraite qui represente un attribut d'une empreinte.
-// Un attribut possede un nom, un type et une valeur.
-// La valeur depend du type de l'attribut et se trouve
-// donc uniquement dans les classes filles.
+// Classe abstraite qui represente les metadonnees d'un attribut.
+// Un attribut possede un nom, un type ainsi qu'un indice
+// dans le tableau des attributs d'une empreinte.
 //
 class DefinitionAttribut
 {
 public:
+	// Detruit une definition d'attribut.
 	virtual ~DefinitionAttribut();
 
 public:
@@ -52,13 +52,10 @@ public:
 	virtual DefinitionAttribut* cloner() const = 0;
 
 protected:
-	// Construit un attribut.
+	// Construit une definition d'attribut.
 	// Parametres :
 	// - leNom : nom de l'attribut. Ce nom ne doit pas etre vide.
 	DefinitionAttribut(const string& leNom);
-
-	// Construit un attribut vide.
-	DefinitionAttribut();
 
 protected:
 	// Nom de l'attribut.

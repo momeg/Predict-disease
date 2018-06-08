@@ -15,6 +15,11 @@
 
 #include <cassert>
 #include <iostream>
+#include <cmath>
+
+static double SEUIL_ECART_TYPE_DOUBLE = 12.5;
+
+static double SEUIL_FREQUENCE_STRING = 1.0 / 3.0;
 
 CatalogueMaladies::CatalogueMaladies()
 {
@@ -26,7 +31,7 @@ void CatalogueMaladies::afficherGlobale() const
 
 	for (auto it = maladies.begin(); it != maladies.end(); it++)
 	{
-		cout << '\t' << it->second.getNom() << endl;
+		cout << "- " << it->second.getNom() << endl;
 	}
 }
 
@@ -105,11 +110,13 @@ void CatalogueMaladies::ajouterMaladie(const CatalogueEmpreintes& empreintes, co
 			const double ecartType = sqrt(variance);
 
 			const double seuilEcartType = (dynamic_cast<const DefinitionAttributDouble*>(definition)->getMax()
-				- dynamic_cast<const DefinitionAttributDouble*>(definition)->getMin()) / 10.0;
+				- dynamic_cast<const DefinitionAttributDouble*>(definition)->getMin()) / SEUIL_ECART_TYPE_DOUBLE;
 
 			if (ecartType < seuilEcartType)
 			{
 				DefinitionAttributDouble* symptome = new DefinitionAttributDouble(definition->getNom());
+				symptome->setEcartType(ecartType);
+				symptome->setMoyenne(moyenne);
 				symptomes.push_back(symptome);
 			}
 		}
@@ -146,7 +153,7 @@ void CatalogueMaladies::ajouterMaladie(const CatalogueEmpreintes& empreintes, co
 
 			assert(nbEmpreintes);
 
-			const size_t seuilFrequence = nbEmpreintes / 4 * 3;
+			const size_t seuilFrequence = static_cast<size_t>(static_cast<double>(nbEmpreintes) * SEUIL_FREQUENCE_STRING);
 
 			if (seuilFrequence)
 			{
@@ -155,6 +162,7 @@ void CatalogueMaladies::ajouterMaladie(const CatalogueEmpreintes& empreintes, co
 					if (it->second > seuilFrequence)
 					{
 						DefinitionAttributString* symptome = new DefinitionAttributString(definition->getNom());
+						symptome->setValeurSignificative(it->first);
 						symptomes.push_back(symptome);
 
 						break;

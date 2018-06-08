@@ -13,27 +13,40 @@
 #include "DefinitionAttribut.hpp"
 
 //
-// 
+// Classe qui represente les metadonnees d'un attribut dont la valeur
+// est une chaine de caracteres (std::string).
 //
 class DefinitionAttributString : public DefinitionAttribut
 {
 public:
-	// Construit un attribut.
+	// Construit une definition d'attribut de type string.
 	// Parametres :
-	// - leNom : nom de l'attribut. Ce nom ne doit pas �tre vide.
+	// - leNom : nom de l'attribut. Ce nom ne doit pas etre vide.
 	DefinitionAttributString(const string& leNom);
 
-	DefinitionAttributString();
+	// Donne la valeur significative de l'attribut,
+	// c'est la valeur majoritairement presente si
+	// elle existe, sinon une string vide.
+	const string& getValeurSignificative() const;
+
+	// Definit la valeur significative de l'attribut.
+	// Parametres :
+	// - laValeurSignificative : la valeur significative.
+	void setValeurSignificative(const string& laValeurSignificative);
 
 public:
 	// Donne le type de l'attribut.
 	virtual TypeAttribut getType() const;
 
+	// Affiche l'attribut (utilise en test uniquement).
+	virtual string toString() const;
+
 	// Retourne un clone de la definition d'attribut.
 	virtual DefinitionAttribut* cloner() const;
 
-public:
-	virtual string toString() const;
+private:
+	// Valeur significative de l'attribut.
+	string valeurSignificative;
 };
 
 #endif // DEFINITIONATTRIBUTSTRING_HPP

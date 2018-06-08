@@ -93,7 +93,7 @@ public:
 	// - pointeurClonable : pointeur a cloner.
 	PointeurClonable& operator=(const PointeurClonable& pointeurClonable)
 	{
-		if (*this != pointeurClonable)
+		if (this != &pointeurClonable)
 		{
 			if (pointeur)
 			{
@@ -111,6 +111,22 @@ public:
 				pointeur = nullptr;
 			}
 		}
+
+		return *this;
+	}
+
+	// Operateur de deplacement.
+	// Parametres :
+	// - pointeurClonable : pointeur a deplacer.
+	ClasseMere& operator=(ClasseMere&& pointeurClonable)
+	{
+		if (pointeur)
+		{
+			delete pointeur;
+		}
+
+		pointeur = pointeurClonable.pointeur;
+		pointeurClonable.pointeur = nullptr;
 
 		return *this;
 	}
@@ -141,5 +157,5 @@ public:
 
 private:
 	// Pointeur brut vers l'objet stocke.
-	ClasseMere* pointeur;
+	ClasseMere * pointeur;
 };

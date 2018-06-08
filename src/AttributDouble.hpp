@@ -20,7 +20,6 @@ class AttributDouble : public Attribut
 {
 public:
 	// Construit un attribut de type double.
-	// - leNom : nom de l'attribut.
 	// - laValeur : valeur de l'attribut.
 	AttributDouble(double laValeur);
 

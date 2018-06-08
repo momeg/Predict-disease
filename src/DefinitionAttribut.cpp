@@ -1,6 +1,6 @@
 // 
 // Fichier : Attribut.cpp
-// Description : Implementation de la classe Attribut.
+// Description : Implementation de la classe DefinitionAttribut.
 // Auteur : Loic Saos (loic.saos@insa-lyon.fr).
 // Date de creation : 30 avril 2018
 // Versions :
@@ -9,8 +9,6 @@
 #include "DefinitionAttribut.hpp"
 
 #include <cassert>
-
-DefinitionAttribut::DefinitionAttribut(){}
 
 DefinitionAttribut::DefinitionAttribut(const string& leNom)
 	: nom(leNom)
@@ -39,6 +37,5 @@ size_t DefinitionAttribut::getIndice() const
 
 string DefinitionAttribut::toString() const
 {
-	string s = nom;
-	return s;
+	return nom;
 }

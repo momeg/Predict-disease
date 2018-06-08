@@ -40,6 +40,7 @@ build/.vs/
 *.lastbuildstate
 *.tlog
 unsuccessfulbuild
+src/Predict-disease
 
 .DS_Store
 *.pdb
