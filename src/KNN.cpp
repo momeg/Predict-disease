@@ -41,7 +41,6 @@ Resultat KNN::analyserEmpreinte(const CatalogueMaladies& maladiesReference, cons
 	//for (unsigned int i = 0; i <k; i++) {
 		//dMins[i].first = numeric_limits<double>::max();
 	//}
-	double maxd = numeric_limits<double>::max();
 	double d;
 
 
