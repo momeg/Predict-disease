@@ -95,7 +95,7 @@ double KNN::distanceEmp(const Empreinte& empRef, const Empreinte& empAAnalyser, 
 		}
 
 	}
-	cout << "############## empreinte num :" << empRef.getId() << "  " << abs(d) << endl;//show distances
+	//cout << "############## empreinte num :" << empRef.getId() << "  " << abs(d) << endl;//show distances for debug
 
 	return abs(d);
 }

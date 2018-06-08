@@ -20,16 +20,21 @@ vector<Resultat> Modele::analyserEmpreintes(const CatalogueMaladies& maladiesRef
 	return res;
 }
 
-double Modele::calculerPrecision(const CatalogueEmpreintes& labeled, const CatalogueEmpreintes& prediction)
+double Modele::calculerPrecision(const CatalogueEmpreintes& labeled,const vector<Resultat>& resultats)
 {
 	Empreinte empPred;
 	double precision;
 	int nbOk = 0;
 	int nb = 0;
-	for (pair<int, Empreinte> empLabeled : labeled.getEmpreintes()) {
+	//rcuperer la liste des maladie de chaque resultat et a transformer en set
+	for (Resultat res : resultats) {
 		nb++;
-		empPred = prediction.getEmpreintes().find(empLabeled.first)->second;
-		if (empPred.getMaladies() == empLabeled.second.getMaladies()) {
+		set<string> maladiesRes;
+		for(pair<string, double> p : res.getMaladies()){
+			maladiesRes.insert(p.first);
+		}
+		Empreinte empLabeled = labeled.getEmpreintes().find(res.getId())->second;
+		if (maladiesRes == empLabeled.getMaladies()) {
 			nbOk++;
 		}
 	}

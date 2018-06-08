@@ -4,6 +4,8 @@
 #include "Resultat.hpp"
 #include "CatalogueEmpreintes.hpp"
 #include "CatalogueMaladies.hpp"
+#include <set>
+#include <vector>
 
 class Modele
 {
@@ -25,7 +27,7 @@ public:
 public:
 	vector<Resultat> analyserEmpreintes(const CatalogueMaladies& maladiesReference, const CatalogueEmpreintes& reference, CatalogueEmpreintes& aTraiter);
 
-	double calculerPrecision(const CatalogueEmpreintes& labeled, const CatalogueEmpreintes& prediction);
+	double calculerPrecision(const CatalogueEmpreintes& labeled, const vector<Resultat>& resultats);
 };
 
 #endif // MODELE_HPP
