@@ -106,8 +106,10 @@ void analyserEmpreintes()
 // analyse les empreintes fournies par l'utilisateur et g�n�re un fichier de sortie
 {
 	string cheminFichier;
-	CatalogueEmpreintes aAnalyser;
+	CatalogueEmpreintes aAnalyser = CatalogueEmpreintes();
 	vector <Resultat> resultatsAnalyse;
+
+	aAnalyser.setDefinitionAttribut(catalogueEmpreintes.getDefinitionAttribut());
 
 
 	cout << "Vous avez choisi d'analyser des empreintes" << endl;
@@ -187,7 +189,6 @@ void afficherMaladies()
 
 int main (int argc, char *argv[])
 {
-	historique.open("log.txt", ios::app);
 
 	if(argc>=2 && strcmp("test", argv[1])==0)
 	{
@@ -196,6 +197,8 @@ int main (int argc, char *argv[])
 	}
 	else
 	{
+		historique.open("log.txt", ios::app);
+		
 		modele = new KNN();
 
 		string option = "init";

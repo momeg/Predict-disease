@@ -1,0 +1,1 @@
+Ce test permet de vérifier si l'historique est correctement généré. Le test ne peut être validé par le framework car la date n'est pas fixe, il faut vérifier manuellement si l'historique correspond à nos attentes.
