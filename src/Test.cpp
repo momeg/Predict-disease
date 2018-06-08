@@ -123,7 +123,7 @@ void Test::testKNN1( )
 
 	cout << "Le fichier a analyser a ete charge avec succes" << endl;
 	KNN knn_model(1);
-	vector<Resultat> res = knn_model.analyser(catalogueRef,catalogueEmpreintesAAnalyser);
+	vector<Resultat> res = knn_model.analyserEmpreintes(CatalogueMaladies(), catalogueRef,catalogueEmpreintesAAnalyser);
 	for (Resultat r : res)
 	{
 		cout << r;
@@ -149,7 +149,7 @@ void Test::testKNN2()
 	}
 	cout << "Le fichier a analyser a ete charge avec succes" << endl;
 	KNN knn_model(3);
-	vector<Resultat> res = knn_model.analyser(catalogueRef, catalogueEmpreintesAAnalyser);
+	vector<Resultat> res = knn_model.analyserEmpreintes(CatalogueMaladies(), catalogueRef, catalogueEmpreintesAAnalyser);
 	for (Resultat r : res)
 	{
 		cout << r;
@@ -177,7 +177,7 @@ void Test::testKNN3()
 	cout << "Le fichier a analyser a ete charge avec succes" << endl;
 	KNN knn_model(3);
 	auto start = high_resolution_clock::now();
-	vector<Resultat> res = knn_model.analyser(catalogueRef, catalogueEmpreintesAAnalyser);
+	vector<Resultat> res = knn_model.analyserEmpreintes(CatalogueMaladies(), catalogueRef, catalogueEmpreintesAAnalyser);
 	auto stop = high_resolution_clock::now();
 	auto duration = duration_cast<microseconds>(stop - start);
 	cout <<"Temps d'execution de l;algorithme d'analyse KNN : "<<duration.count() << endl;
@@ -220,7 +220,7 @@ void Test::testKNN4()
 	cout << "Le fichier a analyser avec labels a ete charge avec succes" << endl;
 	for(int k = 1; k<15 ;k++){
 		KNN knn_model(k);
-		vector<Resultat> res = knn_model.analyser(catalogueRef, catalogueEmpreintesAAnalyser);
+		vector<Resultat> res = knn_model.analyserEmpreintes(CatalogueMaladies(), catalogueRef, catalogueEmpreintesAAnalyser);
 		double precision = knn_model.calculerPrecision(catalogueEmpreintesAAnalyserLabeled,catalogueEmpreintesAAnalyser);
 		cout<<k<<","<<precision;
 	}
@@ -250,7 +250,7 @@ void Test::testKNN5()
 	for(int k = 1; k<15 ;k++){
 		KNN knn_model(k);
 		auto start = high_resolution_clock::now();
-		vector<Resultat> res = knn_model.analyser(catalogueRef, catalogueEmpreintesAAnalyser);
+		vector<Resultat> res = knn_model.analyserEmpreintes(CatalogueMaladies(), catalogueRef, catalogueEmpreintesAAnalyser);
 		auto stop = high_resolution_clock::now();
 		auto duration = duration_cast<microseconds>(stop - start);
 		cout <<k<<","<<duration.count() << endl;

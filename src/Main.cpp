@@ -26,8 +26,8 @@ ofstream historique;
 void heureHistorique()
 {
 	time_t t = time(0);   // get time now
-    tm* now = localtime(&t);
-	historique << now->tm_mday <<"/"<< now->tm_mon <<"/"<< now->tm_year+1900 <<" "<<now->tm_hour<<"h"<<now->tm_min;
+	tm* now = localtime(&t);
+	historique << now->tm_mday << "/" << now->tm_mon << "/" << now->tm_year + 1900 << " " << now->tm_hour << "h" << now->tm_min;
 }
 
 void authentification()
@@ -36,7 +36,7 @@ void authentification()
 	cout << "Bonjour" << endl;
 	cout << "Veuillez rentrer votre nom d'utilisateur" << endl;
 	cin >> pseudo;
-	historique <<"Conn:" << pseudo <<":";
+	historique << "Conn:" << pseudo << ":";
 	heureHistorique();
 }
 
@@ -75,9 +75,9 @@ void creerEmpreintesReferences()
 	cout << "Le systeme a ete initialise avec succes" << endl;
 
 	time_t time;
-	historique <<",Entraînement:";
+	historique << ",Entraînement:";
 	heureHistorique();
-	historique <<":"<<cheminFichier;
+	historique << ":" << cheminFichier;
 
 }
 
@@ -122,7 +122,7 @@ void analyserEmpreintes()
 		cout << "Veuillez fournir un autre chemin d'acces" << endl;
 		cin >> cheminFichier;
 	}
-	resultatsAnalyse = modele->analyser(catalogueEmpreintes, aAnalyser);
+	resultatsAnalyse = modele->analyserEmpreintes(catalogueMaladies, catalogueEmpreintes, aAnalyser);
 
 
 
@@ -147,7 +147,7 @@ void analyserEmpreintes()
 		auto maladies = it->getMaladies();
 
 		for (auto iu = maladies.begin(); iu != maladies.end(); ++iu) {
-			fichier << iu->first << ":" << iu->second <<",";
+			fichier << iu->first << ":" << iu->second << ",";
 		}
 		fichier << endl;
 		nbrEmpreintes++;
@@ -156,25 +156,25 @@ void analyserEmpreintes()
 	fichier.close();
 	historique << ",PredBatch:";
 	heureHistorique();
-	historique<<":"<<nomFichierAnalyse<<":"<<nbrEmpreintes;
+	historique << ":" << nomFichierAnalyse << ":" << nbrEmpreintes;
 	cout << "Le fichier a ete genere avec succes" << endl;
 
 }
 
-void afficherMaladies() 
+void afficherMaladies()
 // affiche les maladies prises en compte par le syst�me
 // demande � l'utilisateur s'il veut des d�tails sur l'une d'entre elle
 {
 	string nomMaladie;
-	
+
 	cout << "Vous avez choisi de consulter le liste des maladies prises en charge" << endl;
 	catalogueMaladies.afficherGlobale();
-	
+
 	cout << "Si vous souhaitez retourner au menu principal, veuillez taper 1" << endl;
 	cout << "Sinon, si vous souhaitez afficher les symptomes d'une maladie, veuillez taper son nom" << endl;
 	cin >> nomMaladie;
 
-	while (nomMaladie.compare("1")!=0)
+	while (nomMaladie.compare("1") != 0)
 	{
 		catalogueMaladies.afficherParticulier(nomMaladie);
 
@@ -187,10 +187,10 @@ void afficherMaladies()
 }
 
 
-int main (int argc, char *argv[])
+int main(int argc, char *argv[])
 {
 
-	if(argc>=2 && strcmp("test", argv[1])==0)
+	if (argc >= 2 && strcmp("test", argv[1]) == 0)
 	{
 		Test test;
 		test.faireTest(argv[2]);
@@ -198,7 +198,7 @@ int main (int argc, char *argv[])
 	else
 	{
 		historique.open("log.txt", ios::app);
-		
+
 		modele = new KNN();
 
 		string option = "init";
@@ -207,7 +207,7 @@ int main (int argc, char *argv[])
 
 		creerEmpreintesReferences();
 
-		while (option.compare("5")!=0) {
+		while (option.compare("5") != 0) {
 
 			cout << "Que voulez-vous faire ?" << endl;
 			cout << "Reinitialiser les empreintes de reference: tapez 1" << endl;
@@ -218,31 +218,31 @@ int main (int argc, char *argv[])
 
 			cin >> option;
 
-			if (option.compare("1")==0)
+			if (option.compare("1") == 0)
 			{
 				creerEmpreintesReferences();
 			}
-			else if(option.compare("2")==0)
+			else if (option.compare("2") == 0)
 			{
 				ajouterEmpreintesReferences();
 			}
-			else if(option.compare("3")==0)
+			else if (option.compare("3") == 0)
 			{
 				analyserEmpreintes();
 			}
 
-			else if (option.compare("4")==0)
+			else if (option.compare("4") == 0)
 			{
 				afficherMaladies();
 			}
-			else if(option.compare("5")!=0)
+			else if (option.compare("5") != 0)
 			{
 				cout << "Veuillez choisir l'une des options proposees" << endl;
 			}
 
 		}
 
-		historique <<",Deconn:";
+		historique << ",Deconn:";
 		heureHistorique();
 		historique << endl;
 		historique.close();

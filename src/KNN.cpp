@@ -1,6 +1,13 @@
 #include "KNN.hpp"
+#include "AttributString.hpp"
+#include "AttributDouble.hpp"
 
-using namespace std;
+#include <cassert>
+#include <iostream>
+
+static bool distComp(pair<double, set<string> > p1, pair<double, set<string> >  p2) {
+	return (p1.first < p2.first);
+}
 
 KNN::KNN()
 {
@@ -18,26 +25,15 @@ KNN::~KNN()
 {
 }
 
-//analyser plusieures empreintes
-vector<Resultat> KNN::analyser(const CatalogueEmpreintes& reference, const CatalogueEmpreintes& aTraiter)
-{
-	vector<Resultat> res;
-
-	for (pair<int, Empreinte> e : aTraiter.getEmpreintes()) {
-		res.push_back(analyser(reference, e.second));
-	}
-	return res;
-}
-
 //analyser une empreinte
-Resultat KNN::analyser(const CatalogueEmpreintes& reference, const Empreinte& aTraiter)
+Resultat KNN::analyserEmpreinte(const CatalogueMaladies& maladiesReference, const CatalogueEmpreintes& reference, const Empreinte& aTraiter)
 {
 
 	//Initialize dMins with max distance
 	set<string> s;
 	s.insert("d");
 	pair<double, set<string>> p(numeric_limits<double>::max(), s);
-	vector< pair<double,set<string> > > dMins(k, p);//vector<pair<distance,set<maladie>>> distance et la liste des
+	vector< pair<double, set<string> > > dMins(k, p);//vector<pair<distance,set<maladie>>> distance et la liste des
 	//maladies de l'empreinte correspondates
 
 
@@ -53,19 +49,19 @@ Resultat KNN::analyser(const CatalogueEmpreintes& reference, const Empreinte& aT
 	//k plus petites distances jusqu'a present
 
 	for (pair<int, Empreinte> empRef : reference.getEmpreintes()) {
-		d = distanceEmp(empRef.second,  aTraiter, reference);
-		if (d < dMins[dMins.size()-1].first) {
+		d = distanceEmp(empRef.second, aTraiter, reference);
+		if (d < dMins[dMins.size() - 1].first) {
 			dMins[dMins.size() - 1].first = d;
 			dMins[dMins.size() - 1].second = empRef.second.getMaladies();
-			sort(dMins.begin(), dMins.end(),distComp);
+			sort(dMins.begin(), dMins.end(), distComp);
 		}
-	 }
+	}
 
 	//calculer les probabilites
-	unordered_map <string,double> maladies;//map<maladie,probabilite>
+	unordered_map <string, double> maladies;//map<maladie,probabilite>
 	unordered_map<string, double>::iterator it;
 	for (unsigned int i = 0; i < k; i++) {
-		for(string s : dMins[i].second){//partcourir la liste des maladies d'une seule empreinte
+		for (string s : dMins[i].second) {//partcourir la liste des maladies d'une seule empreinte
 			it = maladies.find(s);
 			if (it == maladies.end())
 				maladies.insert(pair<string, double>(s, 1.0 / k));
@@ -82,15 +78,10 @@ Resultat KNN::analyser(const CatalogueEmpreintes& reference, const Empreinte& aT
 	return res;
 }
 
-bool distComp(pair<double, set<string> > p1, pair<double, set<string> >  p2) {
-	return (p1.first<p2.first);
 
-}
-
-
-double KNN::distanceEmp(const Empreinte& empRef, const Empreinte& empAAnalyser,const CatalogueEmpreintes& catalogue) {
+double KNN::distanceEmp(const Empreinte& empRef, const Empreinte& empAAnalyser, const CatalogueEmpreintes& catalogue) {
 	double d = 0;//distance entre les 2 empreintes
-	for (const DefinitionAttribut* definition : catalogue.getDefinitionAttribut()){
+	for (const DefinitionAttribut* definition : catalogue.getDefinitionAttribut()) {
 		unsigned int i = definition->getIndice();
 		if (definition->getType() == ATTRIBUT_STRING) {
 			const string& val = dynamic_cast<const AttributString*>((const Attribut*)(empAAnalyser.getAttributs()[i]))->getValeur();
@@ -104,7 +95,7 @@ double KNN::distanceEmp(const Empreinte& empRef, const Empreinte& empAAnalyser,c
 		}
 
 	}
-				cout<<"############## empreinte num :"<<empRef.getId()<<"  "<<abs(d)<<endl;//show distances
+	cout << "############## empreinte num :" << empRef.getId() << "  " << abs(d) << endl;//show distances
 
 	return abs(d);
 }

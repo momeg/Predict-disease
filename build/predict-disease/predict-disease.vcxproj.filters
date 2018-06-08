@@ -51,6 +51,9 @@
     <ClInclude Include="..\..\src\Maladie.hpp">
       <Filter>Metier\Maladie</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\Statistique.hpp">
+      <Filter>Algo</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\KNN.cpp">
@@ -96,6 +99,9 @@
     </ClCompile>
     <ClCompile Include="..\..\src\Maladie.cpp">
       <Filter>Metier\Maladie</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Statistique.cpp">
+      <Filter>Algo</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

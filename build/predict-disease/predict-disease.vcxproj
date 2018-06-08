@@ -162,6 +162,7 @@
     <ClInclude Include="..\..\src\Modele.hpp" />
     <ClInclude Include="..\..\src\PointeurClonable.hpp" />
     <ClInclude Include="..\..\src\Resultat.hpp" />
+    <ClInclude Include="..\..\src\Statistique.hpp" />
     <ClInclude Include="..\..\src\Test.hpp" />
     <ClInclude Include="..\..\src\TypeAttribut.hpp" />
   </ItemGroup>
@@ -181,6 +182,7 @@
     <ClCompile Include="..\..\src\Maladie.cpp" />
     <ClCompile Include="..\..\src\Modele.cpp" />
     <ClCompile Include="..\..\src\Resultat.cpp" />
+    <ClCompile Include="..\..\src\Statistique.cpp" />
     <ClCompile Include="..\..\src\Test.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
