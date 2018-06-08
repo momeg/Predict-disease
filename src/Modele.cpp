@@ -26,7 +26,8 @@ double Modele::calculerPrecision(const CatalogueEmpreintes& labeled,const vector
 	double precision;
 	int nbOk = 0;
 	int nb = 0;
-	//rcuperer la liste des maladie de chaque resultat et a transformer en set
+
+	//recuperer la liste des maladie de chaque resultat et la transformer en set
 	for (Resultat res : resultats) {
 		nb++;
 		set<string> maladiesRes;

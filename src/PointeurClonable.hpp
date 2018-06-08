@@ -150,7 +150,7 @@ public:
 		return pointeur;
 	}
 
-	// Accede au pointeur brut. constant.
+	// Accede au pointeur brut constant.
 	const ClasseMere* operator ->() const
 	{
 		return pointeur;

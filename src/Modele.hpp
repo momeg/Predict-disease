@@ -17,7 +17,7 @@ protected:
 
 public:
 	// Analyse une empreinte, determine ses eventuelles
-	// maladies et retourne le resultat du diagnostique.
+	// maladies et retourne le resultat du diagnostic.
 	// Parametres :
 	// - maladiesReference : catalogue de maladies de reference.
 	// - reference : catalogue des empreintes de reference.

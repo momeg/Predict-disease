@@ -48,7 +48,10 @@ public:
 	// Donne les attributs de l'empreinte.
 	const ListeAttributs& getAttributs() const;
 
-	// Donne les attributs de l'empreinte.
+	// Definit un attribut de l'empreinte
+	// Parametre:
+	// - unAttribut: la valeur que prend l'attribut
+	// - indice: l'indice auquel placer ledit attribut dans la liste
 	void setAttributIndice(Attribut* unAttribut, int indice);
 
 	// Donne les maladies de l'empreinte.

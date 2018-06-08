@@ -168,7 +168,7 @@ void analyserEmpreintes()
 
 void afficherMaladies()
 // affiche les maladies prises en compte par le système
-// demande à l'utilisateur s'il veut des détails sur l'une d'entre elle
+// demande à l'utilisateur s'il veut des détails sur l'une d'entre elles
 {
 	string nomMaladie;
 

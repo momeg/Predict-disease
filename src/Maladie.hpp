@@ -14,8 +14,8 @@
 
 //
 // Classe qui represente une maladie.
-// Une maladie possede un nom est des symptomes,
-// c'est a dire des attributs qui permettent de l'identifier.
+// Une maladie possede un nom et des symptomes,
+// c'est-a-dire des attributs qui permettent de l'identifier.
 //
 class Maladie
 {

@@ -30,14 +30,14 @@ public:
     bool chargerFichier(const string& cheminFichier);
     // Mode d'emploi : récupère l'adresse du fichier que l'utilisateur souhaite charger
     // La fonction récupère toutes les informations du fichier pour créer une nouvelle empreinte qui sera ajoutée dans
-    // la liste empreinte
+    // la liste empreintes
     // Au préalable, il faut IMPERATIVEMENT que l'utilisateur ait fait tourner la fonction chargerDefinitionAttribut
     // afin de connaitre le type de chaque attribut
 
     bool chargerDefinitionAttributs(const string& cheminFichier);
-    // Mode d'emploi : récupère l'adresse du fichier de méta-donnée fourni par l'utilisateur
+    // Mode d'emploi : récupère l'adresse du fichier de méta-données fourni par l'utilisateur
     // La fonction récupère le type et le nom de chaque attribut qui constitueront ensuite les empreintes que donnera cet utilisateur.
-    // Chaque definition sera stocké dans la liste definitionAttributs 
+    // Chaque definition sera stockée dans la liste definitionAttributs 
 
     const ListeEmpreintes& getEmpreintes() const;
     // Mode d'emploi : renvoie la liste empreintes

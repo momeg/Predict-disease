@@ -59,7 +59,7 @@ Resultat Statistique::analyserEmpreinte(const CatalogueMaladies& maladiesReferen
 
 			const double proba = static_cast<double>(nbSymptomes) / static_cast<double>(maladie.second.getSymptomes().size());
 
-			maladies.push_back(make_pair(maladie.first, proba));
+			maladies.push_back(make_pair(maladie.first, proba * 100.0));
 		}
 	}
 

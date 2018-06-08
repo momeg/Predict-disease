@@ -68,8 +68,8 @@ bool CatalogueEmpreintes::chargerFichier(const string &cheminFichier)
 						malade = true;
 						maladie = info;
 					}
-					else if (idNonExistant) {            //Si on retrouve deux fois la même id, c'est que l'on souhaite uniquement spécifier une autre maladie pour le client
-														// le reste n'a pas besoin d'être modifier
+					else if (idNonExistant) {            //Si on retrouve deux fois le même id, c'est que l'on souhaite uniquement spécifier une autre maladie pour le client
+														// le reste n'a pas besoin d'être modifié
 						index = indexAttribut(ordreAttributs[numeroAttribut]);
 						if (definitionAttributs[index]->getType() == ATTRIBUT_DOUBLE) {
 							double valeur = stod(info);
@@ -98,7 +98,7 @@ bool CatalogueEmpreintes::chargerFichier(const string &cheminFichier)
 				}
 			}
 
-			for(auto emp = empreintes.begin(); emp!=empreintes.end(); emp++) 	//On parcours la liste des empreintes créées pour placer les
+			for(auto emp = empreintes.begin(); emp!=empreintes.end(); emp++) 	//On parcourt la liste des empreintes créées pour placer les
 																				//les valeurs normalisées
 			{
 				for(index = 0; index<definitionAttributs.size(); index ++)
