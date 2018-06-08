@@ -11,7 +11,7 @@
 #define DEFINITIONATTRIBUTDOUBLE_HPP
 
 #include "DefinitionAttribut.hpp"
-
+#include <limits>
 //
 // Classe qui represente les metadonnees d'un attribut dont la valeur
 // est un nombre a virgule (double).

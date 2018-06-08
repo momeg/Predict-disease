@@ -221,8 +221,8 @@ void Test::testKNN4()
 	for(int k = 1; k<15 ;k++){
 		KNN knn_model(k);
 		vector<Resultat> res = knn_model.analyserEmpreintes(CatalogueMaladies(), catalogueRef, catalogueEmpreintesAAnalyser);
-		double precision = knn_model.calculerPrecision(catalogueEmpreintesAAnalyserLabeled,catalogueEmpreintesAAnalyser);
-		cout<<k<<","<<precision;
+		double precision = knn_model.calculerPrecision(catalogueEmpreintesAAnalyserLabeled,res);
+		cout<<k<<","<<precision<<endl;
 	}
 
 }
